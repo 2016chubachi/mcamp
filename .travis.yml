@@ -1,0 +1,13 @@
+language: ruby
+rvm:
+- 2.0.0
+- 1.9.3
+- jruby-19mode
+- rbx-2
+deploy:
+  provider: heroku
+  api_key:
+    secure: CFbVMeE4gLLUHZ9PCxK22/BXX+ys4fX3ITsF3QPyw7UiGv6xp8Aa+8D+zq7L4HblXQfSIcw50ravNtLYB66VkMIirCrUeYa+ew2afTfbHs6SHxKArxLj505zk+3YPumkXkCUZoY2kjpO/QDqXfVI9COXrommUqfn36uz70EmVRyhvhpAtkEuFi9II5Gu6fdkpneRxNGfzSuyN9bq8j51x3cZBXg/CNallcNyD7nV0eu30lR1V0dUMlfjhCLHglyjrufWcIZCHXpcEPPwE72j6A2ooUGwtOQb4wMcxdofa6u1cNIGd7ODjbzV21kXIXSnc7/LnW1kXDw7JXOmgJIUuP6dEUv4Y++7C/SH/84gBCBjVP13TMnNvkgDbDHtLfhJI3oLlAG/8GDdTtvWC52cDTTAAv+SoiEMMkcRdgYZAGg8GX1qxDP6ILNqhpEa8+MsgaIaPTPZpNfhuYTOthwTj+knxFQTf9Y/Vl1GGZq7dYbGjYi8NVxWGfzZ6vSfl0KdPXMeZKXVNK41ysCHkpakV1oFlAHtOdyTPU3pwRkZlwdOgRA8U3dyUXg5+8ieA39wv1UCvBPG1CW2FcyNCHCMVwnnOsoJGExK1teO7D5iW1IiftJbimArFr4Vux9ScHpnV6JEqA39l5HGXU6P/Rd7pJVfNBQNx+/yoODf45KZs7c=
+  app: "$heroku_app_name"
+  on:
+    repo: 2016chubachi/mcamp
