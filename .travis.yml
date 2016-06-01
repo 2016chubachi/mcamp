@@ -1,6 +1,5 @@
-sudo: required
 language: ruby
-
+sudo: required
 rvm:
 - 2.0.0
 - 1.9.3
@@ -9,7 +8,8 @@ rvm:
 deploy:
   provider: heroku
   api_key:
-    secure: CFbVMeE4gLLUHZ9PCxK22/BXX+ys4fX3ITsF3QPyw7UiGv6xp8Aa+8D+zq7L4HblXQfSIcw50ravNtLYB66VkMIirCrUeYa+ew2afTfbHs6SHxKArxLj505zk+3YPumkXkCUZoY2kjpO/QDqXfVI9COXrommUqfn36uz70EmVRyhvhpAtkEuFi9II5Gu6fdkpneRxNGfzSuyN9bq8j51x3cZBXg/CNallcNyD7nV0eu30lR1V0dUMlfjhCLHglyjrufWcIZCHXpcEPPwE72j6A2ooUGwtOQb4wMcxdofa6u1cNIGd7ODjbzV21kXIXSnc7/LnW1kXDw7JXOmgJIUuP6dEUv4Y++7C/SH/84gBCBjVP13TMnNvkgDbDHtLfhJI3oLlAG/8GDdTtvWC52cDTTAAv+SoiEMMkcRdgYZAGg8GX1qxDP6ILNqhpEa8+MsgaIaPTPZpNfhuYTOthwTj+knxFQTf9Y/Vl1GGZq7dYbGjYi8NVxWGfzZ6vSfl0KdPXMeZKXVNK41ysCHkpakV1oFlAHtOdyTPU3pwRkZlwdOgRA8U3dyUXg5+8ieA39wv1UCvBPG1CW2FcyNCHCMVwnnOsoJGExK1teO7D5iW1IiftJbimArFr4Vux9ScHpnV6JEqA39l5HGXU6P/Rd7pJVfNBQNx+/yoODf45KZs7c=
+    secure: kq8ytZAc5zGoxOaWgWa/oxuehIv6TLp3otHwHRau9LYO8ddSbKIbwlLlDPbFNzlNcH/TnQGRguFH6QqWEUOwjgidQopVbkmq8ZVldYXfbe/98NPLcsb39nq4g6TaqXgi+O3y6XRAZ+PKaw8M5/zMDL8DRpP7QOfpI8YND1ts8eutlTjYMh9tM28U4ki/UqRoIdks+60RmyQICGcDmNIkbRbPnBljFDsfYrpctVJSZXhlFVAf48ac1unObJ2Yx6/x3rxICVhTnzMmLGrgdAy7CX4/ewBfqzqtnTqMeqDVu+OhbjOI4WmyPVQDG2Ud2YqqoBwUMuZ22Lozvm1ghK/KW+UKz40oTS86uaYkF+btWo3KSHxhsmF1Ch/Iwh/R3EC8bpzTYHtypxBnyL+lkWbSlVnQ+05bgc4rSSJkx595FH7JMD9lh6z6rrhfGxwpYuNSkpktlmBZD6Uv7EASeJKfkQq+o/f9Dkhfkx7sf18ISKFyJolbLCDweiBB0ApjYYKY8yN2L1tlkVwBuQxqXxjwSjpZhxyjQaA+DC2MiWsuwck/EdUFED2Xz4gg49SwNNz4OdclPoLJS1QS6KuevfVrp0cPneaPyII4CukoxAF43qt86Z0pdYuZ4j/nSNLnVHR29yFu2zsdlvBrLjXt0JVZEp2dFCdvWJbJ8zL/ba3msbc=
   app: "$heroku_app_name"
   on:
     repo: 2016chubachi/mcamp
+  run: "rake db:migrate"
