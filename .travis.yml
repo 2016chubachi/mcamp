@@ -9,4 +9,4 @@ deploy:
   app: "$heroku_app_name"
   on:
     repo: 2016chubachi/mcamp
-  run: "rake db:migrate"
+  run: "bin/rake db:migrate RAILS_ENV=test"
