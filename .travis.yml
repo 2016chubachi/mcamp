@@ -2,6 +2,8 @@ language: ruby
 sudo: required
 rvm:
 - 2.2.5
+before_script:
+  - bin/rake db:migrate RAILS_ENV=test
 deploy:
   provider: heroku
   api_key:
@@ -9,4 +11,4 @@ deploy:
   app: "$heroku_app_name"
   on:
     repo: 2016chubachi/mcamp
-  run: "heroku run rake db:migrate"
+  run: "run rake db:migrate"
