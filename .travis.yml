@@ -3,7 +3,7 @@ sudo: required
 rvm:
 - 2.2.5
 before_script:
-  - bin/rake db:migrate RAILS_ENV=test
+  - rake db:migrate RAILS_ENV=test
 deploy:
   provider: heroku
   api_key:
