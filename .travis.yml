@@ -8,7 +8,7 @@ deploy:
   provider: heroku
   api_key:
     secure: kq8ytZAc5zGoxOaWgWa/oxuehIv6TLp3otHwHRau9LYO8ddSbKIbwlLlDPbFNzlNcH/TnQGRguFH6QqWEUOwjgidQopVbkmq8ZVldYXfbe/98NPLcsb39nq4g6TaqXgi+O3y6XRAZ+PKaw8M5/zMDL8DRpP7QOfpI8YND1ts8eutlTjYMh9tM28U4ki/UqRoIdks+60RmyQICGcDmNIkbRbPnBljFDsfYrpctVJSZXhlFVAf48ac1unObJ2Yx6/x3rxICVhTnzMmLGrgdAy7CX4/ewBfqzqtnTqMeqDVu+OhbjOI4WmyPVQDG2Ud2YqqoBwUMuZ22Lozvm1ghK/KW+UKz40oTS86uaYkF+btWo3KSHxhsmF1Ch/Iwh/R3EC8bpzTYHtypxBnyL+lkWbSlVnQ+05bgc4rSSJkx595FH7JMD9lh6z6rrhfGxwpYuNSkpktlmBZD6Uv7EASeJKfkQq+o/f9Dkhfkx7sf18ISKFyJolbLCDweiBB0ApjYYKY8yN2L1tlkVwBuQxqXxjwSjpZhxyjQaA+DC2MiWsuwck/EdUFED2Xz4gg49SwNNz4OdclPoLJS1QS6KuevfVrp0cPneaPyII4CukoxAF43qt86Z0pdYuZ4j/nSNLnVHR29yFu2zsdlvBrLjXt0JVZEp2dFCdvWJbJ8zL/ba3msbc=
-  app: $heroku_app_name
+  app: mcamp
   on:
     repo: 2016chubachi/mcamp
   run: "run rake db:migrate"
