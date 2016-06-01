@@ -1,9 +1,9 @@
 language: ruby
 sudo: required
 rvm:
-- 2.2.5
-before_script:
-  - rake db:migrate RAILS_ENV=test
+- 2.2.4
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
 deploy:
   provider: heroku
   api_key:
