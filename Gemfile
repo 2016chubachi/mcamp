@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+# herokuにデプロイ時のWARNING解消の為
+gem 'ruby','2.2.4'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'
 # Use SCSS for stylesheets
@@ -46,6 +47,3 @@ group :production do
   gem 'pg'  # 本番(heroku)ではpostgresqlを使用する
   gem 'rails_12factor'  # herokuでデプロイする際のwarring解消
 end
-
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

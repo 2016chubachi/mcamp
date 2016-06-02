@@ -11,4 +11,4 @@ deploy:
   app: mcamp
   on:
     repo: 2016chubachi/mcamp
-  run: "run rake db:migrate"
+  run: "rake db:migrate"
