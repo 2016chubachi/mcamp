@@ -12,3 +12,10 @@ deploy:
   on:
     repo: 2016chubachi/mcamp
   run: "rake db:migrate"
+notifications:
+  email:
+    - a1517ko@aiit.ac.jp
+    - a15z2hk@aiit.ac.jp
+    - a1548sy@aiit.ac.jp
+    - a1534yt@aiit.ac.jp
+    - a1419ys@aiit.ac.jp
