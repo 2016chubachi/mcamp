@@ -1,0 +1,9 @@
+<ul id="globalNavi">
+  <li><a href="/">HOME</a></li>
+  <li><a href="about.html">利用方法</a></li>
+  <li><a href="#">貸す</a></li>
+  <li><a href="#">借りる</a></li>
+  <li><a href="#">借りたい</a></li>
+  <li><a href="#">BBQ</a></li>
+  <li><a href="#">Login/out</a></li>
+</ul>
