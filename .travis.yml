@@ -3,7 +3,8 @@ sudo: required
 rvm:
 - 2.2.4
 script:
-  - RAILS_ENV=development bundle exec rake db:migrate --trace
+  - RAILS_ENV=test bundle exec rake db:migrate:reset --trace
+  - RAILS_ENV=test bundle exec rake db:seed
 deploy:
   provider: heroku
   api_key:
@@ -11,7 +12,9 @@ deploy:
   app: mcamp
   on:
     repo: 2016chubachi/mcamp
-  run: "rake db:migrate"
+  run: 
+    - "rake db:migrate:reset"
+    - "rake db:seed"
 notifications:
   email:
     - a1517ko@aiit.ac.jp
