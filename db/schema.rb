@@ -11,13 +11,219 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160531141218) do
+ActiveRecord::Schema.define(version: 20160607144141) do
+
+  create_table "ad_users", force: :cascade do |t|
+    t.string   "company"
+    t.string   "email"
+    t.string   "password"
+    t.integer  "authority_id"
+    t.integer  "point"
+    t.integer  "business_id"
+    t.string   "user_name"
+    t.binary   "avator"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "ads", force: :cascade do |t|
+    t.string   "title"
+    t.text     "description"
+    t.string   "link"
+    t.integer  "aduser_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "authorities", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "borrow_items", force: :cascade do |t|
+    t.string   "item_name"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.text     "item_description"
+    t.integer  "fare"
+    t.text     "term"
+    t.string   "location"
+    t.integer  "borrowstate_id"
+    t.boolean  "delete_flg"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "borrow_replies", force: :cascade do |t|
+    t.integer  "borrowitem_id"
+    t.integer  "user_id"
+    t.text     "message"
+    t.integer  "messagestate_id"
+    t.boolean  "delete_flg"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "borrow_reply_images", force: :cascade do |t|
+    t.integer  "borrowreply_id"
+    t.binary   "image"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "borrow_states", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "businesses", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "enquiry_infos", force: :cascade do |t|
+    t.string   "title"
+    t.string   "enquiry_content"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  create_table "generations", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "loan_item_images", force: :cascade do |t|
+    t.integer  "loanitem_id"
+    t.binary   "image"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "loan_items", force: :cascade do |t|
+    t.string   "item_name"
+    t.integer  "user_id"
+    t.integer  "category_id"
+    t.text     "item_description"
+    t.integer  "fare"
+    t.text     "term"
+    t.text     "location"
+    t.integer  "loanstate_id"
+    t.boolean  "delete_flg"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  create_table "loan_states", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "message_states", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_images", force: :cascade do |t|
+    t.integer  "post_id"
+    t.binary   "image"
+    t.integer  "posttype_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "post_replies", force: :cascade do |t|
+    t.integer  "post_id"
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.boolean  "delete_flg"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_reply_images", force: :cascade do |t|
+    t.integer  "postreply_id"
+    t.binary   "image"
+    t.integer  "posttype_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "post_states", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "user_id"
+    t.integer  "poststate_id"
+    t.boolean  "delete_flg"
+    t.integer  "posttype_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "question_details", force: :cascade do |t|
+    t.integer  "question_id"
+    t.string   "question"
+    t.text     "answer"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "questions", force: :cascade do |t|
+    t.string   "classification"
+    t.string   "description"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.integer  "loanitem_id"
+    t.integer  "user_id"
+    t.text     "message"
+    t.integer  "messagestate_id"
+    t.boolean  "delete_flg"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "password"
+    t.integer  "authority_id"
+    t.integer  "point"
+    t.integer  "sex"
+    t.string   "self_introduction"
+    t.integer  "generation_id"
+    t.string   "user_name"
+    t.binary   "avator"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
   end
 
 end
