@@ -8,7 +8,12 @@
 </head>
 <body>
 
-<%= yield %>
+<div id="container">
+  <%= render 'shared/header' %>
+  <%= render 'shared/navigation' %>
+  <%= yield %>
+</div>
 
+  <%= render 'shared/footer' %>
 </body>
 </html>
