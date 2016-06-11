@@ -1,4 +1,5 @@
 class MessageState < ActiveRecord::Base
     has_many :requests
-    has_many :borrowreplys
+    has_many :borrow_replies
+
 end

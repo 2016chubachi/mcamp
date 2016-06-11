@@ -1,3 +1,4 @@
 class BorrowReplyImage < ActiveRecord::Base
-    belongs_to :borrowreply
+    belongs_to :borrow_reply
+
 end

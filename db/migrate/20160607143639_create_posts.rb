@@ -4,9 +4,9 @@ class CreatePosts < ActiveRecord::Migration
       t.string :title
       t.text :content
       t.integer :user_id
-      t.integer :poststate_id
+      t.integer :post_state_id
       t.boolean :delete_flg
-      t.integer :posttype_id
+      t.integer :post_kind_id
 
       t.timestamps null: false
     end

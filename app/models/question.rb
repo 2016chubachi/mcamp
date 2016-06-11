@@ -1,3 +1,4 @@
 class Question < ActiveRecord::Base
-    has_many :questiondetails,:dependent => :destroy
+    has_many :question_details,:dependent => :destroy
+
 end

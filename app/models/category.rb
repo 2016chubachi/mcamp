@@ -1,4 +1,5 @@
 class Category < ActiveRecord::Base
-    has_many :loanitems
-    has_many :borrowitems
+    has_many :loan_items
+    has_many :borrow_items
+
 end

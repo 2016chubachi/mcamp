@@ -1,5 +1,6 @@
 class Request < ActiveRecord::Base
-    belongs_to :loanitem
+    belongs_to :loan_item
     belongs_to :user
-    belongs_to :messagestate
+    belongs_to :message_state
+
 end

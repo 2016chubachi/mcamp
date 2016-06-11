@@ -1,3 +1,4 @@
 class Ad < ActiveRecord::Base
-    belongs_to :aduser
+    belongs_to :ad_user
+
 end

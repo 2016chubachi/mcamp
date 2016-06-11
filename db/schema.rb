@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 20160607144141) do
     t.string   "title"
     t.text     "description"
     t.string   "link"
-    t.integer  "aduser_id"
+    t.integer  "ad_user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -49,27 +49,27 @@ ActiveRecord::Schema.define(version: 20160607144141) do
     t.integer  "fare"
     t.text     "term"
     t.string   "location"
-    t.integer  "borrowstate_id"
+    t.integer  "borrow_state_id"
     t.boolean  "delete_flg"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
 
   create_table "borrow_replies", force: :cascade do |t|
-    t.integer  "borrowitem_id"
+    t.integer  "borrow_item_id"
     t.integer  "user_id"
     t.text     "message"
-    t.integer  "messagestate_id"
+    t.integer  "message_state_id"
     t.boolean  "delete_flg"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "borrow_reply_images", force: :cascade do |t|
-    t.integer  "borrowreply_id"
+    t.integer  "borrow_reply_id"
     t.binary   "image"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "borrow_states", force: :cascade do |t|
@@ -104,10 +104,10 @@ ActiveRecord::Schema.define(version: 20160607144141) do
   end
 
   create_table "loan_item_images", force: :cascade do |t|
-    t.integer  "loanitem_id"
+    t.integer  "loan_item_id"
     t.binary   "image"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "loan_items", force: :cascade do |t|
@@ -118,7 +118,7 @@ ActiveRecord::Schema.define(version: 20160607144141) do
     t.integer  "fare"
     t.text     "term"
     t.text     "location"
-    t.integer  "loanstate_id"
+    t.integer  "loan_state_id"
     t.boolean  "delete_flg"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
@@ -139,9 +139,15 @@ ActiveRecord::Schema.define(version: 20160607144141) do
   create_table "post_images", force: :cascade do |t|
     t.integer  "post_id"
     t.binary   "image"
-    t.integer  "posttype_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "post_kind_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  create_table "post_kinds", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "post_replies", force: :cascade do |t|
@@ -155,20 +161,14 @@ ActiveRecord::Schema.define(version: 20160607144141) do
   end
 
   create_table "post_reply_images", force: :cascade do |t|
-    t.integer  "postreply_id"
+    t.integer  "post_reply_id"
     t.binary   "image"
-    t.integer  "posttype_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "post_kind_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "post_states", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "post_types", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -178,11 +178,11 @@ ActiveRecord::Schema.define(version: 20160607144141) do
     t.string   "title"
     t.text     "content"
     t.integer  "user_id"
-    t.integer  "poststate_id"
+    t.integer  "post_state_id"
     t.boolean  "delete_flg"
-    t.integer  "posttype_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "post_kind_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "question_details", force: :cascade do |t|
@@ -202,13 +202,13 @@ ActiveRecord::Schema.define(version: 20160607144141) do
   end
 
   create_table "requests", force: :cascade do |t|
-    t.integer  "loanitem_id"
+    t.integer  "loan_item_id"
     t.integer  "user_id"
     t.text     "message"
-    t.integer  "messagestate_id"
+    t.integer  "message_state_id"
     t.boolean  "delete_flg"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
   end
 
   create_table "users", force: :cascade do |t|

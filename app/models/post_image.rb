@@ -1,4 +1,5 @@
 class PostImage < ActiveRecord::Base
     belongs_to :post
-    belongs_to :posttype
+    belongs_to :post_kind
+
 end

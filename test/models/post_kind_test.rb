@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class PostTypeTest < ActiveSupport::TestCase
+class PostKindTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end
