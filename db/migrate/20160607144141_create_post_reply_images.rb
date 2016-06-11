@@ -1,9 +1,9 @@
 class CreatePostReplyImages < ActiveRecord::Migration
   def change
     create_table :post_reply_images do |t|
-      t.integer :postreply_id
+      t.integer :post_reply_id
       t.binary :image
-      t.integer :posttype_id
+      t.integer :post_kind_id
 
       t.timestamps null: false
     end

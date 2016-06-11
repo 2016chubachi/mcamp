@@ -1,7 +1,7 @@
 class CreateLoanItemImages < ActiveRecord::Migration
   def change
     create_table :loan_item_images do |t|
-      t.integer :loanitem_id
+      t.integer :loan_item_id
       t.binary :image
 
       t.timestamps null: false

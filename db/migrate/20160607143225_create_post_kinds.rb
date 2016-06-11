@@ -1,6 +1,6 @@
-class CreatePostTypes < ActiveRecord::Migration
+class CreatePostKinds < ActiveRecord::Migration
   def change
-    create_table :post_types do |t|
+    create_table :post_kinds do |t|
       t.string :name
 
       t.timestamps null: false

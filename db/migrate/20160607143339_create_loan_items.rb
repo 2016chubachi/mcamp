@@ -8,7 +8,7 @@ class CreateLoanItems < ActiveRecord::Migration
       t.integer :fare
       t.text :term
       t.text :location
-      t.integer :loanstate_id
+      t.integer :loan_state_id
       t.boolean :delete_flg
 
       t.timestamps null: false

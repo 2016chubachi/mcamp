@@ -1,3 +1,4 @@
 class BorrowState < ActiveRecord::Base
-    has_many :borrowitems
+    has_many :borrow_items
+
 end

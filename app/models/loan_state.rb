@@ -1,3 +1,3 @@
 class LoanState < ActiveRecord::Base
-    has_many :loanitems
+    has_many :loan_items
 end

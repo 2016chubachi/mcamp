@@ -1,3 +1,4 @@
 class LoanItemImage < ActiveRecord::Base
-    belongs_to :loanitem
+    belongs_to :loan_item
+
 end

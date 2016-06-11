@@ -30,10 +30,22 @@ Question.create([{classification: 'サイトにつて'}])
 PostState.create([{name: '進行中'},{name: '完了済'}])
 
 #書込タイプ
-PostType.create([{name: 'BBQ'},{name: '物々交換'}])
+PostKind.create([{name: 'BBQ'},{name: '物々交換'}])
 
 #アイテムカテゴリー
 Category.create([{name: 'キャンプ用品'},{name: 'BBQ用品'}])
+
+#ユーザー
+User.create(email: "dammy@aiit.co.jp",password: "dammy",user_name: "dammy")
+
+#貸すアイテム
+LoanItem.create(item_name: "キャンプ",user_id: 1,category_id: 1,item_description: "キャンプ説明",fare: 1000,term: "aaaaaa",location: "bbbbbb",loan_state_id: 1,delete_flg: false)
+
+#借りたいアイテム
+BorrowItem.create(item_name: "キャンプ",user_id: 1,category_id: 1,item_description: "キャンプ説明",fare: 1000,term: "aaaaaa",location: "bbbbbb",borrow_state_id: 1,delete_flg: false)
+
+#借りたい返事
+BorrowReply.create(borrow_item_id: 1,user_id: 1,message: "貸してください",message_state_id: 1,delete_flg: false)
 
 
 

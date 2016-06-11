@@ -3,7 +3,7 @@ class CreatePostImages < ActiveRecord::Migration
     create_table :post_images do |t|
       t.integer :post_id
       t.binary :image
-      t.integer :posttype_id
+      t.integer :post_kind_id
 
       t.timestamps null: false
     end

@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
-    has_many :loanitems
-    has_many :requests
-    has_many :borrowitems
-    has_many :borrowreplys
+    has_many :loan_items
+    has_many :borrow_items
+    has_many :borrow_replies
     has_many :posts
-    has_many :postreply
-    belongs_to :authority
+    has_many :post_replies
+    has_many :requests
     belongs_to :generation
+    belongs_to :authority
+
 end

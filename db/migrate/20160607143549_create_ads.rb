@@ -4,7 +4,7 @@ class CreateAds < ActiveRecord::Migration
       t.string :title
       t.text :description
       t.string :link
-      t.integer :aduser_id
+      t.integer :ad_user_id
 
       t.timestamps null: false
     end
