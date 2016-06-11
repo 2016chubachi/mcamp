@@ -1,27 +1,40 @@
 <div id="contents"><img src="/assets/logo.png" width="820" height="281" alt="" />
   <!--サブメニュー-->
   <div id="sidebar">
-    <div id="submenu">
-      <h2>SUBMENU(h2)</h2>
-      <ul>
-        <li><a href="#">submenu</a></li>
-        <li><a href="#">submenu</a></li>
-        <li><a href="#">submenu</a></li>
-        <li><a href="#">submenu</a></li>
-        <li><a href="#">submenu</a></li>
-        <li><a href="#">submenu</a></li>
-        </ul>
-    </div> <!--submenu-->
-
     <div id="side_txbox">
-      <p>User Information</p>
-      <p>name:</p>
-      <p>icon</p>
-      <p>Logout</p>
-      <p>Information Edit <br />
-      </p>
-    </div> <!--side_txbox-->
-  </div> <!--サブメニュー-->
+      <p>ユーザーログイン</p>
+      <form id="form1" name="form1" method="post" action="">
+        <p>ユーザー名：<input name="user_id" type="text" id="user_id" size="10" /></p>
+        <p>パスワード：<input name="psd" type="password" size="10" /></p>
+        <p>
+          <input name="user_sbmt" type="submit" value="ロクイン" />
+          <input name="usr_rset" type="reset" value="リセット" />
+          <input type="button" name="usr_apy" id="usr_apy" value="ユーザー登録" />
+        </p>
+      </form>
+    </div>
+
+    <!---
+       <div id="submenu">
+       <h2>SUBMENU(h2)</h2>
+       <ul>
+         <li><a href="#">submenu</a></li>
+         <li><a href="#">submenu</a></li>
+         <li><a href="#">submenu</a></li>
+         <li><a href="#">submenu</a></li>
+         <li><a href="#">submenu</a></li>
+         <li><a href="#">submenu</a></li>
+         </ul>
+     </div>
+     <div id="side_txbox">
+     <p>User Information</p>
+     <p>name:</p>
+     <p>icon</p>
+     <p>Logout</p>
+     <p>Information Edit <br />
+     </p>
+     </div>
+ -->  </div>
 
   <!--メイン-->
   <div id="main">
