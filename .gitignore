@@ -15,3 +15,6 @@
 /log/*
 !/log/.keep
 /tmp
+
+##### added by mike 0611/2016
+.DS_Store
