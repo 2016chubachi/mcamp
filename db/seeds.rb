@@ -36,7 +36,8 @@ PostKind.create([{name: 'BBQ'},{name: '物々交換'}])
 Category.create([{name: 'キャンプ用品'},{name: 'BBQ用品'}])
 
 #ユーザー
-User.create(email: "dammy@aiit.co.jp",password: "dammy",user_name: "dammy")
+#User.create(email: "dammy@aiit.co.jp",password: "dammy",user_name: "dammy")
+Member.create(email: "dammy@aiit.co.jp",password: "dammy",user_name: "dammy")
 
 #貸すアイテム
 LoanItem.create(item_name: "BBQコンロ",user_id: 1,category_id: 1,item_description: "コールマンBBQコンロ",fare: 1000,term: "aaaaaa",location: "bbbbbb",loan_state_id: 1,delete_flg: false)
