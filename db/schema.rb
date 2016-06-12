@@ -43,7 +43,8 @@ ActiveRecord::Schema.define(version: 20160607144141) do
 
   create_table "borrow_items", force: :cascade do |t|
     t.string   "item_name"
-    t.integer  "user_id"
+  #  t.integer  "user_id"
+    t.integer  "member_id"
     t.integer  "category_id"
     t.text     "item_description"
     t.integer  "fare"
@@ -57,7 +58,8 @@ ActiveRecord::Schema.define(version: 20160607144141) do
 
   create_table "borrow_replies", force: :cascade do |t|
     t.integer  "borrow_item_id"
-    t.integer  "user_id"
+  #  t.integer  "user_id"
+    t.integer  "member_id"
     t.text     "message"
     t.integer  "message_state_id"
     t.boolean  "delete_flg"
@@ -113,7 +115,8 @@ ActiveRecord::Schema.define(version: 20160607144141) do
 
   create_table "loan_items", force: :cascade do |t|
     t.string   "item_name"
-    t.integer  "user_id"
+  #  t.integer  "user_id"
+    t.integer   "member_id"
     t.integer  "category_id"
     t.text     "item_description"
     t.integer  "fare"
@@ -155,7 +158,8 @@ ActiveRecord::Schema.define(version: 20160607144141) do
     t.integer  "post_id"
     t.string   "title"
     t.text     "content"
-    t.integer  "user_id"
+#    t.integer  "user_id"
+    t.integer   "member_id"
     t.boolean  "delete_flg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -178,7 +182,8 @@ ActiveRecord::Schema.define(version: 20160607144141) do
   create_table "posts", force: :cascade do |t|
     t.string   "title"
     t.text     "content"
-    t.integer  "user_id"
+#    t.integer  "user_id"
+    t.integer   "member_id"
     t.integer  "post_state_id"
     t.boolean  "delete_flg"
     t.integer  "post_kind_id"
@@ -204,7 +209,8 @@ ActiveRecord::Schema.define(version: 20160607144141) do
 
   create_table "requests", force: :cascade do |t|
     t.integer  "loan_item_id"
-    t.integer  "user_id"
+#    t.integer  "user_id"
+    t.integer   "member_id"
     t.text     "message"
     t.integer  "message_state_id"
     t.boolean  "delete_flg"
@@ -212,7 +218,7 @@ ActiveRecord::Schema.define(version: 20160607144141) do
     t.datetime "updated_at",       null: false
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "members", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
     t.string   "password"

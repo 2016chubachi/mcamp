@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'members/new'
+
   root 'top#index'
 
   #resources :users
