@@ -1,0 +1,27 @@
+<%= form_for(@loan_item) do |f| %>
+  <%= f.label :item_name, "アイテム名" %>
+  <%= f.text_field :item_name %>      </br>
+
+  <%= f.label :category_id, "カテゴリー" %>
+  <%= f.collection_select :category_id, Category.all, :id, :name %></br>
+
+  <%= f.label :item_description, "アイテム説明" %>
+  <%= f.text_area :item_description%>  </br>
+
+  <%= f.label :fare, "基本料金" %>
+  <%= f.text_field :fare %>  </br>
+
+  <%= f.label :term, "貸出条件" %>
+  <%= f.text_field :term %>  </br>
+
+  <%= f.label :location, "貸出場所" %>
+  <%= f.text_field :location %>  </br>
+
+  <%= f.label :loan_state_id, "状態" %>
+  <%= f.collection_select :loan_state_id, LoanState.all, :id, :name, :selected => 1 %></br>
+
+  <%= f.file_field  :image %> </br>
+  <%= f.submit "登録" %> </br>
+
+  <%= debug(params) if Rails.env.development? %>
+<% end %>
