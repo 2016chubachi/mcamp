@@ -1,4 +1,4 @@
 class Generation < ActiveRecord::Base
-    has_many :users
+    has_many :member
 
 end
