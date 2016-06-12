@@ -39,18 +39,16 @@ Category.create([{name: 'キャンプ用品'},{name: 'BBQ用品'}])
 User.create(email: "dammy@aiit.co.jp",password: "dammy",user_name: "dammy")
 
 #貸すアイテム
-LoanItem.create(item_name: "キャンプ",user_id: 1,category_id: 1,item_description: "キャンプ説明",fare: 1000,term: "aaaaaa",location: "bbbbbb",loan_state_id: 1,delete_flg: false)
+LoanItem.create(item_name: "BBQコンロ",user_id: 1,category_id: 1,item_description: "コールマンBBQコンロ",fare: 1000,term: "aaaaaa",location: "bbbbbb",loan_state_id: 1,delete_flg: false)
+
+#貸すアイテム画像
+path = Rails.root.join("db/seeds/development", "sample1.jpg")
+#readでバイナリーにする
+file = Rack::Test::UploadedFile.new(path, "image/jpeg", true).read
+LoanItemImage.create(loan_item_id: 1, image: file, content_type: "image/jpeg")
 
 #借りたいアイテム
 BorrowItem.create(item_name: "キャンプ",user_id: 1,category_id: 1,item_description: "キャンプ説明",fare: 1000,term: "aaaaaa",location: "bbbbbb",borrow_state_id: 1,delete_flg: false)
 
 #借りたい返事
 BorrowReply.create(borrow_item_id: 1,user_id: 1,message: "貸してください",message_state_id: 1,delete_flg: false)
-
-
-
-
-
-
-
-

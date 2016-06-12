@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20160607144141) do
   create_table "loan_item_images", force: :cascade do |t|
     t.integer  "loan_item_id"
     t.binary   "image"
+    t.string   "content_type"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
