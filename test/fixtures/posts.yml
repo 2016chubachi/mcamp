@@ -3,7 +3,7 @@
 one:
   title: MyString
   content: MyText
-  user_id: 1
+  member_id: 1
   poststate_id: 1
   delete_flg: false
   posttype_id: 1
@@ -11,7 +11,7 @@ one:
 two:
   title: MyString
   content: MyText
-  user_id: 1
+  member_id: 1
   poststate_id: 1
   delete_flg: false
   posttype_id: 1

@@ -2,7 +2,7 @@
 
 one:
   item_name: MyString
-  user_id: 1
+  member_id: 1
   category_id: 1
   item_description: MyText
   fare: 1
@@ -13,7 +13,7 @@ one:
 
 two:
   item_name: MyString
-  user_id: 1
+  member_id: 1
   category_id: 1
   item_description: MyText
   fare: 1
