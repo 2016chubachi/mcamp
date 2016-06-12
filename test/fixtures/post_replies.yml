@@ -4,12 +4,12 @@ one:
   post_id: 1
   title: MyString
   content: MyText
-  user_id: 1
+  member_id: 1
   delete_flg: false
 
 two:
   post_id: 1
   title: MyString
   content: MyText
-  user_id: 1
+  member_id: 1
   delete_flg: false
