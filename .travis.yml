@@ -14,8 +14,8 @@ deploy:
     all_branches: true
     repo: 2016chubachi/mcamp
   run: 
-    - "restart worker.1"
     - "pg:reset DATABASE"
+    - "restart"
     - "rake db:migrate"
     - "rake db:seed"
 notifications:
