@@ -1,6 +1,8 @@
 class LoanItemsController < ApplicationController
   def new
     @loan_item = LoanItem.new
+    #buildはcreateとほぼ同じ　loan_item_imageがない(nil)だとファイルをアップロードするdoが通らないので作成する
+    @loan_item.build_loan_item_image
   end
 
   def create
@@ -15,6 +17,7 @@ class LoanItemsController < ApplicationController
 
   def edit
     @loan_item = LoanItem.find(params[:id])
+    @loan_item.build_loan_item_image unless @loan_item.loan_item_image
   end
 
   def update

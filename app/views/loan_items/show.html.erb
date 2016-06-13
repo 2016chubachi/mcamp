@@ -10,6 +10,6 @@
 貸出場所 <%= @loan_item.location %></br>
 状態 <%= @loan_item.loan_state_id %></br>
 画像(helper利用)</br>
-<%= loan_item_image_tag @loan_item, witdh: 96 %></br>
+<%= loan_item_image_tag @loan_item, width: 150 %></br>
 
 <%= debug(params) if Rails.env.development? %>

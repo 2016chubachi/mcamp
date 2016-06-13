@@ -12,7 +12,7 @@ class LoanItemImage < ActiveRecord::Base
 
     def uploaded_image=(image)
       self.content_type = convert_content_type(image.content_type)
-      self.image = image.image
+      self.image = image.read
       @uploaded_image = image
     end
 
