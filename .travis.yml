@@ -13,6 +13,8 @@ deploy:
   on:
     all_branches: true
     repo: 2016chubachi/mcamp
+  run:
+    - "restart"
 notifications:
   email:
     - a1517ko@aiit.ac.jp
