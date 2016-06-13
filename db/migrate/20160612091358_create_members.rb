@@ -6,7 +6,7 @@ class CreateMembers < ActiveRecord::Migration
       t.string :password
       t.integer :authority_id
       t.integer :point
-      t.integer :sex
+      t.integer :gender
       t.string :self_introduction
       t.integer :generation_id
       t.string :user_name
