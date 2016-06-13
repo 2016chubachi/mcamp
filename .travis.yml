@@ -12,8 +12,10 @@ deploy:
   app: mcamp
   on:
     repo: 2016chubachi/mcamp
+  script:
+    - bundle exec pg:reset DATABASE
   run: 
-    - "rake db:migrate:reset"
+    - "rake db:migrate"
     - "rake db:seed"
 notifications:
   email:
