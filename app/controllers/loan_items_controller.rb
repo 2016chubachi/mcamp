@@ -7,7 +7,6 @@ class LoanItemsController < ApplicationController
 
   def create
     @loan_item = LoanItem.new(params[:loan_item])
-    # render :text => @loan_item.item_name
     if @loan_item.save
       redirect_to @loan_item
     else
@@ -28,7 +27,6 @@ class LoanItemsController < ApplicationController
     else
       render "edit"
     end
-    # render :text => @loan_item.item_name
   end
 
   def show

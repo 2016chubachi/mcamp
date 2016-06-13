@@ -5,7 +5,9 @@
 <% end%>
 
 <% @loan_items.each do |loan_item| %>
-<%= loan_item.item_name %>
+<%= link_to loan_item.item_name, loan_item %>
+<%= loan_item.member.user_name %>
+<%= loan_item.item_description %>
 <%= loan_item.loan_state.name %>
 <%= loan_item_image_tag loan_item, witdh: 96 %>
 <%= link_to "編集", [:edit, loan_item]%>
