@@ -13,11 +13,6 @@ deploy:
   on:
     all_branches: true
     repo: 2016chubachi/mcamp
-  run: 
-    - "pg:reset DATABASE"
-    - "restart"
-    - "rake db:migrate"
-    - "rake db:seed"
 notifications:
   email:
     - a1517ko@aiit.ac.jp
