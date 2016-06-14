@@ -6,4 +6,7 @@ class LoanItem < ActiveRecord::Base
     # has_many :loan_item_images,:dependent => :destroy
     has_one :loan_item_image,:dependent => :destroy
     accepts_nested_attributes_for :loan_item_image, allow_destroy: true
+
+    validates :item_name, presence: true
+    validates :fare, numericality: { only_integer: true, greater_than_or_equal_to: 0}
 end

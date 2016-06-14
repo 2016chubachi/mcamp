@@ -8,7 +8,7 @@ class LoanItemsController < ApplicationController
   def create
     @loan_item = LoanItem.new(params[:loan_item])
     if @loan_item.save
-      redirect_to @loan_item
+      redirect_to @loan_item, notice: "アイテムを登録しました"
     else
       render "new"
     end

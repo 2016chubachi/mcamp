@@ -5,7 +5,7 @@ class CreateLoanItems < ActiveRecord::Migration
       t.integer :member_id
       t.integer :category_id
       t.text :item_description
-      t.integer :fare
+      t.integer :fare, default: 0
       t.text :term
       t.text :location
       t.integer :loan_state_id
