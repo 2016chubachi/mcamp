@@ -6,7 +6,15 @@
 
 <% @loan_items.each do |loan_item| %>
 <%= link_to loan_item.item_name, loan_item %>
+
+<%
+=begin
+%>
 <%= loan_item.member.user_name %>
+<%
+=end
+%>
+
 <%= loan_item.item_description %>
 <%= loan_item.loan_state.name %>
 <%= loan_item_image_tag loan_item, witdh: 96 %>
