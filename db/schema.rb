@@ -137,7 +137,7 @@ ActiveRecord::Schema.define(version: 20160612091358) do
     t.string   "password"
     t.integer  "authority_id"
     t.integer  "point"
-    t.integer  "sex"
+    t.integer  "gender"
     t.string   "self_introduction"
     t.integer  "generation_id"
     t.string   "user_name"
