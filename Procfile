@@ -1,4 +1,1 @@
-web: pg:reset DATABASE
-web: rake db:migrate
-web: rake db:seed
-web: bundle exec rails server -p $PORT
+web: bundle exec pg:reset DATABASE ; bundle exec rake db:migrate ; bundle exec rake db:seed ; bundle exec rails server -p $PORT
