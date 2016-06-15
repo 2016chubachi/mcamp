@@ -116,13 +116,13 @@ ActiveRecord::Schema.define(version: 20160612091358) do
     t.integer  "member_id"
     t.integer  "category_id"
     t.text     "item_description"
-    t.integer  "fare"
+    t.integer  "fare",             default: 0
     t.text     "term"
     t.text     "location"
     t.integer  "loan_state_id"
     t.boolean  "delete_flg"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
   end
 
   create_table "loan_states", force: :cascade do |t|

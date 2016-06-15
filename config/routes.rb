@@ -1,8 +1,9 @@
 Rails.application.routes.draw do
-
-  get 'members/new'
-
   root 'top#index'
+
+  # get 'members/new'
+  resources :members
+  resources :loan_items
 
   #resources :users
   # The priority is based upon order of creation: first created -> highest priority.
