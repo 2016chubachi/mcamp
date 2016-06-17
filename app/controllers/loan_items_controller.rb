@@ -1,4 +1,6 @@
 class LoanItemsController < ApplicationController
+  before_action :set_member_sesion
+
   def new
     @loan_item = LoanItem.new
     #buildはcreateとほぼ同じ　loan_item_imageがない(nil)だとファイルをアップロードするdoが通らないので作成する
@@ -6,7 +8,8 @@ class LoanItemsController < ApplicationController
   end
 
   def create
-    @loan_item = LoanItem.new(params[:loan_item])
+    # @loan_item = LoanItem.new(params[:loan_item])
+    @loan_item = LoanItem.new(loan_item_params)
     if @loan_item.save
       redirect_to @loan_item, notice: "アイテムを登録しました"
     else
@@ -21,7 +24,8 @@ class LoanItemsController < ApplicationController
 
   def update
     @loan_item = LoanItem.find(params[:id])
-    @loan_item.assign_attributes(params[:loan_item])
+    # @loan_item.assign_attributes(params[:loan_item])
+    @loan_item.assign_attributes(loan_item_params)
     if @loan_item.save
       redirect_to @loan_item, notice: "アイテムを更新しました"
     else
@@ -54,5 +58,17 @@ class LoanItemsController < ApplicationController
         send_data @loan_item.loan_item_image.image,
           type: @loan_item.loan_item_image.content_type, disposition: "inline"
       end
+    end
+
+    def loan_item_params
+      attrs = [:item_name, :member_id, :category_id, :item_description,
+              :fare, :term, :location, :loan_state_id]
+      attrs << {loan_item_image_attributes: [:uploaded_image,  :id]}
+      params.require(:loan_item).permit(attrs)
+    end
+
+    # テスト用にmember_idをsessionに追加
+    def set_member_sesion
+      session[:member_id] = 1
     end
 end
