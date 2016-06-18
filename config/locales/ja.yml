@@ -17,3 +17,17 @@ ja:
       loan_item_image:
         image: 画像
         uploaded_image: 画像
+    models:
+      member: 会員情報
+    attributes:
+      member:
+        name: 名前
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        authority_id: 権限
+        gender: 性別
+        self_introduction: 自己紹介
+        generation_id: 世代
+        user_name: ユーザー名
+        administrator: 管理者
