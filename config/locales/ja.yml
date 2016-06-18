@@ -1,0 +1,19 @@
+ja:
+  activerecord:
+    models:
+      loan_item: 貸出アイテム
+      loan_item_image: 貸出アイテム画像
+    attributes:
+      loan_item:
+        item_name: アイテム名
+        member_id: メンバー
+        category_id: カテゴリー
+        item_description: アイテム説明
+        fare: 基本料金
+        term: 貸出条件
+        location: 貸出場所
+        loan_state_id: 状態
+        delete_flg: 削除フラグ
+      loan_item_image:
+        image: 画像
+        uploaded_image: 画像
