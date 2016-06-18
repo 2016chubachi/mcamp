@@ -1,0 +1,64 @@
+<% provide(:title, "Edit member") %>
+<h1>ユーザー情報編集</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@member) do |f| %>
+      <%= render 'shared/error_messages' %>
+      <table class="attr">
+      <tr>
+        <th><%= f.label :name, "名前:" %></th>
+        <td><%= f.text_field :name, class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :user_name, "ユーザー名:" %></th>
+        <td><%= f.text_field :user_name, class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :email, "メールアドレス:" %></th>
+        <td><%= f.email_field :email, class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :password, "パスワード:" %></th>
+        <td><%= f.password_field :password, class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :password_confirmation, "パスワード確認:" %></th>
+        <td><%= f.password_field :password_confirmation, class: 'form-control' %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :authority_id, "ユーザー種類:" %></th>
+        <td>
+          <% options = [["個人ユーザー", 1], ["法人ユーザー", 3]] %>
+          <%= f.select :authority_id, options %>
+        </td>
+      </tr>
+      <!--<tr>
+        <th><%= f.label :point, "ポイント:" %></th>
+        <td>
+          <% options = [["有効", 0]] %>
+          <%= f.select :point, options %>
+        </td>
+      </tr>-->
+      <tr>
+        <th><%= f.label :gender, "性別:" %></th>
+        <td>
+          <% options = [["男性", 1], ["女性", 2]] %>
+          <%= f.select :gender, options %>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :generation_id, "世代:" %></th>
+        <td>
+          <% options = [["10代", 1], ["20代", 2], ["30代" , 3], ["40代" , 4], ["50代" , 5], ["60代" , 6], ["60代以上" , 7]] %>
+          <%= f.select :generation_id, options %>
+        </td>
+      </tr>
+      <tr>
+        <th>自己紹介:</th>
+        <td><%= f.text_area :self_introduction, cols: 4, rows: 5 %></td>
+      </tr>
+  </table>
+     <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
