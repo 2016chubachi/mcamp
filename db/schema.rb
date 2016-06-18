@@ -142,8 +142,15 @@ ActiveRecord::Schema.define(version: 20160612091358) do
     t.integer  "generation_id"
     t.string   "user_name"
     t.binary   "avator"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string   "password_digest"
+    t.string   "remember_digest"
+    t.string   "activation_digest"
+    t.boolean  "activated",         default: false
+    t.datetime "activated_at"
+    t.string   "reset_digest"
+    t.datetime "reset_sent_at"
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   create_table "message_states", force: :cascade do |t|
