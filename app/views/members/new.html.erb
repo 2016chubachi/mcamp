@@ -1,2 +1,7 @@
-<h1>Members#new</h1>
-<p>Find me in app/views/members/new.html.erb</p>
+<% provide(:title, 'ユーザー登録') %>
+<h1>ユーザー登録</h1>
+<div class="row">
+  <div class="field">
+  <%= render 'shared/new_user' %>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<h1>MCamp へようこそ</h1>
+
+<p>こんにちは <%= @member.name %>,</p>
+
+<p>
+  MCampに登録して下さいましてありがとうございます。作成したアカウントを有効にするために
+  下記のリンクをクリックして下さい。
+</p>
+
+<%= link_to "Activate", edit_account_activation_url(@member.activation_token, email: @member.email) %>
