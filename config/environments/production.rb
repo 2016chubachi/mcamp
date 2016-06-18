@@ -80,4 +80,24 @@ Rails.application.configure do
   ####### added by mike 4th June ######
   config.assets.compile = true
 
+####### added by mike 15th June ######
+  #config.action_mailer.raise_delivery_errors = true
+  #config.action_mailer.delivery_method = :test
+  #host = 'localhost:3000'
+  #config.action_mailer.default_url_options = { host: 'example.com' }
+  host = 'mcamp.herokuapp.com'
+  config.action_mailer.default_url_options = { host: 'mcamp.herokuapp.com' }
+
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.smtp_settings = {
+  :enable_starttls_auto => true,
+  :address => 'smtp.gmail.com',
+  :port => '587',
+  :domain => 'smtp.gmail.com',
+  :authentication => 'plain',
+  :user_name => 'mcamp2100@gmail.com',
+  :password => 'aA@asdf03062210'
+}
+
 end
