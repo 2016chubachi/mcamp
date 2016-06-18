@@ -17,7 +17,7 @@ ja:
       loan_item_image:
         image: 画像
         uploaded_image: 画像
-   models:
+    models:
       member: 会員情報
     attributes:
       member:
@@ -26,15 +26,8 @@ ja:
         password: パスワード
         password_confirmation: パスワード確認
         authority_id: 権限
-        authority_id_0: 個人ユーザ
-        authority_id_1: 法人ユーザ
         gender: 性別
-        gender_0: 男
-        gender_1: 女
         self_introduction: 自己紹介
         generation_id: 世代
-        generation_id_0: 10代
-        generation_id_1: 20代
         user_name: ユーザー名
         administrator: 管理者
-
