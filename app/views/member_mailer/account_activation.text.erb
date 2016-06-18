@@ -1,0 +1,6 @@
+Hi <%= @member.name %>,
+
+MCampに登録して下さいましてありがとうございます。作成したアカウントを有効にするために
+下記のリンクをクリックして下さい。
+
+<%= edit_account_activation_url(@member.activation_token, email: @member.email) %>
