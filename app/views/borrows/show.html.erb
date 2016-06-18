@@ -1,0 +1,85 @@
+<%= render partial: "shared/sidebar", locals:{subType: "Borrows"} %>
+
+<div class="loanitemshow">
+  <table class="itemdetail">
+    <tbody>
+      <tr class="tr1">
+        <td class="tdlabel">
+          アイテム名
+        </td>
+        <td class="tdcontent1">
+          <%= @loanItem.item_name %>
+        </td>
+        <td class="tdlabel">
+          状態
+        </td>
+        <td class="tdcontent1">
+          <%= @loanItem.loan_state.name %>
+        </td>
+      </tr>
+      <tr class="tr1">
+        <td class="tdlabel">
+          カテゴリー
+        </td>
+        <td class="tdcontent1">
+          <%= @loanItem.category.name %>
+        </td>
+        <td class="tdlabel">
+          基本料金
+        </td>
+        <td class="tdcontent1">
+          <span style="color:#ff0000"><%= @loanItem.fare %></span> 円
+        </td>
+      </tr>
+      <tr class="tr2">
+        <td class="tdlabel">
+          貸出場所
+        </td>
+        <td colspan="3" class="tdcontent2">
+          <%= @loanItem.location %>
+        </td>
+      </tr>
+      <tr class="tr3">
+        <td class="tdlabel">
+          貸出条件
+        </td>
+        <td colspan="3" class="tdcontent2">
+          <%= @loanItem.term %>
+        </td>
+      </tr>
+      <tr class="tr3">
+        <td class="tdlabel">
+          アイテム説明
+        </td>
+        <td colspan="3" class="tdcontent2">
+          <%= @loanItem.item_description %>
+        </td>
+      </tr>
+      <tr class="tr3">
+        <td class="tdlabel">
+          画像
+        </td>
+        <td colspan="3" class="tdcontent2">
+          <%= loan_item_image_tag @loanItem, width: 150 %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="messagenew">
+    <% if flash.notice %>
+      <p><%= flash.notice %></p>
+    <% end%>
+    <% if @loanItem.loan_state.id==1%>
+      <hr>
+      <%= form_for(@loanItem,url: {:controller => :borrows,:action => :update}) do |form| %>
+        <%= form.fields_for :requests do |message| %>
+          <%= render partial: "form", locals:{f: message} %>
+        <% end%>
+        
+        <%= form.submit "リクエスト" %>
+        
+        <%= debug(params) if Rails.env.development? %>
+      <% end%>
+    <% end%>
+  </div>
+</div>
