@@ -1,0 +1,18 @@
+<%= render "shared/errors", obj: @loanItem %>
+<table>
+  <tbody>
+    <tr>
+      <td class="td1">
+          <%= f.label :message, "メッセージ" %>
+      </td>
+    </tr>
+    <tr>
+      <td class="td2">
+          <%= f.text_area :message ,:size => "83x5" %>
+          <%= f.hidden_field :member_id %>
+          <%= f.hidden_field :message_state_id %>
+          <%= f.hidden_field :delete_flg %>
+      </td>
+    </tr>
+  </tbody>
+</table>
