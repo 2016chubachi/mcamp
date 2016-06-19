@@ -1,5 +1,6 @@
 class LoanItemsController < ApplicationController
-  before_action :logged_in_member
+  before_action :logged_in_member, except: [:show]
+  before_action :correct_item_member, only: [:edit, :update]
 
   def new
     @loan_item = LoanItem.new
@@ -43,7 +44,8 @@ class LoanItemsController < ApplicationController
   end
 
   def index
-    @loan_items = LoanItem.all
+    # @loan_items = LoanItem.all
+    @loan_items = LoanItem.where(member_id: current_member.id)
   end
 
   def destroy
