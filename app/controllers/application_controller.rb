@@ -12,13 +12,18 @@ class ApplicationController < ActionController::Base
     end
       helper_method :current_member
 
-     def logged_in_member
-       unless logged_in?
-         store_location
-         flash[:danger] = "ログインしてください。"
-         redirect_to login_url
-       end
-     end
+    def logged_in_member
+      unless logged_in?
+       store_location
+       flash[:danger] = "ログインしてください。"
+       redirect_to login_url
+      end
+    end
 
+    def correct_item_member
+      @member = Member.find(LoanItem.find(params[:id]).member_id)
+      # render text: @member.user_name
+      redirect_to(root_url) unless current_member?(@member)
+    end
 
 end
