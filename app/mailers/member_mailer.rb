@@ -7,12 +7,12 @@ class MemberMailer < ApplicationMailer
   #
   def account_activation(member)
     @member = member
-    mail to: member.email, subject: "アカウントの有効にしてください。"
+    mail to: member.email, subject: "MCamp! アカウントの有効にしてください。"
   end
 
   def password_reset(member)
     @member = member
-    mail to: member.email,subject: "Password reset"
+    mail to: member.email,subject: "MCamp! パスワードのリセット"
   end
 
 
