@@ -3,6 +3,7 @@ ja:
     models:
       loan_item: 貸出アイテム
       loan_item_image: 貸出アイテム画像
+      member: 会員情報
     attributes:
       loan_item:
         item_name: アイテム名
@@ -17,9 +18,6 @@ ja:
       loan_item_image:
         image: 画像
         uploaded_image: 画像
-    models:
-      member: 会員情報
-    attributes:
       member:
         name: 名前
         email: メールアドレス
