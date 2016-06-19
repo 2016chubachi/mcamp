@@ -1,5 +1,5 @@
 class LoanItemsController < ApplicationController
-  before_action :set_member_sesion
+  before_action :logged_in_member
 
   def new
     @loan_item = LoanItem.new
