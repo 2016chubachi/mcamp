@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
-before_action :logged_in_member, only: [:index, :edit, :update]
-before_action :correct_member, only: [:edit, :update]
+  before_action :logged_in_member, only: [:index, :edit, :update]
+  before_action :correct_member, only: [:edit, :update]
 
   def index
   end
@@ -53,7 +53,7 @@ before_action :correct_member, only: [:edit, :update]
 
        def member_params
          params.require(:member).permit(:name, :user_name, :email, :password,
-                                   :password_confirmation,  :gender, :point,
+                                   :password_confirmation,  :gender,
                                    :authority_id, :generation_id, :self_introduction,:activation_digest,
                                    :password_digest)
        end

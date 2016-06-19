@@ -1,4 +1,6 @@
 class BorrowsController < ApplicationController
+  before_action :logged_in_member, :except => ['index', 'show']
+
   #貸出アイテム一覧表示
   def index
     #削除されていないデータだけ表示
