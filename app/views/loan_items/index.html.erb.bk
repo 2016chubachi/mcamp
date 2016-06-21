@@ -1,0 +1,31 @@
+<%= render partial: "shared/sidebar", locals:{subType: "LoanItems"} %>
+
+<div id="main">
+
+<% if flash.notice %>
+  <p><%= flash.notice %></p>
+<% end%>
+
+<% @loan_items.each do |loan_item| %>
+<%= loan_item_image_tag loan_item, width: 120 %>
+<%= link_to loan_item.item_name, loan_item %>
+
+<%
+=begin
+%>
+<%= loan_item.member.user_name %>
+<%
+=end
+%>
+
+<%= loan_item.loan_state.name %>
+<%= loan_item.location %>
+
+<%= link_to "編集", [:edit, loan_item]%>
+<%= link_to "削除", loan_item, method: :delete , data: { confirm: "本当に削除しますか？"} %>
+</br>
+<% end %>
+
+<%= debug(params) if Rails.env.development? %>
+
+</div>
