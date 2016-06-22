@@ -1,15 +1,34 @@
 class RequestsController < ApplicationController
+  before_action :logged_in_member, :except => [:show]
+  
   def index
-    #@requests = Requests.where(delete_flg: false)
-    @requests = Request.all
+    @requests = Request.where({member_id: current_member.id,delete_flg: false}).order(:message_state_id)
   end
-
-  def new
+  
+  def show
+    @request = Request.find(params[:id])
   end
-
-  def edit
+  
+  def update
+    @request = Request.find(params[:id])
+    if params[:request_update]
+      #更新
+      @request.assign_attributes(request_params)
+      if @request.save!
+        render :action => :index
+      end
+    elsif params[:request_cancel]
+      #取消
+      @request.update_attribute(:message_state_id,4)
+      @request.loan_item.update_attribute(:loan_state_id,1)
+      render :action => :index
+    end
   end
-
-  def delete
-  end
+  
+  private
+    def request_params
+      attrs = [:loan_item_id, :member_id, :message, :message_state_id,
+              :delete_flg]
+      params.require(:request).permit(attrs)
+    end
 end
