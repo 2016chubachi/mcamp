@@ -9,7 +9,7 @@ class BorrowsController < ApplicationController
 
   def show
     @loanItem = LoanItem.find(params[:id])
-    if @loanItem.loan_state.id==1
+    if @loanItem.loan_state.id==1 && current_member
       #アイテムステータスが「貸出可能」の場合
        @loanItem.requests.build({member_id: current_member.id,message_state_id: 1,delete_flg: false})
     end
