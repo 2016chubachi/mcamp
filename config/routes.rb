@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :members
   resources :loan_items
   resources :borrows,only:[:index,:show,:update]
-  resources :requests,only:[:index,:edit,:update]
+  resources :requests,only:[:index,:show,:update,:destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets, only:[:new, :create, :edit, :update]
 

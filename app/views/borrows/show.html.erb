@@ -69,11 +69,13 @@
     <% if flash.notice %>
       <p><%= flash.notice %></p>
     <% end%>
-    <% if @loanItem.loan_state.id==1%>
+    <% if current_member && @loanItem.loan_state.id==1%>
       <hr>
       <%= form_for(@loanItem,url: {:controller => :borrows,:action => :update}) do |form| %>
         <%= form.fields_for :requests do |message| %>
-          <%= render partial: "form", locals:{f: message} %>
+          <% if current_member.id == message.object.member_id %>
+            <%= render partial: "form", locals:{f: message} %>
+          <% end%>  
         <% end%>
         
         <%= form.submit "リクエスト" %>

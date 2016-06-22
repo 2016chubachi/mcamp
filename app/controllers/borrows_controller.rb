@@ -11,7 +11,7 @@ class BorrowsController < ApplicationController
     @loanItem = LoanItem.find(params[:id])
     if @loanItem.loan_state.id==1
       #アイテムステータスが「貸出可能」の場合
-       @loanItem.requests.build({member_id: 1,message_state_id: 1,delete_flg: false})
+       @loanItem.requests.build({member_id: current_member.id,message_state_id: 1,delete_flg: false})
     end
   end
 
@@ -22,7 +22,8 @@ class BorrowsController < ApplicationController
     #@loanItem.attributes=params[:loan_item]
     @loanItem.loan_state_id = 2
     if @loanItem.save!
-      render "show", notice: "リクエストを送信しました。"
+      flash.now[:notice] = "リクエストを送信しました。"
+      render "show"
     else
       render "show"
     end
