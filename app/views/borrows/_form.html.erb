@@ -1,14 +1,23 @@
 <%= render "shared/errors", obj: @loanItem %>
+
 <table>
   <tbody>
     <tr>
       <td class="td1">
+        <% if f.object.new_record? %>
           <%= f.label :message, "メッセージ" %>
+        <% else %>
+          <%= f.label :message, "メッセージ （"+f.object.message_state.name+"）" %>
+        <% end %>
       </td>
     </tr>
     <tr>
       <td class="td2">
-          <%= f.text_area :message ,:size => "83x5" %>
+          <% if f.object.new_record? %>
+            <%= f.text_area :message ,:size => "83x5" %>
+          <% else %>
+            <%= f.text_area :message ,:size => "83x5", :readonly => true%>
+          <% end %>
           <%= f.hidden_field :member_id %>
           <%= f.hidden_field :message_state_id %>
           <%= f.hidden_field :delete_flg %>
@@ -16,3 +25,4 @@
     </tr>
   </tbody>
 </table>
+
