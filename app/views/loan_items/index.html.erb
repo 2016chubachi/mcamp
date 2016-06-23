@@ -27,7 +27,7 @@
           <!-- 基本料金-->
           <p class="p4"><%= loan_item.fare %>円</p>
           <!-- 投稿日-->
-          <p class="p5 f1">投稿日 <%= loan_item.created_at %></p>
+          <p class="p5 f1">投稿日 <%= loan_item.created_at.strftime("%Y/%m/%d %H:%M") %></p>
         </td>
         <%#= loan_item.member.user_name %>
         <td class="td3">
