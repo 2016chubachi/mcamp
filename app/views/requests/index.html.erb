@@ -1,28 +1,29 @@
 <%= render partial: "shared/sidebar", locals:{subType: "Borrows"} %>
 <div class="sendrequest">
-  <table class="tb1">
-    <% @requests.each do |item|%>
-    <tbody>
-      <tr>
-        <td class="td1">
-          <p class="p1"><%= link_to item.loan_item.item_name,borrow_path(:id => item.loan_item.id)%></p>
-          <p class="p2"><%= item.message %></p>
-          <!-- 投稿者-->
-          <p class="p4 f1">申込日 <%= item.created_at %></p>
-          <p class="p4 f1">更新日 <%= item.updated_at %></p>
-        </td>
-        <td class="td2">
-          <!-- 状態-->
-          <% if item.message_state %>
-            <%= item.message_state.name %>
-          <% end %>
-        </td>
-        <td class="td3">
-            <%= link_to "編集", request_path(id: item.id) %>
-            <%= link_to "削除", edit_request_path(id: item.id) %>
-        </td>
-      </tr>
-    </tbody>
-   <% end%>
-  </table>
+  <% if @requests %>
+    <table class="tb1">
+      <% @requests.each do |item|%>
+      <tbody>
+        <tr>
+          <td class="td1">
+            <p class="p1"><%= link_to item.loan_item.item_name,borrow_path(:id => item.loan_item.id)%></p>
+            <p class="p2"><%= item.message %></p>
+            <!-- 投稿者-->
+            <p class="p4 f1">申込日 <%= item.created_at %></p>
+            <p class="p4 f1">更新日 <%= item.updated_at %></p>
+          </td>
+          <td class="td2">
+            <!-- 状態-->
+            <% if item.message_state %>
+              <%= item.message_state.name %>
+            <% end %>
+          </td>
+          <td class="td3">
+              <%= link_to "編集", request_path(id: item.id) %>
+          </td>
+        </tr>
+      </tbody>
+     <% end %>
+    </table>
+  <% end %>
 </div>
