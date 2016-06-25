@@ -1,27 +1,79 @@
 <%= render partial: "shared/sidebar", locals:{subType: "LoanItems"}%>
 
-<div id="main">
-  <% if flash.notice %>
-    <p><%= flash.notice %></p>
-  <% end%>
+<!-- <div id="main">
+元のサイトはcontainer width=800, main width=600, padding-left=20
+メインが大きくで600超えるのでコメントアウト
+-->
+<% if flash.notice %>
+  <p><%= flash.notice %></p>
+<% end%>
 
-  アイテム名 <%= @loan_item.item_name %></br>
-  カテゴリー <%= @loan_item.category.name %></br>
-  アイテム説明 <%= @loan_item.item_description %></br>
-  基本料金 <%= @loan_item.fare %></br>
-  貸出条件 <%= @loan_item.term %></br>
-  貸出場所 <%= @loan_item.location %></br>
-  状態 <%= @loan_item.loan_state.name %></br>
-  画像</br>
-  <%= loan_item_image_tag @loan_item, width: 150 %></br>
-
-  <%
-=begin
-  %>
-  ユーザー名 <%= @loan_item.member.user_name %></br>
-  <%
-=end
-  %>
+<div class="loanitemshow">
+  <table class="itemdetail">
+    <tbody>
+      <tr class="tr1">
+        <td class="tdlabel">
+          アイテム名
+        </td>
+        <td class="tdcontent1">
+          <%= @loan_item.item_name %>
+        </td>
+        <td class="tdlabel">
+          状態
+        </td>
+        <td class="tdcontent1">
+          <%= @loan_item.loan_state.name %>
+        </td>
+      </tr>
+      <tr class="tr1">
+        <td class="tdlabel">
+          カテゴリー
+        </td>
+        <td class="tdcontent1">
+          <%= @loan_item.category.name %>
+        </td>
+        <td class="tdlabel">
+          基本料金
+        </td>
+        <td class="tdcontent1">
+          <span style="color:#ff0000"><%= @loan_item.fare %></span> 円
+        </td>
+      </tr>
+      <tr class="tr2">
+        <td class="tdlabel">
+          貸出場所
+        </td>
+        <td colspan="3" class="tdcontent2">
+          <%= @loan_item.location %>
+        </td>
+      </tr>
+      <tr class="tr3">
+        <td class="tdlabel">
+          貸出条件
+        </td>
+        <td colspan="3" class="tdcontent2">
+          <%= @loan_item.term %>
+        </td>
+      </tr>
+      <tr class="tr3">
+        <td class="tdlabel">
+          アイテム説明
+        </td>
+        <td colspan="3" class="tdcontent2">
+          <%= @loan_item.item_description %>
+        </td>
+      </tr>
+      <tr class="tr3">
+        <td class="tdlabel">
+          画像
+        </td>
+        <td colspan="3" class="tdcontent2">
+          <%= loan_item_image_tag @loan_item, width: 150 %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
   <%= debug(params) if Rails.env.development? %>
-</div>
+<!-- </div> -->

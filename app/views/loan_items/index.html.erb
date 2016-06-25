@@ -1,31 +1,48 @@
 <%= render partial: "shared/sidebar", locals:{subType: "LoanItems"} %>
 
-<div id="main">
+<!-- <div id="main">
+元のサイトはcontainer width=800, main width=600, padding-left=20
+メインが大きくで600超えるのでコメントアウト
+-->
 
 <% if flash.notice %>
   <p><%= flash.notice %></p>
 <% end%>
 
-<% @loan_items.each do |loan_item| %>
-<%= loan_item_image_tag loan_item, width: 120 %>
-<%= link_to loan_item.item_name, loan_item %>
-
-<%
-=begin
-%>
-<%= loan_item.member.user_name %>
-<%
-=end
-%>
-
-<%= loan_item.loan_state.name %>
-<%= loan_item.location %>
-
-<%= link_to "編集", [:edit, loan_item]%>
-<%= link_to "削除", loan_item, method: :delete , data: { confirm: "本当に削除しますか？"} %>
-</br>
-<% end %>
+<div class="loanitem">
+  <table class="tb1">
+    <% @loan_items.each do |loan_item| %>
+    <tbody>
+      <tr>
+        <td class="td1">
+          <%= loan_item_image_tag loan_item, width: 120 %>
+        </td>
+        <td class="td2">
+          <!-- アイテム名-->
+          <p class="p1"><%= link_to loan_item.item_name, loan_item %></p>
+          <!-- カテゴリー-->
+          <p class="p2"><%= loan_item.category.name %></p>
+          <!-- 貸出場所-->
+          <p class="p3"><%= loan_item.location %></p>
+          <!-- 基本料金-->
+          <p class="p4"><%= loan_item.fare %>円</p>
+          <!-- 投稿日-->
+          <p class="p5 f1">投稿日 <%= loan_item.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+        </td>
+        <%#= loan_item.member.user_name %>
+        <td class="td3">
+          <%= loan_item.loan_state.name %>
+        </td>
+        <td class="td4">
+          <%= link_to "編集", [:edit, loan_item]%>
+          <%= link_to "削除", loan_item, method: :delete , data: { confirm: "本当に削除しますか？"} %>
+        </td>
+    </tr>
+    </tbody>
+    <% end %>
+  </table>
+</div>
 
 <%= debug(params) if Rails.env.development? %>
 
-</div>
+<!-- </div> -->

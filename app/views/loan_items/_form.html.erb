@@ -1,45 +1,88 @@
 <%= render "shared/errors", obj: @loan_item %>
 
-<%= f.label :item_name %>
-<%= f.text_field :item_name %></br>
+<div class="loanitemshow">
+  <table class="itemdetail">
+    <tbody>
+      <tr class="tr1">
+        <td class="tdlabel">
+          <%= f.label :item_name %>
+        </td>
+        <td class="tdcontent1">
+          <%= f.text_field :item_name %>
+        </td>
+      </tr>
+      <tr>
+        <td class="tdlabel">
+          <%= f.label :category_id %>
+        </td>
+        <td class="tdcontent1">
+          <%= f.collection_select :category_id, Category.all, :id, :name %>
+        </td>
+      </tr>
+      <tr>
+        <td class="tdlabel">
+          <%= f.label :item_description%>
+        </td>
+        <td class="tdcontent1">
+          <%= f.text_area :item_description%>
+        </td>
+      </tr>
+      <tr>
+        <td class="tdlabel">
+          <%= f.label :fare %>
+        </td>
+        <td class="tdcontent1">
+          <%= f.text_field :fare %>
+        </td>
+      <tr>
+      <tr>
+        <td class="tdlabel">
+          <%= f.label :term %>
+        </td>
+        <td class="tdcontent1">
+          <%= f.text_field :term %>
+        </td>
+      </tr>
+      <tr>
+        <td class="tdlabel">
+          <%= f.label :location %>
+        </td>
+        <td class="tdcontent1">
+          <%= f.text_field :location %>
+        </td>
+      </tr>
+        <% if !f.object.new_record? %>
+          <tr>
+          <td class="tdlabel"><%= f.label :loan_state_id  %></td>
+          <td class="tdcontent1">
+            <%= f.collection_select :loan_state_id, LoanState.all, :id, :name, :selected => 1 %>
+          </td>
+          </tr>
+        <% else %>
+          <%= f.hidden_field :loan_state_id, :value => "1" %>
+          <%= f.hidden_field :member_id, :value => session[:member_id] %>
+        <% end %>
 
-<%= f.label :category_id %>
-<%= f.collection_select :category_id, Category.all, :id, :name %></br>
+        <!--validationでエラーになるとnilになるので、画像選択が表示されないことの対応 -->
+        <% if @loan_item.loan_item_image.nil? %>
+          <% @loan_item.build_loan_item_image %>
+        <% end %>
 
-<%= f.label :item_description%>
-<%= f.text_area :item_description%>  </br>
-
-<%= f.label :fare %>
-<%= f.text_field :fare %>  </br>
-
-<%= f.label :term %>
-<%= f.text_field :term %>  </br>
-
-<%= f.label :location %>
-<%= f.text_field :location %>  </br>
-
-<% if !f.object.new_record? %>
-  <%= f.label :loan_state_id  %>
-  <%= f.collection_select :loan_state_id, LoanState.all, :id, :name, :selected => 1 %></br>
-<% else %>
-  <%= f.hidden_field :loan_state_id, :value => "1" %>
-  <%= f.hidden_field :member_id, :value => session[:member_id] %>
-
-<% end %>
-
-
-<%
-# =begin
-%>
-
-<%= f.fields_for :loan_item_image do |imgf| %>
-  <%= imgf.label :uploaded_image %>
-  <%= imgf.file_field :uploaded_image %> </br>
-  <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
-    <%= loan_item_image_tag @loan_item, width: 120 %></br>
-  <% end %>
-<% end %>
-
-<%
-# =end
-%>
+        <%= f.fields_for :loan_item_image do |imgf| %>
+          <tr>
+            <td class="tdlabel">
+              <!--画像-->
+              <%= imgf.label :uploaded_image %>
+            </td>
+            <td class="tdcontent1">
+              <%= imgf.file_field :uploaded_image %></br>
+              <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
+              <%# if !imgf.object.new_record? %>
+                <%= loan_item_image_tag @loan_item, width: 120 %>
+              <% end %>
+            </td>
+          </tr>
+        <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,45 @@
+<%= render "shared/errors", obj: @loan_item %>
+
+<%= f.label :item_name %>
+<%= f.text_field :item_name %></br>
+
+<%= f.label :category_id %>
+<%= f.collection_select :category_id, Category.all, :id, :name %></br>
+
+<%= f.label :item_description%>
+<%= f.text_area :item_description%>  </br>
+
+<%= f.label :fare %>
+<%= f.text_field :fare %>  </br>
+
+<%= f.label :term %>
+<%= f.text_field :term %>  </br>
+
+<%= f.label :location %>
+<%= f.text_field :location %>  </br>
+
+<% if !f.object.new_record? %>
+  <%= f.label :loan_state_id  %>
+  <%= f.collection_select :loan_state_id, LoanState.all, :id, :name, :selected => 1 %></br>
+<% else %>
+  <%= f.hidden_field :loan_state_id, :value => "1" %>
+  <%= f.hidden_field :member_id, :value => session[:member_id] %>
+
+<% end %>
+
+
+<%
+# =begin
+%>
+
+<%= f.fields_for :loan_item_image do |imgf| %>
+  <%= imgf.label :uploaded_image %>
+  <%= imgf.file_field :uploaded_image %> </br>
+  <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
+    <%= loan_item_image_tag @loan_item, width: 120 %></br>
+  <% end %>
+<% end %>
+
+<%
+# =end
+%>
