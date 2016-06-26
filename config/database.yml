@@ -25,3 +25,8 @@ production:
   adapter: postgresql
   encoding: unicode
   pool: 5
+
+# seedのデータ投入をlocalでテストするため
+# production:
+#   <<: *default
+#   database: db/production.sqlite3
