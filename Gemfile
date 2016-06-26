@@ -33,7 +33,7 @@ gem 'bcrypt', '3.1.11'
 # gem 'capistrano-rails', group: :development
 
 # Use bootstrap
-gem 'bootstrap-sass',       '3.3.6'
+#gem 'bootstrap-sass',       '3.3.6'
 
 # Use for internationalization language.
 gem 'rails-i18n'
