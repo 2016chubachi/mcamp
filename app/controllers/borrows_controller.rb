@@ -20,9 +20,9 @@ class BorrowsController < ApplicationController
     @loanItem.assign_attributes(loan_item_params)
     #@loanItem.requests.build({member_id: 1,message_state_id: 1,delete_flg: false,message: })
     #@loanItem.attributes=params[:loan_item]
-    @loanItem.loan_state_id = 2
-    if @loanItem.save!
+    if @loanItem.save
       flash.now[:notice] = "リクエストを送信しました。"
+      @loanItem.update_attribute(:loan_state_id,2)
       render "show"
     else
       render "show"

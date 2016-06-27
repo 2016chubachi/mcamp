@@ -14,7 +14,7 @@ class RequestsController < ApplicationController
     if params[:request_update]
       #更新
       @request.assign_attributes(request_params)
-      if @request.save!
+      if @request.save
         self.index()
         render :action => :index
       end

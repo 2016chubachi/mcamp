@@ -71,6 +71,7 @@
     <% end%>
     <% if current_member && @loanItem.loan_state.id==1%>
       <hr>
+      <%= render "shared/errors", obj: @loanItem %>
       <%= form_for(@loanItem,url: {:controller => :borrows,:action => :update}) do |form| %>
         <%= form.fields_for :requests do |message| %>
           <% if current_member.id == message.object.member_id %>
