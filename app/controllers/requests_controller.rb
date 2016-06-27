@@ -15,12 +15,14 @@ class RequestsController < ApplicationController
       #更新
       @request.assign_attributes(request_params)
       if @request.save!
+        self.index()
         render :action => :index
       end
     elsif params[:request_cancel]
       #取消
       @request.update_attribute(:message_state_id,4)
       @request.loan_item.update_attribute(:loan_state_id,1)
+      self.index()
       render :action => :index
     end
   end

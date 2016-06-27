@@ -4,7 +4,7 @@ class BorrowsController < ApplicationController
   #貸出アイテム一覧表示
   def index
     #削除されていないデータだけ表示
-    @loanItems = LoanItem.where(delete_flg: false)
+    @loanItems = LoanItem.where(delete_flg: false).order(:loan_state_id)
   end
 
   def show

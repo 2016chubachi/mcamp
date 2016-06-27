@@ -10,13 +10,13 @@
         </td>
         <td class="td2">
           <!-- アイテム名-->
-          <p class="p1"><%= link_to item.item_name,borrow_path(:id => item.id)%></p>
+          <p class="p1"><%= link_to truncate(item.item_name,length: 20),borrow_path(:id => item.id)%></p>
           <!-- カテゴリー-->
-          <p class="p2"><%= item.category.name %></p>
+          <p class="p2"><%= truncate(item.category.name,length: 20) %></p>
           <!-- 貸出場所-->
-          <p class="p3"><%= item.location %></p>
+          <p class="p3"><%= truncate(item.location,length: 20) %></p>
           <!-- 投稿者-->
-          <p class="p4 f1"><%= item.member.user_name %> 投稿日 <%= item.created_at %></p>
+          <p class="p4 f1"><%= item.member.user_name %> 投稿日 <%= item.created_at.to_s %></p>
         </td>
         <td class="td3">
           <!-- 状態-->
