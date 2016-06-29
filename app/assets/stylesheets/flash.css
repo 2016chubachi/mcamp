@@ -1,0 +1,10 @@
+/* フラッシュ */
+p.notice {
+  border: 1px solid blue;
+  padding: 3px;
+  background-color: #9CE5A1;
+  /*margin-left: 200px;*/
+  /*float: right;*/
+  /*position:absolute;
+  left:420px;*/
+}

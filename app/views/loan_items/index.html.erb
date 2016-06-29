@@ -1,15 +1,16 @@
 <%= render partial: "shared/sidebar", locals:{subType: "LoanItems"} %>
 
-<!-- <div id="main">
-元のサイトはcontainer width=800, main width=600, padding-left=20
-メインが大きくで600超えるのでコメントアウト
--->
+<!-- <div id="main"> -->
+<!-- 元のサイトはcontainer width=800, main width=600, padding-left=20
+メインが大きくで600超えるのでコメントアウト -->
 
 <% if flash.notice %>
-  <p><%= flash.notice %></p>
+  <p class="notice"><%= flash.notice %></p>
 <% end%>
 
+
 <div class="loanitem">
+
   <table class="tb1">
     <% @loan_items.each do |loan_item| %>
     <tbody>
