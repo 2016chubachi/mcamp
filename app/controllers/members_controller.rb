@@ -5,12 +5,12 @@ class MembersController < ApplicationController
   def index
   end
 
-  # 新規作成フォーム
+  # member 新規作成フォーム
   def new
     @member = Member.new
   end
 
-  # 会員情報の詳細
+  # member 情報の詳細
   def show
     @member = Member.find(params[:id])
   end
@@ -32,10 +32,11 @@ class MembersController < ApplicationController
        @member = Member.find(params[:id])
       end
 
+    # member update
       def update
        @member = Member.find(params[:id])
         if @member.update_attributes(member_params)
-          flash[:success] = "ユーザー情報が更新されました。"
+          flash[:info] = "ユーザー情報が更新されました。"
           redirect_to root_url
         else
           render 'edit'
@@ -58,13 +59,13 @@ class MembersController < ApplicationController
                                    :password_digest)
        end
 
-        def logged_in_member
-          unless logged_in?
-            store_location
-            flash[:danger] = "ログインしてください。"
-            redirect_to login_url
-          end
-        end
+        # def logged_in_member
+        #   unless logged_in?
+        #     store_location
+        #     flash[:danger] = "ログインしてください。"
+        #     redirect_to login_url
+        #   end
+        # end
 
         def correct_member
           @member = Member.find(params[:id])
