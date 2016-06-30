@@ -1,11 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  postreply_id: 1
+  post_reply_id: 1
   image: 
-  posttype_id: 1
+  post_kind_id: 1
 
 two:
-  postreply_id: 1
+  post_reply_id: 1
   image: 
-  posttype_id: 1
+  post_kind_id: 1

@@ -2,8 +2,8 @@ require 'test_helper'
 
 class MemberTest < ActiveSupport::TestCase
     def setup
-      @member = Member.new(name: "Example User", email: "user@example.com"
-                       password: "foobar", password_confirmation: "foobar")
+      @member = Member.new(name: "Example User", email: "user@example.com",
+                      password: "foobar", password_confirmation: "foobar")
     end
 
     test "should be valid" do

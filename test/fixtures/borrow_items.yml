@@ -8,7 +8,7 @@ one:
   fare: 1
   term: MyText
   location: MyString
-  borrowstate_id: 1
+  borrow_state_id: 1
   delete_flg: false
 
 two:
@@ -19,5 +19,5 @@ two:
   fare: 1
   term: MyText
   location: MyString
-  borrowstate_id: 1
+  borrow_state_id: 1
   delete_flg: false
