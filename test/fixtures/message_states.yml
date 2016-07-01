@@ -1,7 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+message_state_1:
+  id: 1
+  name: 承認待ち
 
-two:
-  name: MyString
+message_state_2:
+  id: 2
+  name: 承認済み
+  
+message_state_3:
+  id: 3
+  name: 拒否済み
+  
+message_state_4:
+  id: 4
+  name: 取消済み

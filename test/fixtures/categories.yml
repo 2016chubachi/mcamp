@@ -1,7 +1,17 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+category_1:
+  id: 1
+  name: カテゴリー１
 
-two:
-  name: MyString
+category_2:
+  id: 2
+  name: カテゴリー２
+  
+category_3:
+  id: 3
+  name: カテゴリー３
+  
+category_4:
+  id: 4
+  name: カテゴリー４
