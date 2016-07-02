@@ -62,20 +62,28 @@ class BorrowsControllerTest < ActionController::TestCase
     log_in_as(member)
     #アイテム６のデータ取得
     loanitem = loan_items(:loan_item_6)
-    newrequest = Request.new
-    newrequest.loan_item_id = loanitem.id
-    newrequest.message = "テストメッセージ"
-    loanitem.requests << newrequest
-    paramsArr = []
-    paramsArr << {requests_attributes: [:loan_item_id => newrequest.loan_item_id,:member_id => member.id,:message => newrequest.message,:message_state_id => 1,:delete_flg => false]}
+    loanitem.requests.build({:loan_item => loanitem,:member => member,
+              :message => "テストメッセージ",
+              :message_state => message_states(:message_state_1),
+              :delete_flg => false
+    })
+    #リクエスト送信用パラメータ作成
+    paramsArr = loanitem.attributes
+    requestArr= {}
+    newRequest = nil
+    loanitem.requests.each_with_index do |val,index|
+      requestArr[index.to_s] = val.attributes
+      newRequest = val if val.new_record?
+    end
+    paramsArr["requests_attributes"]=requestArr
+    #リクエスト送信
     patch :update,id: loanitem.id,loan_item: paramsArr
-    assert_response :success
-    #assert_redirected_to :login
-    #{"loan_item"=>
-    #{"requests_attributes"=>
-    #{"1"=>{"message"=>"test", "member_id"=>"3", "message_state_id"=>"4", "delete_flg"=>"false", "id"=>"10"},
-    # "2"=>{"message"=>"aaaaaa", "member_id"=>"3", "message_state_id"=>"1", "delete_flg"=>"false"}}}
-    #}
+    assert_response :success,"update action 失敗しました。"
+    assert_template :show,"showテンプレートではない"
+    assert_equal 6,Request.all.count,"リクエスト件数不正"
+    assert_equal newRequest.message,Request.last.message,"リクエスト送信失敗"
+    assert_equal 2,LoanItem.find(loanitem).loan_state.id
+    
   end
 
 end

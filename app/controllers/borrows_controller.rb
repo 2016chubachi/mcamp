@@ -16,7 +16,6 @@ class BorrowsController < ApplicationController
   end
 
   def update
-    binding.pry
     @loanItem = LoanItem.find(params[:id])
     @loanItem.assign_attributes(loan_item_params)
     #@loanItem.requests.build({member_id: 1,message_state_id: 1,delete_flg: false,message: })
