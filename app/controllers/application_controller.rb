@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
 
   class Forbidden < StandardError; end
 
+  # use for other loan and borrow.
    private
     def current_member
       Member.find_by(id: session[:member_id]) if session[:member_id]
@@ -15,7 +16,7 @@ class ApplicationController < ActionController::Base
     def logged_in_member
       unless logged_in?
        store_location
-       flash[:danger] = "ログインしてください。"
+       flash[:alert] = "ログインしてください。"
        redirect_to login_url
       end
     end

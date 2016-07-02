@@ -8,3 +8,13 @@ p.notice {
   /*position:absolute;
   left:420px;*/
 }
+
+p.alert {
+  border: 1px solid red;
+  padding: 3px;
+  background-color: #9CE5A1;
+  /*margin-left: 200px;*/
+  /*float: right;*/
+  /*position:absolute;
+  left:420px;*/
+}

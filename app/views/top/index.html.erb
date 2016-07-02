@@ -1,5 +1,7 @@
 <div id="contents"><img src="/assets/logo.png" width="820" height="281" alt="" />
   <!--サブメニュー-->
+  <p class="notice"><%= flash.notice %>
+  <!-- <p id="alert"><%= alert %> -->
   <div id="sidebar">
     <div id="side_txbox">
       <%= render :file => "sessions/new" unless current_member  %>

@@ -15,7 +15,7 @@ class PasswordResetsController < ApplicationController
         flash[:info] = "パスワードのリセットのためにメールを転送しました。"
         redirect_to root_url
       else
-        flash.now[:danger] = "メールアドレズが見つかりませんでした。"
+        flash.now[:alert] = "メールアドレズが見つかりませんでした。"
         render 'new'
       end
     end
@@ -29,7 +29,7 @@ class PasswordResetsController < ApplicationController
         render 'edit'
       elsif @member.update_attributes(member_params)
         log_in @member
-        flash[:success] = "パスワードはリセットされました。"
+        flash[:info] = "パスワードはリセットされました。"
         redirect_to root_url
       else
         render 'edit'
@@ -56,7 +56,7 @@ class PasswordResetsController < ApplicationController
 
       def check_expiration
         if @member.password_reset_expired?
-          flash[:danger] = "パスワードリセットの期限が切れました。"
+          flash[:alert] = "パスワードリセットの期限が切れました。"
           redirect_to new_password_reset_url
         end
       end
