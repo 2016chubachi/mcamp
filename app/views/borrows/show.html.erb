@@ -8,7 +8,7 @@
           アイテム名
         </td>
         <td class="tdcontent1">
-          <%= @loanItem.item_name %>
+          <%= truncate(@loanItem.item_name,length: 15) %>
         </td>
         <td class="tdlabel">
           状態
@@ -71,6 +71,7 @@
     <% end%>
     <% if current_member && @loanItem.loan_state.id==1%>
       <hr>
+      <%= render "shared/errors", obj: @loanItem %>
       <%= form_for(@loanItem,url: {:controller => :borrows,:action => :update}) do |form| %>
         <%= form.fields_for :requests do |message| %>
           <% if current_member.id == message.object.member_id %>
@@ -78,7 +79,7 @@
           <% end%>  
         <% end%>
         
-        <%= form.submit "リクエスト" %>
+        <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"}%>
         
         <%= debug(params) if Rails.env.development? %>
       <% end%>
