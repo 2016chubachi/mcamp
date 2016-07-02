@@ -1,7 +1,13 @@
 <% provide(:title, 'ユーザー登録') %>
 <h1>ユーザー登録</h1>
-<p class="notice"><%= flash.notice %>
-<p class="alert"><%= flash.alert %>
+<% if flash.notice %>
+  <p class="notice"><%= flash.notice %></p>
+<% end%>
+
+<!-- <p class="alert"><%= flash.alert %> -->
+<% if flash.alert %>
+  <p class="alert"><%= flash.alert %></p>
+<% end%>
 <div class="row">
   <div class="field">
   <%= render 'shared/new_user' %>

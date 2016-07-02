@@ -1,7 +1,16 @@
 <% provide(:title, "Edit member") %>
 <h1>ユーザー情報編集</h1>
-<p class="notice"><%= flash.notice %>
-<p class="alert"><%= flash.alert %>
+
+<!-- <p class="notice"><%= flash.notice %> -->
+<% if flash.notice %>
+  <p class="notice"><%= flash.notice %></p>
+<% end%>
+
+<!-- <p class="alert"><%= flash.alert %> -->
+<% if flash.alert %>
+  <p class="alert"><%= flash.alert %></p>
+<% end%>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@member) do |f| %>
