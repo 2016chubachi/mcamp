@@ -1,0 +1,13 @@
+リクエスト承認通知
+
+こんにちは <%= @request.member.name %>さん
+
+以下のアイテムへのリクエストが承認されました。
+持ち主と具体的な貸出日時や場所、金額等の条件を決めて下さい。
+
+
+アイテム：<%= @request.loan_item.item_name %>
+URL: <%= loan_item_url(@request.loan_item)%>
+
+持ち主：<%= @request.loan_item.member.name %>
+連絡先：<%= @request.loan_item.member.email %>

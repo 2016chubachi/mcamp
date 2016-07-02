@@ -1,0 +1,15 @@
+<h2>リクエスト承認通知</h2>
+
+<p>こんにちは <%= @request.member.name %>さん</p>
+
+<p>
+以下のアイテムへのリクエストが承認されました。<br>
+持ち主と具体的な貸出日時や場所、金額等の条件を決めて下さい。<br>
+</p>
+
+<p>
+アイテム：
+<%= link_to @request.loan_item.item_name ,loan_item_url(@request.loan_item) %> <br>
+持ち主：<%= @request.loan_item.member.name %><br>
+連絡先：<%= @request.loan_item.member.email %><br>
+</p>
