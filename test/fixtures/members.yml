@@ -4,8 +4,16 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+<%5.times do |n| %>
+<%n+=1%>
+member_<%= n%>: 
+    name: <%= "テストユーザー#{n}"%>
+    email: <%= "test_user_#{n}@examp.com"%>
+    password: password
+    authority_id: 1
+    point: 0
+    gender: 0
+    self_introduction: 自己紹介
+    generation_id: 3
+    user_name: <%= "test_user_#{n}"%>
+<%end%>

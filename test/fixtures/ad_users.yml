@@ -6,7 +6,7 @@ one:
   password: MyString
   authority_id: 1
   point: 1
-  industry_id: 1
+  business_id: 1
   user_name: MyString
   avator: 
 
@@ -16,6 +16,6 @@ two:
   password: MyString
   authority_id: 1
   point: 1
-  industry_id: 1
+  business_id: 1
   user_name: MyString
   avator: 

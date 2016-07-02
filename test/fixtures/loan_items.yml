@@ -1,23 +1,53 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  item_name: MyString
-  member_id: 1
+<%1.upto(5) do |n| %>
+loan_item_<%= n%>:
+  item_name: <%= "アイテム#{n}"%>
+  member: member_1
   category_id: 1
-  item_description: MyText
-  fare: 1
-  term: MyText
-  location: MyText
-  loanstate_id: 1
+  item_description: <%= "アイテム#{n}説明"%>
+  fare: 1000
+  term: <%= "アイテム#{n}貸出条件"%>
+  location: <%= "アイテム#{n}貸出場所"%>
+  loan_state_id: 2
   delete_flg: false
+<% end %>
 
-two:
-  item_name: MyString
-  member_id: 1
-  category_id: 1
-  item_description: MyText
-  fare: 1
-  term: MyText
-  location: MyText
-  loanstate_id: 1
+<%6.upto(10) do |n| %>
+loan_item_<%= n%>:
+  item_name: <%= "アイテム#{n}"%>
+  member: member_2
+  category_id: 2
+  item_description: <%= "アイテム#{n}説明"%>
+  fare: 1000
+  term: <%= "アイテム#{n}貸出条件"%>
+  location: <%= "アイテム#{n}貸出場所"%>
+  loan_state_id: 1
   delete_flg: false
+<%end%>
+
+<%11.upto(15) do |n| %>
+loan_item_<%= n%>:
+  item_name: <%= "アイテム#{n}"%>
+  member: member_3
+  category_id: 3
+  item_description: <%= "アイテム#{n}説明"%>
+  fare: 1000
+  term: <%= "アイテム#{n}貸出条件"%>
+  location: <%= "アイテム#{n}貸出場所"%>
+  loan_state_id: 1
+  delete_flg: false
+<%end%>
+
+<%16.upto(20) do |n| %>
+loan_item_<%= n%>:
+  item_name: <%= "アイテム#{n}"%>
+  member: member_4
+  category_id: 4
+  item_description: <%= "アイテム#{n}説明"%>
+  fare: 1000
+  term: <%= "アイテム#{n}貸出条件"%>
+  location: <%= "アイテム#{n}貸出場所"%>
+  loan_state_id: 1
+  delete_flg: false
+<%end%>

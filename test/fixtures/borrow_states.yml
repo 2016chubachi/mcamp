@@ -1,7 +1,9 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+borrow_state_1:
+  id: 1
+  name: 募集中
 
-two:
-  name: MyString
+borrow_state_2:
+  id: 2
+  name: 締切
