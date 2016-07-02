@@ -1,7 +1,10 @@
 <% provide(:title, "Log in") %>
 <h1>ログイン</h1>
 <!-- <p id="notice"><%= notice %> -->
-<p class="alert"><%= flash.alert %>
+<!-- <p class="alert"><%= flash.alert %> -->
+<% if flash.alert %>
+  <p class="alert"><%= flash.alert %></p>
+<% end%>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(:session, url: login_path) do |f| %>

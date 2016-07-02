@@ -29,3 +29,6 @@ ja:
         generation_id: 世代
         user_name: ユーザー名
         administrator: 管理者
+    errors:
+      messages:
+        

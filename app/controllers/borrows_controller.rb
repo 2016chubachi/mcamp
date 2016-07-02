@@ -30,9 +30,14 @@ class BorrowsController < ApplicationController
   end
   private
     def loan_item_params
-      attrs = [:item_name, :member_id, :category_id, :item_description,
-              :fare, :term, :location, :loan_state_id,:delete_flg]
+      #attrs = [:item_name, :member_id, :category_id, :item_description,
+      #        :fare, :term, :location, :loan_state_id,:delete_flg]
+      #attrs << {requests_attributes: [:loan_item_id,:member_id,:message,:message_state_id,:delete_flg]}
+      attrs = [:loan_state_id]
       attrs << {requests_attributes: [:loan_item_id,:member_id,:message,:message_state_id,:delete_flg]}
       params.require(:loan_item).permit(attrs)
+      #params.require(:loan_item).map do |p|
+      #  ActionController::Parameters.new(p.to_hash).permit(:loan_item_id,:member_id,:message,:message_state_id,:delete_flg)
+      #end
     end
 end

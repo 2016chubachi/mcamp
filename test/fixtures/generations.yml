@@ -1,7 +1,10 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+<%for n in 1..6 do%>
+gender_<%= n%>:
+  id: <%= "#{n}"%>
+  name: <%= "#{n*10}代"%>
+<%end%>
+gender_7:
+  id: 7
+  name: 60代以上

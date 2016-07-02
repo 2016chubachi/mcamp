@@ -4,14 +4,14 @@ one:
   title: MyString
   content: MyText
   member_id: 1
-  poststate_id: 1
+  post_state_id: 1
   delete_flg: false
-  posttype_id: 1
+  post_kind_id: 1
 
 two:
   title: MyString
   content: MyText
   member_id: 1
-  poststate_id: 1
+  post_state_id: 1
   delete_flg: false
-  posttype_id: 1
+  post_kind_id: 1

@@ -3,9 +3,9 @@
 one:
   post_id: 1
   image: 
-  posttype_id: 1
+  post_kind_id: 1
 
 two:
   post_id: 1
   image: 
-  posttype_id: 1
+  post_kind_id: 1

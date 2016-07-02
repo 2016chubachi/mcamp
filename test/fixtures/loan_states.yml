@@ -1,7 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+loan_state_1:
+  id: 1
+  name: 貸出可能
 
-two:
-  name: MyString
+loan_state_2:
+  id: 2
+  name: 申込中
+  
+loan_state_3:
+  id: 3
+  name: 貸出中

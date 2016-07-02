@@ -1,7 +1,13 @@
 <div id="contents"><img src="/assets/logo.png" width="820" height="281" alt="" />
   <!--サブメニュー-->
-  <p class="notice"><%= flash.notice %>
+  <!-- <p class="notice"><%= flash.notice %> -->
+    <% if flash.notice %>
+      <p class="notice"><%= flash.notice %></p>
+    <% end%>
   <!-- <p id="alert"><%= alert %> -->
+    <% if flash.alert %>
+     <p class="alert"><%= flash.alert %></p>
+    <% end%>
   <div id="sidebar">
     <div id="side_txbox">
       <%= render :file => "sessions/new" unless current_member  %>

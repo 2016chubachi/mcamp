@@ -1,15 +1,36 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  loanitem_id: 1
-  member_id: 1
-  message: MyText
-  requeststate_id: 1
+request_1:
+  loan_item: loan_item_1
+  member: member_1
+  message: 貸出アイテムリクエストメッセージ１
+  message_state_id: 1
   delete_flg: false
 
-two:
-  loanitem_id: 1
-  member_id: 1
-  message: MyText
-  requeststate_id: 1
+request_2:
+  loan_item: loan_item_2
+  member: member_2
+  message: 貸出アイテムリクエストメッセージ２
+  message_state_id: 1
+  delete_flg: false
+  
+request_3:
+  loan_item: loan_item_3
+  member: member_3
+  message: 貸出アイテムリクエストメッセージ３
+  message_state_id: 1
+  delete_flg: false
+  
+request_4:
+  loan_item: loan_item_4
+  member: member_4
+  message: 貸出アイテムリクエストメッセージ４
+  message_state_id: 1
+  delete_flg: false
+  
+request_5:
+  loan_item: loan_item_5
+  member: member_5
+  message: 貸出アイテムリクエストメッセージ５
+  message_state_id: 1
   delete_flg: false
