@@ -5,10 +5,10 @@ class AccountActivationsController < ApplicationController
     if member && !member.activated? && member.authenticated?(:activation, params[:id])
        member.activate
       log_in member
-      flash[:info] = "アカウントが有効化されました。!"
+      flash.now[:notice] = "アカウントが有効化されました。!"
       redirect_to member
     else
-      flash[:alert] = "無効なリンクです。"
+      flash.now[:alert] = "無効なリンクです。"
       redirect_to root_url
     end
   end

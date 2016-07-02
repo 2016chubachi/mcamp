@@ -20,8 +20,9 @@ class MembersController < ApplicationController
       @member = Member.new(member_params)
       if @member.save
         @member.send_activation_email
-        flash[:info] = "アカウントの有効にするメールを登録したメールに送りました。ご確認下さい。"
+        # flash.now[:notice] = "アカウントの有効にするメールを登録したメールに送りました。ご確認下さい。"
         redirect_to root_url
+        flash[:notice] = "アカウントの有効にするメールを登録したメールに送りました。ご確認下さい。"
       else
         render "new"
       end
@@ -36,8 +37,8 @@ class MembersController < ApplicationController
       def update
        @member = Member.find(params[:id])
         if @member.update_attributes(member_params)
-          flash[:info] = "ユーザー情報が更新されました。"
-          redirect_to root_url
+            redirect_to root_url
+            flash.now[:notice] = "ユーザー情報が更新されました。"
         else
           render 'edit'
         end

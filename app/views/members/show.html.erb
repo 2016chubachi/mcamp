@@ -1,6 +1,12 @@
 <% provide(:title, @member.user_name) %>
-<p class="notice"><%= flash.notice %>
-<p class="alert"><%= flash.alert %>
+<% if flash.notice %>
+  <p class="notice"><%= flash.notice %></p>
+<% end%>
+
+<!-- <p class="alert"><%= flash.alert %> -->
+<% if flash.alert %>
+  <p class="alert"><%= flash.alert %></p>
+<% end%>
 <div class="row">
   <aside class="col-md-4">
     <section class="member_info">
