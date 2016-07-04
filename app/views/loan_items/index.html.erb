@@ -22,7 +22,11 @@
           <!-- アイテム名-->
           <p class="p1"><%= link_to loan_item.item_name, loan_item %></p>
           <!-- カテゴリー-->
-          <p class="p2"><%= loan_item.category.name %></p>
+          <p class="p2">
+            <% if loan_item.category %>
+              <%= loan_item.category.name %>
+            <% end %>
+          </p>
           <!-- 貸出場所-->
           <p class="p3"><%= loan_item.location %></p>
           <!-- 基本料金-->
@@ -32,7 +36,9 @@
         </td>
         <%#= loan_item.member.user_name %>
         <td class="td3">
-          <%= loan_item.loan_state.name %>
+          <% if loan_item.loan_state %>
+            <%= loan_item.loan_state.name %>
+          <% end %>
         </td>
         <td class="td4">
           <%= link_to "編集", [:edit, loan_item]%>
