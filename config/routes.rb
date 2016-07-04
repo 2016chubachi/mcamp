@@ -4,10 +4,11 @@ Rails.application.routes.draw do
   resources :members
   resources :loan_items
   resources :borrows,only:[:index,:show,:update]
-  resources :requests,only:[:index,:show,:update,:destroy]
+  resources :requests,only:[:index,:show,:update]
   resources :account_activations, only: [:edit]
   resources :password_resets, only:[:new, :create, :edit, :update]
   resources :receive_requests, only:[:index,:show,:update]
+  resources :borrow_items
 
 
   get 'signup'  => 'members#new'
