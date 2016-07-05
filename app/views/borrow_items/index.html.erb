@@ -21,12 +21,14 @@
         </td>
         <td>
           <!-- 料金-->
-          <span><%= item.fare %></span> <span style="color:#999999">円</span>
+          <span style="color:#ff0000"><%= item.fare %></span> <span style="color:#999999">円</span>
         </td> 
         <td>
             <!-- 処理-->
-            <%= link_to "編集",[:edit,item]%>
-            <%= link_to "削除",item,method: :delete,data: {confirm: "削除しても宜しいですか？"}%>
+            <% if item.borrow_state.id==1%>
+              <%= link_to "編集",[:edit,item]%>
+              <%= link_to "削除",item,method: :delete,data: {confirm: "削除しても宜しいですか？"}%>
+            <% end%>
         </td>
       </tr>
     </tbody>

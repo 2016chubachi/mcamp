@@ -15,6 +15,7 @@ class BorrowItemsController < ApplicationController
     
     def create
         @borrow_Item = BorrowItem.new(create_item_params)
+        @borrow_Item.member = current_member
         if @borrow_Item.save
             redirect_to @borrow_Item,notice: "借りたい情報を登録しました。"
         else
@@ -27,19 +28,23 @@ class BorrowItemsController < ApplicationController
     end
     
     def update
-        @borrow_Item = BorrowItem.find(params[:id]) 
-        @borrow_Item.assign_attributes(update_item_params)
-        if @borrow_Item.save
-            redirect_to @borrow_Item,notice: "借りたい情報を更新しました。"
-        else
-            render :edit
+        if params[:update]
+            @borrow_Item = BorrowItem.find(params[:id]) 
+            @borrow_Item.assign_attributes(update_item_params)
+            if @borrow_Item.save
+                redirect_to @borrow_Item,notice: "借りたい情報を更新しました。"
+            else
+                render :edit
+            end
+        elsif params[:delete]
+            self.destroy
         end
+            
     end
     
     def destroy
-        @borrow_Item = BorrowItem.find(params[:id])
-        @borrow_Item.update_attribute(delete_flg: true)
-        redirect_to :back,notice: "借りたい情報を更新しました。"
+        BorrowItem.find(params[:id]).destroy
+        redirect_to :borrow_items
     end
     
     
@@ -48,11 +53,11 @@ class BorrowItemsController < ApplicationController
     
     def create_item_params
         attrs = [:item_name,:member_id,:category_id,:item_description,:fare,:term,:location,:borrow_state_id,:delete_flg]
-        params.require(:borrow_Item).permit(attrs)
+        params.require(:borrow_item).permit(attrs)
     end
     
     def update_item_params
         attrs = [:item_name,:category_id,:item_description,:fare,:term,:location]
-        params.require(:borrow_Item).permit(attrs)
+        params.require(:borrow_item).permit(attrs)
     end
 end

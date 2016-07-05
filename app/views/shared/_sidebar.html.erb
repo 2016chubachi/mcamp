@@ -15,11 +15,11 @@
         <li><%= link_to "送信リクエスト", requests_path %></li>
       </ul>
     <% when "BorrowItems" then%>
-      <h2>探し物</h2>
+      <h2>借りたい</h2>
       <ul>
-        <li><%= link_to "探し物登録", new_borrow_item_path %></li>
-        <li><%= link_to "探し物一覧", borrow_items_path %></li>
-        <li><%= link_to "受信リクエスト"%></li>
+        <li><%= link_to "借りたい登録", new_borrow_item_path %></li>
+        <li><%= link_to "借りたい一覧", borrow_items_path %></li>
+        <li><%= link_to "受信リクエスト","#"%></li>
       </ul>
     <% end%>
   </div>

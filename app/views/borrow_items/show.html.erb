@@ -1,0 +1,64 @@
+<%= render partial: "shared/sidebar", locals:{subType: "BorrowItems"} %>
+<span style="color:#ff0000">
+    <% if flash.notice %>
+      <p><%= flash.notice %></p>
+    <% end%>
+</span>
+<div>
+  <table >
+    <tbody>
+      <tr >
+        <th>
+          アイテム名
+        </th>
+        <td >
+          <%= truncate(@borrow_Item.item_name,length: 15) %>
+        </td>
+        <th >
+          状態
+        </th>
+        <td >
+          <%= @borrow_Item.borrow_state.name %>
+        </td>
+      </tr>
+      <tr >
+        <th >
+          カテゴリー
+        </th>
+        <td >
+          <%= @borrow_Item.category.name %>
+        </td>
+        <th >
+          基本料金
+        </th>
+        <td >
+          <span style="color:#ff0000"><%= @borrow_Item.fare %></span> 円
+        </td>
+      </tr>
+      <tr >
+        <th >
+          借りたい場所
+        </th>
+        <td colspan="3" >
+          <%= @borrow_Item.location %>
+        </td>
+      </tr>
+      <tr >
+        <th >
+          借りたい条件
+        </th>
+        <td colspan="3" >
+          <%= @borrow_Item.term %>
+        </td>
+      </tr>
+      <tr >
+        <th >
+          アイテム説明
+        </th>
+        <td colspan="3" >
+          <%= @borrow_Item.item_description %>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
