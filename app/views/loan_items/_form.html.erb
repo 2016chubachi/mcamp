@@ -55,7 +55,7 @@
           <tr>
           <td class="tdlabel"><%= f.label :loan_state_id  %></td>
           <td class="tdcontent1">
-            <%= f.collection_select :loan_state_id, LoanState.all, :id, :name, :selected => 1 %>
+            <%= f.collection_select :loan_state_id, LoanState.all, :id, :name%>
           </td>
           </tr>
         <% else %>
