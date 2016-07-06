@@ -1,0 +1,14 @@
+<h2>リクエスト拒否通知</h2>
+
+<p>こんにちは <%= @request.member.name %>さん</p>
+
+<p>
+以下のアイテムへのリクエストが拒否されました。<br>
+ご利用ありがとうございました。<br>
+</p>
+
+<p>
+アイテム：
+<%= link_to @request.loan_item.item_name ,loan_item_url(@request.loan_item) %> <br>
+持ち主：<%= @request.loan_item.member.name %><br>
+</p>

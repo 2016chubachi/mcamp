@@ -1,0 +1,31 @@
+<%= render partial: "shared/sidebar", locals:{subType: "LoanItems"} %>
+
+
+
+<div id="main">
+<% @receive_requests.each do |request|%>
+
+
+<% if request.message_state && request.message_state.id != 4 %>
+  アイテム名：
+  <%= link_to request.loan_item.item_name, loan_item_path(id: request.loan_item.id) %></br>
+
+  状態：
+  <% if request.message_state %>
+    <%= request.message_state.name %></br>
+  <% end %>
+
+  申し込みユーザー：
+  <%= request.member.user_name %> </br>
+  <!--
+  <%= link_to "編集", receive_request_path(id: request.id) %> </br>
+   -->
+   メッセージ：
+   <%= truncate(request.message, length: 40) %> </br>
+
+   <%= link_to "詳細", receive_request_path(id: request.id) %> </br>
+  </br>
+<% end %>
+<% end %>
+<%= debug(params) %>
+</div>

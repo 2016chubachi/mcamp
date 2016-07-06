@@ -1,0 +1,35 @@
+<%= render partial: "shared/sidebar", locals:{subType: "LoanItems"} %>
+
+<div id="main">
+
+<% if flash.notice %>
+  <p class="notice"><%= flash.notice %></p>
+<% end%>
+
+アイテム名：
+<%= link_to @receive_request.loan_item.item_name,
+  loan_item_path(id: @receive_request.loan_item.id)  %> <br>
+
+アイテムの持ち主：
+<%= @receive_request.loan_item.member.name %><br>
+
+状態：
+<% if @receive_request.message_state %>
+  <%= @receive_request.message_state.name %><br>
+<% end %>
+
+申し込みユーザー：
+<%= @receive_request.member.user_name %> <br>
+
+メッセージ：
+<%= @receive_request.message %> <br>
+
+<%= form_for(@receive_request, url: {:controller => :receive_requests,:action => :update}) do |form| %>
+  <%= form.submit "承認",  :name => "accept_request" %>
+  <%= form.submit "拒否",  :name => "refuse_request" %>
+<% end %>
+<br>
+
+<%= debug(params) if Rails.env.development? %>
+
+</div>

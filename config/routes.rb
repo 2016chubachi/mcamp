@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   resources :requests,only:[:index,:show,:update,:destroy]
   resources :account_activations, only: [:edit]
   resources :password_resets, only:[:new, :create, :edit, :update]
+  resources :receive_requests, only:[:index,:show,:update]
+
 
   get 'signup'  => 'members#new'
   get    'login'   => 'sessions#new'
