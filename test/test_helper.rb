@@ -12,7 +12,7 @@ class ActiveSupport::TestCase
 
     # login to test user.
    def log_in_as(member, options = {})
-      password    = options[:password]    || 'password'
+      password    = options[:password]    || 'password123'
       remember_me = options[:remember_me] || '1'
       if integration_test?
       post login_path, session: { email:       member.email,

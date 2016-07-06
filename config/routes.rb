@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :receive_requests, only:[:index,:show,:update]
 
 
-  get 'signup'  => 'members#new'
+  get    'signup'  => 'members#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'

@@ -2,21 +2,26 @@ require 'test_helper'
 
 class MemberMailerTest < ActionMailer::TestCase
   test "account_activation" do
-    mail = MemberMailer.account_activation
+    member = members(:aprisun)
+    member.activation_token = Member.new_token
+    mail = MemberMailer.account_activation(member)
     assert_equal "Account activation", mail.subject
-    assert_equal ["to@example.org"], mail.to
-    assert_equal ["from@example.com"], mail.from
-    assert_match "Hi", mail.body.encoded
+    assert_equal [member.email], mail.to
+    assert_equal ["mcamp2100@gmail.com"], mail.from
+    assert_match member.name,             mail.body.encoded
+    assert_match member.activation_token,   mail.body.encoded
+    assert_match CGI::escape(member.email), mail.body.encoded
   end
 
   test "password_reset" do
-    user = users(:test01)
+    member = members(:aprisun)
     member.reset_token = Member.new_token
-    mail = MemberMailer.password_reset
+    mail = MemberMailer.password_reset(member)
     assert_equal "Password reset", mail.subject
-    assert_equal ["to@example.org"], mail.to
-    assert_equal ["from@example.com"], mail.from
-    assert_match "Hi", mail.body.encoded
+    assert_equal [member.email], mail.to
+    assert_equal ["mcamp2100@gmail.com"], mail.from
+    assert_match member.reset_token,        mail.body.encoded
+    assert_match CGI::escape(member.email), mail.body.encoded
   end
 
 end

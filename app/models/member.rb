@@ -8,20 +8,22 @@ class Member < ActiveRecord::Base
     belongs_to :authority
     belongs_to :generation
     attr_accessor :remember_token, :activation_token, :reset_token
-    before_save   :downcase_email
+    before_save { email.downcase! }
     before_create :create_activation_digest
 
 
     ##### validate name, email
     validates :name,  presence: true, length: { maximum: 20 }
+
     VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+
     validates :email, presence: true, length: { maximum: 40 },
                       format: { with: VALID_EMAIL_REGEX },
                       uniqueness: { case_sensitive: false }
 
 
     has_secure_password
-    validates :password, presence: true, length: { in: 8..16 }, allow_nil: true
+    validates :password, presence: true, length: { in: 6..16 }, allow_nil: true
     ##### validate user_name
     validates :user_name, presence: true, length: { maximum: 20 },
                            uniqueness: true
