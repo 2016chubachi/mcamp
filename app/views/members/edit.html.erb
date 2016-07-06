@@ -1,5 +1,8 @@
+<br/>
+<br/>
 <% provide(:title, "Edit member") %>
-<h1>ユーザー情報編集</h1>
+<h1 class="h1">ユーザー情報編集
+  <span class="h1">Please edit your information below.</span></h1>
 
 <!-- <p class="notice"><%= flash.notice %> -->
 <% if flash.notice %>
@@ -15,26 +18,26 @@
   <div class="col-md-6 col-md-offset-3">
     <%= form_for(@member) do |f| %>
       <%= render 'shared/error_messages' %>
-      <table class="attr">
+        <table class="smart-green">
       <tr>
         <th><%= f.label :name, "名前:" %></th>
-        <td><%= f.text_field :name, class: 'form-control' %></td>
+        <td><%= f.text_field :name %></td>
       </tr>
       <tr>
         <th><%= f.label :user_name, "ユーザー名:" %></th>
-        <td><%= f.text_field :user_name, class: 'form-control' %></td>
+        <td><%= f.text_field :user_name %></td>
       </tr>
       <tr>
         <th><%= f.label :email, "メールアドレス:" %></th>
-        <td><%= f.email_field :email, class: 'form-control' %></td>
+        <td><%= f.email_field :email %></td>
       </tr>
       <tr>
         <th><%= f.label :password, "パスワード:" %></th>
-        <td><%= f.password_field :password, class: 'form-control' %></td>
+        <td><%= f.password_field :password %></td>
       </tr>
       <tr>
         <th><%= f.label :password_confirmation, "パスワード確認:" %></th>
-        <td><%= f.password_field :password_confirmation, class: 'form-control' %></td>
+        <td><%= f.password_field :password_confirmation %></td>
       </tr>
       <tr>
         <th><%= f.label :authority_id, "ユーザー種類:" %></th>
@@ -68,8 +71,12 @@
         <th>自己紹介:</th>
         <td><%= f.text_area :self_introduction, cols: 4, rows: 5 %></td>
       </tr>
-  </table>
-     <%= f.submit "ユーザー情報更新", class: "btn btn-primary" %>
+          <tr>
+            <th colspan="2" align="center"><%= f.submit "更新", class: "button" %>　
+              <input type="button" value="戻る" class="button" onclick="window.history.back()"></th>
+          </tr>
+        </table>
+
     <% end %>
   </div>
 </div>
