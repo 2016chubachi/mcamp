@@ -7,7 +7,7 @@
         <!-- 図 -->
         <%= loan_item_image_tag item, class: "item-pic" %>
         <!-- アイテム名 -->
-        <h3 class="item-title"><%= item.item_name %></h3>
+        <h3 class="item-title"><%= link_to item.item_name, borrow_path(:id=> item.id)%></h3>
          <!-- カテゴリー-->
          <div class="item-ctlg"><%= truncate(item.category.name,length: 20) %></div>
          <br/>
