@@ -1,555 +1,384 @@
 @charset "utf-8";
-
-@import url(http://fonts.useso.com/css?family=Lato:300,400,700);
-@font-face {
-    font-family: 'bpicons';
-    src:url('assets/bpicons/bpicons.eot');
-    src:url('assets/bpicons/bpicons.eot?#iefix') format('embedded-opentype'),
-    url('assets/bpicons/bpicons.woff') format('woff'),
-    url('assets/bpicons/bpicons.ttf') format('truetype'),
-    url('assets/bpicons/bpicons.svg#bpicons') format('svg');
-    font-weight: normal;
-    font-style: normal;
-} /* Made with http://icomoon.io/ */
-
 /* CSS Document */
+
+/*
+ Publicの下のHTMLファイルが直接このファイルを参照しているので
+ CSSファイルを整理するときは注意
+*/
 
 /*--------------------基本的な設定--------------------*/
 
 /* ---------- body ---------- */
 body {
-    background-color: #FFF;
-    background-image: url(/assets/bg.jpg);
-    text-align: center;
-    color: #333;
-    background-repeat: repeat-x;
-    font: 13px "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-    margin: 0px;
-    padding: 0px;
+	background-color: #FFF;
+	background-image: url(/assets/bg.jpg);
+	text-align: center;
+	color: #333;
+	background-repeat: repeat-x;
+	font: 12px/1.5 "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	margin: 0px;
+	padding: 0px;
 }
 
-/* for IE7 */
-* html body {
-    font-family:'メイリオ', 'ＭＳ Ｐゴシック';
-    font-size:75%;
-}
 
-/* for IE6 */
-* html body {
-    font-family:'ＭＳ Ｐゴシック';
-    font-size:75%;
-}
+	/* for IE7 */
+	*+html body {
+	font-family:'メイリオ', 'ＭＳ Ｐゴシック';
+	font-size:75%;
+	}
+
+	/* for IE6 */
+	* html body {
+	font-family:'ＭＳ Ｐゴシック';
+	font-size:75%;
+	}
 
 /* ---------- /body ---------- */
 /* ---------- anchor ---------- */
 
 a,a:link,a:visited{
-    background-color: inherit;
+	background-color: inherit;
     text-decoration: none;
-    color: #669900;
+	color: #669900;
 }
 a:focus,a:hover,a:active
 {
-    background-color: inherit;
-    text-decoration:none;
-    color: #660;
+	background-color: inherit;
+    text-decoration: none;
+	color: #660;
 }
 a:hover img {
-    border:none;
-    background:transparent;
+	border:none;
+	background:transparent;
 }
-
-*, *:after, *:before { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
-/*body, html { font-size: 100%; padding: 0; margin: 0;}*/
-
-/* Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/ */
-
-.clearfix:before, .clearfix:after { content: " "; display: table; }
-.clearfix:after { clear: both; }
-
-
-.main,
-.container > header {
-    width: 85%; /* 90%; */
-    max-width: 69em;
-    margin: 50 auto; /* 0 */
-    padding: 1em 1em 1em 1em; /* 0 1.875em 3.125em 1.875em; */
-}
-
-.container > header {
-    padding: 1.875em 1.875em 1.875em; /* 2.875 1.875 */
-}
-
-.container > header h1 {
-    font-size: 1.125em; /* 2.215 */
-    line-height: 0.3;  /* 1.3 */
-    margin: 0 0 0.6em 0;
-    float: left;
-    font-weight: 400;
-}
-
-.container > header > span {
-    display: block;
-    position: relative;
-    z-index: 9999;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.5em;
-    padding: 0 0 0.6em 0.1em;
-}
-
-.container > header > span span:after {
-    width: 30px;
-    height: 30px;
-    left: -12px;
-    font-size: 50%;
-    top: -8px;
-    font-size: 75%;
-    position: relative;
-}
-
-.container > header > span span:hover:before {
-    content: attr(data-content);
-    text-transform: none;
-    text-indent: 0;
-    letter-spacing: 0;
-    font-weight: 300;
-    font-size: 80%; /* 110% */
-    padding: 0.8em 1em;
-    line-height: 1.2;
-    text-align: left;
-    left: auto;
-    margin-left: 4px;
-    position: absolute;
-    color: #fff;
-    background: #9dc45f;
-}
-
-.container > header nav {
-    float: right;
-    text-align: center;
-}
-
-.container > header nav a {
-    display: inline-block;
-    position: relative;
-    text-align: left;
-    width: 2.5em;
-    height: 2.5em;
-    background: #fff;
-    border-radius: 50%;
-    margin: 0 0.1em;
-    border: 4px solid #9dc45f;
-}
-
-.container > header nav a > span {
-    display: none;
-}
-
-.container > header nav a:hover:before {
-    content: attr(data-info);
-    color: #9dc45f;
-    position: absolute;
-    width: 600%;
-    top: 120%;
-    text-align: right;
-    right: 0;
-    pointer-events: none;
-}
-
-.container > header nav a:hover {
-    background: #9dc45f;
-}
-
-.bp-icon:after {
-    font-family: 'bpicons';
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    text-align: center;
-    color: #9dc45f;
-    -webkit-font-smoothing: antialiased;
-}
-
-.container > header nav .bp-icon:after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    line-height: 2;
-    text-indent: 0;
-}
-
-.container > header nav a:hover:after {
-    color: #fff;
-}
-
-.bp-icon-next:after {
-    content: "\e000";
-}
-.bp-icon-drop:after {
-    content: "\e001";
-}
-.bp-icon-archive:after {
-    content: "\e002";
-}
-.bp-icon-about:after {
-    content: "\e003";
-}
-.bp-icon-prev:after {
-    content: "\e004";
-}
-
-@media screen and (max-width: 55em) {
-
-    .container > header h1,
-    .container > header nav {
-        float: none;
-    }
-
-    .container > header > span,
-    .container > header h1 {
-        text-align: center;
-    }
-
-    .container > header nav {
-        margin: 0 auto;
-    }
-
-    .container > header > span {
-        text-indent: 30px;
-    }
-}
-
-
 /* ---------- /anchor ---------- */
 
 /* ---------- clear ---------- */
 .clear
 {
-    clear:both;
-    width: 100%;
+	clear:both;
+	width: 100%;
 }
 /* clearfix */
 .clearfix:after {
-    content:"";
-    display:block;
-    clear:both;
+content:"";
+display:block;
+clear:both;
 }
 
-/* for IE6 */
-* html .clearfix {
-    display:inline-block;
-}
+	/* for IE6 */
+	* html .clearfix {
+	display:inline-block;
+	}
 /* ---------- /clear---------- */
 
 /* ---------- font ---------- */
 .fs10{
-    font-size: 10px;
+	font-size: 10px;
 }
 .fs14{
-    font-size: 14px;
+	font-size: 14px;
 }
-/* for IE7 */
-* html .clearfix {
-    display:inline-block;
-}
+	/* for IE7 */
+	*+html .clearfix {
+	display:inline-block;
+	}
 .fc01{
-    color: #930;
+	color: #930;
 }
 .fc02{
-    color: #090;
+	color: #090;
 }
 .fc03{
-    color: #fff;
+	color: #fff;
 }
 .bold{
-    font-size: 12px;
-    font-weight: bold;
+	font-size: 12px;
+	font-weight: bold;
 }
 /* ---------- /font ---------- */
 
 /* ---------- img ---------- */
+a img, img {
+border:0;
+}
+
 img {
-    border:0;
-    vertical-align: top;
+vertical-align: top;
 }
 
 /*画像を中央に(垂直方向）*/
 .img{
-    vertical-align:middle;
-    padding: 0px;
-    margin-top: 0px;
-    margin-right: 5px;
-    margin-bottom: 0px;
-    margin-left: 0px;
+	vertical-align:middle;
+	padding: 0px;
+	margin-top: 0px;
+	margin-right: 5px;
+	margin-bottom: 0px;
+	margin-left: 0px;
 }
 /*画像を右寄せ*/
 .imgright {
-    float: right;
-    margin: 0 5px;
-}
+	float: right;
+	margin: 0 5px;
+	}
 /*画像を左寄せ*/
 .imgleft {
-    float: left;
-    margin: 0px 10px 10px;
-}
+	float: left;
+	margin: 0px 10px 10px;
+	}
 /* ---------- /img ---------- */
 
 /* --OTHER TAGS-- */
 a {
-    overflow:hidden;
+overflow:hidden;
 }
 
 
 h1, h2, h3, h4, h5, h6 {
-    font-size:100%;
-    font-weight:normal;
-    margin: 0px;
-    padding: 0px;
+	font-size:100%;
+	font-weight:normal;
+	margin: 0px;
+	padding: 0px;
 }
 hr{
-    border: dashed #999;
-    border-width:1px 0px 0px 0px;
+	border: dashed #999;
+	border-width:1px 0px 0px 0px;
 }
 /*下余白指定*/
 .mb_10{
-    margin-bottom: 10px;
+	margin-bottom: 10px;
 }
 /*上余白指定*/
 .mt_10{
-    margin-top: 10px;
+	margin-top: 10px;
 }
 /*上下余白指定*/
 .mtb_10{
-    margin-top: 10px;
-    margin-bottom: 10px;
+	margin-top: 10px;
+	margin-bottom: 10px;
 }
 /*左右余白指定*/
 .mrl_10{
-    margin-right: 10px;
-    margin-left: 10px;
+	margin-right: 10px;
+	margin-left: 10px;
 }
 /*--------------------基本的な設定ここまで--------------------*/
 
 /*
 ---------- レイアウト ---------- */
 #container{
-    width: 820px;
-    margin: 0 auto;
-    text-align:left;
-    padding: 0px;
-    overflow:hidden;
+	width: 820px;
+	margin: 0 auto;
+	text-align:left;
+	padding: 0px;
+	overflow:hidden;
 }
 
 /*
 ---------- ヘッダー ---------- */
 #header{
-    background-image: url(/assets/head_bg.jpg);
-    background-repeat: no-repeat;
-    width: 100%;
-    margin: 0px;
-    padding: 0px;
-    height: 140px;
+	background-image: url(/assets/head_bg.jpg);
+	background-repeat: no-repeat;
+	width: 100%;
+	margin: 0px;
+	padding: 0px;
+	height: 140px;
 }
 #header h1{
-    font-size: 10px;
-    color: #666;
+	font-size: 10px;
+	color: #666;
 }
-/* #logo {
-    font-size: 20px;
-    color: #333;
-    margin: 0px;
-    padding-top: 10px;
-    padding-bottom: 10px;
+#logo {
+	font-size: 20px;
+	color: #333;
+	margin: 0px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 #logo a{
-    font-size: 20px;
-    color: #333;
-    text-decoration: none;
-} */
+	font-size: 20px;
+	color: #333;
+	text-decoration: none;
+}
 /*
 ---------- ナビゲーション ---------- */
 
 ul#globalNavi {
-    margin: 0;
-    padding: 0;
-    line-height: 1;
-    list-style-type: none;
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+	list-style-type: none;
 }
 
 ul#globalNavi li {
-    margin: 0;
-    padding: 0 5px 0 0;
-    float: left;
-    width: 100px;
-    text-align: center;
+	margin: 0;
+	padding: 0 5px 0 0;
+	float: left;
+	width: 100px;
+	text-align: center;
 }
 
 ul#globalNavi li a {
-    padding: 8px 20px;
-    display: block;
-    position: relative; /* for IE6 */
-    color: #333;
-    background-color: #FFF;
-    text-decoration: none;
-    border: 1px solid #418D11;
+	padding: 8px 20px;
+	display: block;
+	position: relative; /* for IE6 */
+	color: #333;
+	background-color: #FFF;
+	text-decoration: none;
+	border: 1px solid #418D11;
 }
 
 ul#globalNavi li a:hover {
-    background-color: #090;
-    border: 1px solid #418D11;
-    color: #FFF;
+	background-color: #090;
+	border: 1px solid #418D11;
+	color: #FFF;
 }
 
 /* ClearFix */
 
 ul#globalNavi {
-    _height: 1px;
-    min-height: 1px;
+	_height: 1px;
+	min-height: 1px;
 }
 
 ul#globalNavi:after {
-    height: 0;
-    visibility: hidden;
-    content: ".";
-    display: block;
-    clear: both;
+	height: 0;
+	visibility: hidden;
+	content: ".";
+	display: block;
+	clear: both;
 }
 
 /*
 ---------- コンテンツ ---------- */
 #contents{
-    margin-top: 20px;
+	margin-top: 20px;
 }
 /*
 ---------- サイドバー ---------- */
 #sidebar{
-    float: left;
-    width: 200px;
-    margin-top: 20px;
+	float: left;
+	width: 200px;
+	margin-top: 20px;
 }
 /*サイドメニュー*/
 #submenu{
-    width: 200px;
-    background-image: url(/assets/submenu_bg.jpg);
-    padding-bottom: 20px;
+	width: 200px;
+	background-image: url(/assets/submenu_bg.jpg);
+	padding-bottom: 20px;
 }
 
 #submenu h2{
-    background-image: url(/assets/submenu_h2.jpg);
-    height: 25px;
-    width: 180px;
-    padding-left: 20px;
-    padding-top: 5px;
-    font-weight: bold;
+	background-image: url(/assets/submenu_h2.jpg);
+	height: 25px;
+	width: 180px;
+	padding-left: 20px;
+	padding-top: 5px;
+	font-weight: bold;
 }
 
 #submenu ul{
-    list-style: none;
-    width: 200px;
-    margin: 0px;
-    padding: 0px;
+	list-style: none;
+	width: 200px;
+	margin: 0px;
+	padding: 0px;
 }
 
 #submenu li{
-    margin: 0;
+	margin: 0;
 }
 
 #submenu li a{
-    display: block;
-    width: 160px;
-    height: 25px;
-    margin: 0;
-    padding: 5px 0 0 40px;
-    text-decoration: none;
-    color: #333;
-    background-image: url(/assets/submenu_li_bg.jpg);
-    background-position: left top;
+	display: block;
+	width: 160px;
+	height: 25px;
+	margin: 0;
+	padding: 5px 0 0 40px;
+	text-decoration: none;
+	color: #333;
+	background-image: url(/assets/submenu_li_bg.jpg);
+	background-position: left top;
 }
 
 #submenu li a:hover{
-    color: #444;
-    background-image: url(/assets/submenu_li_bg.jpg);
-    background-position: right bottom;
+	color: #444;
+	background-image: url(/assets/submenu_li_bg.jpg);
+	background-position: right bottom;
 }
 /*サイドテキストエリア*/
 #side_txbox{
-    border: 1px solid #9C0;
-    margin-top: 20px;
-    padding: 10px;
+	border: 1px solid #9C0;
+	margin-top: 20px;
+	padding: 10px;
 }
 
 /*
 ---------- メイン ---------- */
 #main{
-    float: right;
-    width: 600px;
-    padding-left: 20px;
-    margin-top: 20px;
+	float: right;
+	width: 600px;
+	padding-left: 20px;
+	margin-top: 20px;
 }
 #main h2{
-    background-image: url(/assets/main_h2.jpg);
-    background-repeat: no-repeat;
-    height: 25px;
-    width: 560px;
-    padding-left: 40px;
-    font-weight: bold;
-    padding-top: 5px;
+	background-image: url(/assets/main_h2.jpg);
+	background-repeat: no-repeat;
+	height: 25px;
+	width: 560px;
+	padding-left: 40px;
+	font-weight: bold;
+	padding-top: 5px;
 }
 #main h3{
-    background-image: url(/assets/main_h3.jpg);
-    background-repeat: no-repeat;
-    height: 32px;
-    width: 560px;
-    padding-left: 40px;
-    font-weight: bold;
-    padding-top: 8px;
-    color: #060;
+	background-image: url(/assets/main_h3.jpg);
+	background-repeat: no-repeat;
+	height: 32px;
+	width: 560px;
+	padding-left: 40px;
+	font-weight: bold;
+	padding-top: 8px;
+	color: #060;
 }
 .main_box{
-    margin: 10px;
+	margin: 10px;
 }
 .main_box2{
-    margin: 10px;
-    border: 1px solid #CCC;
-    padding: 10px;
+	margin: 10px;
+	border: 1px solid #CCC;
+	padding: 10px;
 }
 .main_box2 hr{
-    border-top: 1px dashed #690;
-    border-right: 0px dashed #690;
-    border-bottom: 0px dashed #690;
-    border-left: 0px dashed #690;
+	border-top: 1px dashed #690;
+	border-right: 0px dashed #690;
+	border-bottom: 0px dashed #690;
+	border-left: 0px dashed #690;
 }
 /*ページトップ*/
 #pagetop{
-    clear: both;
-    text-align:right;
-    margin: 15px;
+	clear: both;
+	text-align:right;
+	margin: 15px;
 }
 /*
 ---------- フッター ---------- */
 #footer{
-    clear: both;
-    background-image: url(/assets/footer_bg.jpg);
-    height: 90px;
-    margin-right: auto;
-    margin-left: auto;
+	clear: both;
+	background-image: url(/assets/footer_bg.jpg);
+	height: 90px;
+	margin-right: auto;
+	margin-left: auto;
 }
 #footer_box{
-    width: 820px;
-    text-align:left;
-    color: #333;
-    padding: 15px;
-    margin-right: auto;
-    margin-left: auto;
+	width: 820px;
+	text-align:left;
+	color: #333;
+	padding: 15px;
+	margin-right: auto;
+	margin-left: auto;
 }
 #footer_box a{
-    color: #333;
+	color: #333;
 }
 #footer_box a:hover{
-    color: #FFF;
+	color: #FFF;
 }
