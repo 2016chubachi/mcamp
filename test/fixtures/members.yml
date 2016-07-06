@@ -6,10 +6,10 @@
 #
 <%5.times do |n| %>
 <%n+=1%>
-member_<%= n%>: 
-    name: <%= "テストユーザー#{n}"%>
+member_<%= n%>:
+    name: <%= "testuser#{n}"%>
     email: <%= "test_user_#{n}@examp.com"%>
-    password: password
+    password: password123
     authority_id: 1
     point: 0
     gender: 0
@@ -17,3 +17,19 @@ member_<%= n%>:
     generation_id: 3
     user_name: <%= "test_user_#{n}"%>
 <%end%>
+
+aprisun:
+  name: aprisun
+  email: aprisun@example.com
+  password_digest: <%= Member.digest('password123') %>
+#  admin: true
+  activated: true
+  activated_at: <%= Time.zone.now %>
+
+test01:
+    name: test01
+    email: test01@example.com
+    password_digest: <%= Member.digest('password123') %>
+  #  admin: true
+    activated: true
+    activated_at: <%= Time.zone.now %>
