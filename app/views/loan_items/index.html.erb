@@ -1,8 +1,49 @@
 <%= render partial: "shared/sidebar", locals:{subType: "LoanItems"} %>
 
-<!-- <div id="main"> -->
+
+<div class="main">
+
+  <% if flash.notice %>
+      <p class="notice"><%= flash.notice %></p>
+  <% end%>
+
+  <ul class="each-item">
+    <% @loan_items.each do |loan_item| %><li>
+    <div class="each-item">
+      <!-- 図 -->
+      <%= loan_item_image_tag loan_item, class: "item-pic" %>
+      <!-- アイテム名 -->
+      <h3 class="item-title"><%= link_to loan_item.item_name, loan_item %></h3>
+      <!-- カテゴリー-->
+      <div class="item-ctlg"><%= loan_item.category.name %></div>
+      <br/>
+      <!-- 料金 -->
+      <div class="item-price"><%= loan_item.fare %>円</div>
+      <br/>
+      <!-- 貸出場所　-->
+      <div class="item-place">
+        貸出場所：<%= loan_item.location %></div>
+      <!-- 更新日 -->
+      <div class="item-update">
+        更新日：<%= loan_item.created_at.strftime("%Y/%m/%d %H:%M") %></div>
+      <!-- 状態-->
+      状態：<%= loan_item.loan_state.name %>　　　　　　　　　　　　
+      <%= link_to "編集", [:edit, loan_item]%>　　
+      <%= link_to "削除", loan_item, method: :delete , data: { confirm: "本当に削除しますか？"} %>
+    </div>
+  </li>
+    <% end%>
+  </ul>
+
+  <%= debug(params) if Rails.env.development? %>
+</div>
+
+
+<!--
+<div id="main">
 <!-- 元のサイトはcontainer width=800, main width=600, padding-left=20
-メインが大きくで600超えるのでコメントアウト -->
+メインが大きくで600超えるのでコメントアウト
+
 
 <% if flash.notice %>
   <p class="notice"><%= flash.notice %></p>
@@ -16,18 +57,18 @@
     <tbody>
       <tr>
         <td class="td1">
-          <%= loan_item_image_tag loan_item, width: 120 %>
+
         </td>
         <td class="td2">
-          <!-- アイテム名-->
+          <!-- アイテム名
           <p class="p1"><%= link_to loan_item.item_name, loan_item %></p>
-          <!-- カテゴリー-->
+          <!-- カテゴリー
           <p class="p2"><%= loan_item.category.name %></p>
-          <!-- 貸出場所-->
+          <!-- 貸出場所
           <p class="p3"><%= loan_item.location %></p>
-          <!-- 基本料金-->
+          <!-- 基本料金
           <p class="p4"><%= loan_item.fare %>円</p>
-          <!-- 投稿日-->
+          <!-- 投稿日
           <p class="p5 f1">投稿日 <%= loan_item.created_at.strftime("%Y/%m/%d %H:%M") %></p>
         </td>
         <%#= loan_item.member.user_name %>
@@ -46,4 +87,4 @@
 
 <%= debug(params) if Rails.env.development? %>
 
-<!-- </div> -->
+ </div> -->
