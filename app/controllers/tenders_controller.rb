@@ -6,15 +6,17 @@ class TendersController < ApplicationController
 
   def show
     @borrow_item = BorrowItem.find(params[:id])
+    @borrowReplies = @borrow_item.borrow_replies.find_by(member_id: current_member)
     if current_member && @borrow_item.borrow_state.id==1
         #アイテムステータスが「募集中」の場合
        @borrow_item.borrow_replies.build({member_id: current_member.id,message_state_id: 1,delete_flg: false})
     end
+    
+    
   end
   
   def update
     @borrow_item = BorrowItem.find(params[:id])
-    binding.pry
     @borrow_item.assign_attributes(borrow_reply_params)
     if @borrow_item.save
       flash.now[:notice] = "リクエストを送信しました。"

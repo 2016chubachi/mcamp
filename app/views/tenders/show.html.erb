@@ -65,16 +65,16 @@
     <% if flash.notice %>
       <p><%= flash.notice %></p>
     <% end%>
-    <% if current_member  && @borrow_item.borrow_state.id==1%>
+    <% if current_member %>
       <hr>
       <%= render "shared/errors", obj: @borrow_item %>
       <%= form_for(@borrow_item,url: {:controller => :tenders,:action => :update}) do |form| %>
-        <%= form.fields_for :borrow_replies do |reply| %>
-          <% if current_member.id == message.object.member_id %>
+        <%= form.fields_for :borrow_replies, @borrow_item.borrow_replies.find_by(member_id: current_member) do |reply| %>
             <%= render partial: "form", locals:{f: reply} %>
-          <% end%>  
         <% end%>
-        <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"}%>
+        <% if @borrow_item.borrow_state.id==1 %>
+          <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"}%>
+        <% end %>
         <%= debug(params) if Rails.env.development? %>
       <% end%>
     <% end%>
