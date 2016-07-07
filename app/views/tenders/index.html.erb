@@ -1,0 +1,33 @@
+<%= render partial: "shared/sidebar", locals:{subType: "Tenders"} %>
+
+  <div class="main">
+     <ul class="each-item">
+        <% @borrow_items.each do |item|%><li>
+       <div class="each-item">
+        <!-- アイテム名 -->
+        <h3 class="item-title"><%= link_to item.item_name, tender_path(item)%></h3>
+         <!-- カテゴリー-->
+         <div class="item-ctlg"><%= truncate(item.category.name,length: 20) %></div>
+         <br/>
+         <!-- 料金 -->
+        <div class="item-price"><%= item.fare %>円</div>
+         <!-- 状態-->
+         <%= link_to item.borrow_state.name, tender_path(:id => item.id), class: "stus-icon item-stus" %>
+           <br/>
+           <br/>
+         <!-- 借りたい場所　-->
+         <div class="item-place">
+           貸出場所：<%= item.location %></div>
+         <!-- 更新日 -->
+         <div class="item-update">
+         投稿者：<%= item.member.user_name %>　
+         更新日：<%= item.updated_at.to_s %></div>
+     </div>
+     </li>
+        <% end%>
+      </ul>
+    </div>
+
+
+
+
