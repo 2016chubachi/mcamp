@@ -5,6 +5,8 @@ ja:
       loan_item_image: 貸出アイテム画像
       member: 会員情報
       borrow_item: 借りたい
+      borrow_replies: 提供
+      borrow_reply: 提供
     attributes:
       loan_item:
         item_name: アイテム名
@@ -39,6 +41,10 @@ ja:
         term: 借りたい条件
         location: 借りたい場所
         borrow_state_id: 状態
+      borrow_replies:
+        message: メッセージ
+      borrow_reply:
+        message: メッセージ
     errors:
       messages:
         

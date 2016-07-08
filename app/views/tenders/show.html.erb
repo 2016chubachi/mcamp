@@ -62,20 +62,36 @@
     </tbody>
   </table>
   <div class="messagenew">
-    <% if flash.notice %>
-      <p><%= flash.notice %></p>
-    <% end%>
     <% if current_member %>
       <hr>
-      <%= render "shared/errors", obj: @borrow_item %>
-      <%= form_for(@borrow_item,url: {:controller => :tenders,:action => :update}) do |form| %>
-        <%= form.fields_for :borrow_replies, @borrow_item.borrow_replies.find_by(member_id: current_member) do |reply| %>
-            <%= render partial: "form", locals:{f: reply} %>
+      <% if @borrowReplies%>
+        <% @borrowReplies.each do |reply|%>
+          <table width="100%">
+            <tbody>
+              <tr>
+                <td class="td1">
+                  <p><%="メッセージ （#{reply.message_state.name}）"%> </p>
+                </td>
+              </tr>
+              <tr>
+                <td class="td2">
+                  <p><%=reply.message%></p>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <hr>
         <% end%>
-        <% if @borrow_item.borrow_state.id==1 %>
-          <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"}%>
-        <% end %>
-        <%= debug(params) if Rails.env.development? %>
+      <% end%>
+      <%= render "shared/errors", obj: @borrow_item %>
+      <% if @newBorrowReply%>
+        <%= form_for(@borrow_item,url: {:controller => :tenders,:action => :update}) do |form| %>
+          <%= form.fields_for @newBorrowReply do |reply| %>
+              <%= render partial: "form", locals:{f: reply} %>
+          <% end%>
+            <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"}%>
+          <%= debug(params) if Rails.env.development? %>
+        <% end%>
       <% end%>
     <% end%>
   </div>
