@@ -1,0 +1,9 @@
+<% provide(:title, 'すべてのユーザー') %>
+<h1>すべてのユーザー</h1>
+
+<ul class="members">
+  <% @members.each do |member| %>
+    <%= render member %>
+  <% end %>
+</ul>
+<%= paginate @members %>
