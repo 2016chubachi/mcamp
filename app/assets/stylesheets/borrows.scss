@@ -1,6 +1,8 @@
 // Place all the styles related to the Borrows controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//borrow.css
 @font-face {
   font-family: 'fontawesome';
   src:url('assets/fontawesome/fontawesome.eot');
@@ -22,21 +24,19 @@ div.each-item{
   border-bottom: 1px dashed gray;
   }
 
-.item-pic{
+.item-pic {
   display: block;
-  float:left;
-  width: 25%;
+  float: left;
+  width: 150px;
+  height: 150px;
   padding: 0;
   margin-right: 20px;
-  border: 1px dotted black;
 
-  &:hover{
-    border: 1px solid black;
+  img {
+    width:150px;
+    height:140px;
+    padding:0;
   }
-}
-
-img.item-pic a:hover{
-  border: 1px solid black;
 }
 
 h3.item-title{
@@ -71,8 +71,8 @@ h3.item-title{
 .item-stus {
   display: inline;
   padding: 10px 20px;
+  margin: 20px 0;
   border-radius: 2px;
-  margin: 20px 0 0;
   color: #fff;
   background: #9dc45f;
   transition: background 0.2s;
@@ -112,6 +112,51 @@ h3.item-title{
 .item-stus:before {
   content: "\f055";
 }
+
+//borrow.css end
+//
+//
+//
+//
+//showitem.css
+
+
+#show-itm-pic{
+  display:block;
+  max-width:600px;
+  max-height: 480px;
+  padding:auto;
+  margin:15px auto;
+//  border: 1px solid #9CE5A1;
+}
+
+//the picture almost with the <a href> tag, edit later
+#show-itm-pic img{
+  vertical-align: middle;
+  text-align: center;
+}
+
+h3#show-itm-tle {
+  font-size: 16px;
+}
+
+ul#show-item{
+  list-style-image: url(/assets/icon_01.gif);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /* .loanitem{
       padding:6px;margin-top:0px;
       .tb1{width:70%;}

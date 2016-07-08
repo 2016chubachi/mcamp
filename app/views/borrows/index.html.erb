@@ -5,7 +5,7 @@
         <% @loanItems.each do |item|%><li>
        <div class="each-item">
         <!-- 図 -->
-        <%= loan_item_image_tag item, class: "item-pic" %>
+        <div class="item-pic"><%= loan_item_image_tag item %></div>
         <!-- アイテム名 -->
         <h3 class="item-title"><%= link_to item.item_name, borrow_path(:id=> item.id)%></h3>
          <!-- カテゴリー-->
@@ -22,7 +22,7 @@
            貸出場所：<%= item.location %></div>
          <!-- 更新日 -->
          <div class="item-update">
-         更新日：<%= item.created_at.to_s %></div>
+         投稿者：<%= item.member.user_name %>　更新日：<%= item.created_at.to_s %></div>
      </div>
      </li>
         <% end%>
