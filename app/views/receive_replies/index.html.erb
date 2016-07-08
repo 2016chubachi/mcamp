@@ -1,13 +1,13 @@
-<%= render partial: "shared/sidebar", locals:{subType: "Tenders"} %>
+<%= render partial: "shared/sidebar", locals:{subType: "BorrowItems"} %>
 <div class="sendrequest">
-  <% if @borrow_replies %>
+  <% if @replies %>
     <table class="tb1">
-      <% @borrow_replies.each do |item|%>
+      <% @replies.each do |item|%>
       <tbody>
         <tr>
           <td class="td1">
-            <p class="p1"><%= link_to item.borrow_item.item_name,tender_path(item.borrow_item)%></p>
-            <p class="p2"><%= link_to truncate(item.message,length: 20),[:edit,item] %></p>
+            <p class="p1"><%= link_to item.borrow_item.item_name,item.borrow_item%></p>
+            <p class="p2"><%= link_to truncate(item.message,length: 20),edit_receive_reply_path(item) %></p>
             <!-- 投稿者-->
             <p class="p4 f1">申込日 <%= item.created_at.to_s %></p>
             <p class="p4 f1">更新日 <%= item.updated_at.to_s %></p>
@@ -19,7 +19,7 @@
             <% end %>
           </td>
           <td class="td3">
-              <%= link_to "編集", [:edit,item] %>
+              <%= link_to "編集", edit_receive_reply_path(item) %>
           </td>
         </tr>
       </tbody>
