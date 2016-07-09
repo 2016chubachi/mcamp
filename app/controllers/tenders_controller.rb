@@ -36,7 +36,6 @@ class TendersController < ApplicationController
     #やり方その2
     @borrow_item.borrow_replies.build({member_id: current_member.id,message_state_id: 1,delete_flg: false}.merge(borrow_reply_params))
     @borrow_item.borrow_state_id = 2
-    binding.pry
     #http://tkot.hatenablog.com/entry/2013/07/06/010617
     if @borrow_item.save
       redirect_to tenders_path
