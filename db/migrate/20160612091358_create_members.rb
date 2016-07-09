@@ -18,6 +18,7 @@ class CreateMembers < ActiveRecord::Migration
       t.datetime :activated_at
       t.string :reset_digest
       t.datetime :reset_sent_at
+      t.boolean :admin, default:false
 
       t.timestamps null: false
     end

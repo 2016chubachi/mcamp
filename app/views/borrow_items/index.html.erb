@@ -1,0 +1,38 @@
+<%= render partial: "shared/sidebar", locals:{subType: "BorrowItems"} %>
+
+<div>
+  <table>
+    <% @borrow_Items.each do |item|%>
+    <tbody>
+      <tr>
+        <td>
+          <!-- アイテム名-->
+          <p><%= link_to truncate(item.item_name,length: 20),item%></p>
+          <!-- カテゴリー-->
+          <p><%= truncate(item.category.name,length: 20) %></p>
+          <!-- 借りたい場所-->
+          <p><%= truncate(item.location,length: 20) %></p>
+          <!-- 投稿者-->
+          <p><%= item.member.user_name %> 投稿日 <%= item.created_at.to_s %></p>
+        </td>
+        <td>
+          <!-- 状態-->
+          <%= item.borrow_state.name %>
+        </td>
+        <td>
+          <!-- 料金-->
+          <span style="color:#ff0000"><%= item.fare %></span> <span style="color:#999999">円</span>
+        </td> 
+        <td>
+            <!-- 処理-->
+            <% if item.borrow_state.id==1%>
+              <%= link_to "編集",[:edit,item]%>
+              <%= link_to "削除",item,method: :delete,data: {confirm: "削除しても宜しいですか？"}%>
+            <% end%>
+        </td>
+      </tr>
+    </tbody>
+   <% end%>
+  </table>
+</div>
+

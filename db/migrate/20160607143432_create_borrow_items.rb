@@ -8,8 +8,8 @@ class CreateBorrowItems < ActiveRecord::Migration
       t.integer :fare
       t.text :term
       t.string :location
-      t.integer :borrow_state_id
-      t.boolean :delete_flg
+      t.integer :borrow_state_id,default: 1
+      t.boolean :delete_flg,default: false
 
       t.timestamps null: false
     end

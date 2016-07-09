@@ -1,5 +1,5 @@
 class RequestsController < ApplicationController
-  before_action :logged_in_member, :except => [:show]
+  before_action :logged_in_member
   
   def index
     @requests = Request.where({member_id: current_member.id,delete_flg: false}).order(:message_state_id)

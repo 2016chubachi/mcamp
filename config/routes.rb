@@ -4,16 +4,21 @@ Rails.application.routes.draw do
   resources :members
   resources :loan_items
   resources :borrows,only:[:index,:show,:update]
-  resources :requests,only:[:index,:show,:update,:destroy]
+  resources :requests,only:[:index,:show,:update]
   resources :account_activations, only: [:edit]
   resources :password_resets, only:[:new, :create, :edit, :update]
   resources :receive_requests, only:[:index,:show,:update]
+  resources :borrow_items
+  resources :borrow_replies, only: [:index,:edit,:update]
+  resources :tenders, only: [:index,:show,:update]
+  resources :receive_replies, only: [:index,:edit,:update]
 
 
-  get 'signup'  => 'members#new'
+  get    'signup'  => 'members#new'
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+  get    'members' =>  'members#index'
 
   #resources :users
   # The priority is based upon order of creation: first created -> highest priority.

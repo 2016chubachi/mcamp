@@ -20,8 +20,45 @@ div#errors {
 }
 
 
-div.field_with_errors {
+.field_with_errors {
+  padding: 0px;
+  border-style: dotted;
+  border-color: #9dc45f;
+  width: 80%;
+  display: table;
+}
+
+#error_explanation {
+  width: 582px;
+  border: 2px solid #9dc45f;
+  border-radius: 5px;
+  margin: -20px 90px 50px 30px;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
+
+
+/*div.field_with_errors {
   background-color: #fcc;
   padding: 2px;
   // display: table;
 }
+*/

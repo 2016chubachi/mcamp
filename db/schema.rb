@@ -49,10 +49,10 @@ ActiveRecord::Schema.define(version: 20160612091358) do
     t.integer  "fare"
     t.text     "term"
     t.string   "location"
-    t.integer  "borrow_state_id"
-    t.boolean  "delete_flg"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "borrow_state_id",  default: 1
+    t.boolean  "delete_flg",       default: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "borrow_replies", force: :cascade do |t|
@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20160612091358) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.boolean  "admin",             default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end

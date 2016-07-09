@@ -1,0 +1,12 @@
+<%= render partial: "shared/sidebar", locals:{subType: "BorrowItems"} %>
+
+<div id="main">
+
+<%= form_for(@borrow_Item) do |form| %>
+  <%= render "form", f: form %>
+  <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}%>
+  <%= submit_tag "削除", :name => "delete",data: {confirm: "削除しても宜しいですか？"} %>
+  <%= debug(params) if Rails.env.development? %>
+<% end %>
+
+</div>
