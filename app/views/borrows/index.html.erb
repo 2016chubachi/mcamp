@@ -7,14 +7,18 @@
         <!-- 図 -->
         <div class="item-pic"><%= loan_item_image_tag item %></div>
         <!-- アイテム名 -->
-        <h3 class="item-title"><%= link_to item.item_name, borrow_path(:id=> item.id)%></h3>
+        <h3 class="item-title"><%= link_to item.item_name, edit_borrow_path(:id=> item.id)%></h3>
          <!-- カテゴリー-->
          <div class="item-ctlg"><%= truncate(item.category.name,length: 20) %></div>
          <br/>
          <!-- 料金 -->
         <div class="item-price"><%= item.fare %>円</div>
          <!-- 状態-->
-         <%= link_to item.loan_state.name, borrow_path(:id => item.id), class: "stus-icon item-stus" %>
+         <%if item.member_id == current_member.id%>
+           <span class="stus-icon item-stus"><%= item.loan_state.name%></span>
+         <%else%>
+           <%= link_to item.loan_state.name, edit_borrow_path(:id => item.id), class: "stus-icon item-stus" %>
+         <%end%>
            <br/>
            <br/>
          <!-- 貸出場所　-->

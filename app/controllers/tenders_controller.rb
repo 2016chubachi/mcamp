@@ -1,10 +1,13 @@
+#借りたい一覧、借りたいリクエスト送信
 class TendersController < ApplicationController
+  before_action :logged_in_member, :except => ['index']
+  
   # 借りたい投稿一覧
   def index
     @borrow_items = BorrowItem.current_member_borrow_items(nil).order(:borrow_state_id,:updated_at)
   end
 
-  def show
+  def edit
     #@borrow_item = BorrowItem.find(params[:id])
     #@borrowReplies = @borrow_item.borrow_replies.find_by(member_id: current_member)
     #if current_member && @borrow_item.borrow_state.id==1
@@ -33,14 +36,15 @@ class TendersController < ApplicationController
     #やり方その2
     @borrow_item.borrow_replies.build({member_id: current_member.id,message_state_id: 1,delete_flg: false}.merge(borrow_reply_params))
     @borrow_item.borrow_state_id = 2
+    binding.pry
     #http://tkot.hatenablog.com/entry/2013/07/06/010617
     if @borrow_item.save
-      redirect_to tender_path ,notice: "リクエストを送信しました。"
+      redirect_to tenders_path
     else
       @borrow_item.borrow_state_id = 1
       @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member)
       @newBorrowReply = BorrowReply.new(borrow_reply_params)
-      render "show"
+      render "edit"
     end
   end
   
