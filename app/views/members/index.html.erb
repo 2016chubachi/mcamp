@@ -2,8 +2,8 @@
 <h1>すべてのユーザー</h1>
 
 <ul class="members">
-  <% @members.each do |member| %>
-    <%= render member %>
+  <% @members.reject(&:admin).each do |member| %>
+      <%= render member %>
   <% end %>
 </ul>
 <%= paginate @members %>
