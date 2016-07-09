@@ -14,11 +14,11 @@
          <!-- 料金 -->
         <div class="item-price"><%= item.fare %>円</div>
          <!-- 状態-->
-         <%if item.member_id == current_member.id%>
-           <span class="stus-icon item-stus"><%= item.loan_state.name%></span>
-         <%else%>
+         <% if item.member_id == current_member.id %>
+           <span class="stus-icon item-stus-gray"><%= item.loan_state.name%></span>
+         <% else %>
            <%= link_to item.loan_state.name, edit_borrow_path(:id => item.id), class: "stus-icon item-stus" %>
-         <%end%>
+         <% end %>
            <br/>
            <br/>
          <!-- 貸出場所　-->
