@@ -19,8 +19,8 @@ ul.each-item{
   }
 
 div.each-item{
-  margin: 10px 200px 5px 200px;
-  width: 75%;
+  margin: 0 0 10px -30px;
+  width: 100%;
   border-bottom: 1px dashed gray;
   }
 
@@ -39,10 +39,15 @@ div.each-item{
   }
 }
 
-h3.item-title{
+h5.item-title{
   display: inline;
   font-size: 24px;
 }
+
+h3{
+  font-size: 16px;
+}
+
 .item-ctlg{
   display: inline;
   margin: 5px 20px;
@@ -86,7 +91,7 @@ h3.item-title{
     margin-right: 5px;
   }
 
-.item-icon:before {
+.stus-icon:before {
     font-family: 'fontawesome';
     speak: none;
     font-style: normal;
@@ -97,19 +102,7 @@ h3.item-title{
     -webkit-font-smoothing: antialiased;
   }
 
-/* Common icon styles */
 .stus-icon:before {
-  font-family: 'fontawesome';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-}
-
-.item-stus:before {
   content: "\f055";
 }
 
@@ -132,16 +125,47 @@ h3.item-title{
 
 //the picture almost with the <a href> tag, edit later
 #show-itm-pic img{
+  max-width: 96%;
+  margin: 10px 20px 50px 10px;
   vertical-align: middle;
   text-align: center;
 }
 
-h3#show-itm-tle {
-  font-size: 16px;
+#show-itm-tle{
+  display: inline-table;
+  width: 88%;
+  padding: 7px;
+  border-bottom: 2px dotted #6e7955;
+  border-left: 10px solid #6e7955;
+  font-size: 18px;
 }
 
 ul#show-item{
   list-style-image: url(/assets/icon_01.gif);
+
+  li{
+    color:#669900;
+  }
+}
+
+.show-itm-stus{
+  display: table-cell;
+  float:right;
+  padding: 10px 20px;
+  margin:0 22px;
+  width: 10%;
+  border-radius: 2px;
+  color: #fff;
+  background: #9dc45f;
+}
+
+.show-itm-stus:before {
+  margin-right: 5px;
+}
+
+.show-p{
+  margin-left: 50px;
+  line-height: 5px;
 }
 
 
@@ -152,12 +176,7 @@ ul#show-item{
 
 
 
-
-
-
-
-
-  /* .loanitem{
+/* .loanitem{
       padding:6px;margin-top:0px;
       .tb1{width:70%;}
       .tb1 td{border-bottom:1px solid #C2D5E3;padding:5px 0;}
