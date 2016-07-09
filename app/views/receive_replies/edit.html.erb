@@ -1,0 +1,39 @@
+<%= render partial: "shared/sidebar", locals:{subType: "BorrowItems"} %>
+
+<% if flash.notice %>
+  <p class="notice"><%= flash.notice %></p>
+<% end%>
+<div class="borrowmessageshow">
+  <table class="itemdetail">
+    <tbody>
+      <tr class="tr1">
+        <td class="tdlabel">
+          アイテム名
+        </td>
+        <td class="tdcontent1">
+          <%= link_to @reply.borrow_item.item_name,@reply.borrow_item%>
+        </td>
+        <td class="tdlabel">
+          状態
+        </td>
+        <td class="tdcontent1">
+          <%= @reply.message_state.name %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+        <%= render "shared/errors", obj: @reply %>
+        <%= form_for(@reply,url: {controller: :receive_replies,action: :update}) do |form| %>
+          <%= render partial: "form", locals:{f: form} %>
+          
+          <% if @reply.message_state.id == 1%>
+            <%= submit_tag "承認", :name => "approval",data: {confirm: "承認しても宜しいですか？"}%>
+            <%= submit_tag "拒否", :name => "rejection",data: {confirm: "拒否しても宜しいですか？"} %>
+          <% end%>
+          <%= debug(params) if Rails.env.development? %>
+        <% end%>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

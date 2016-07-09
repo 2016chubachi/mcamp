@@ -1,0 +1,18 @@
+<table>
+  <tbody>
+    <tr>
+      <td class="tdlabel">
+          <%= f.label :message, "メッセージ" %>
+      </td>
+    </tr>
+    <tr>
+      <td class="td2">
+        <% if @borrow_reply.message_state.id == 1 %>
+          <%= f.text_area :message ,:size => "81x5" %>
+        <% else %>
+          <%= f.text_area :message ,:size => "81x5", :readonly => true%>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>

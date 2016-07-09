@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   resources :password_resets, only:[:new, :create, :edit, :update]
   resources :receive_requests, only:[:index,:show,:update]
   resources :borrow_items
+  resources :borrow_replies, only: [:index,:edit,:update]
+  resources :tenders, only: [:index,:show,:update]
+  resources :receive_replies, only: [:index,:edit,:update]
 
 
   get    'signup'  => 'members#new'
