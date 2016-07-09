@@ -5,14 +5,18 @@
         <% @borrow_items.each do |item|%><li>
        <div class="each-item">
         <!-- アイテム名 -->
-        <h3 class="item-title"><%= link_to item.item_name, tender_path(item)%></h3>
+        <h3 class="item-title"><%= link_to item.item_name, edit_tender_path(item)%></h3>
          <!-- カテゴリー-->
          <div class="item-ctlg"><%= truncate(item.category.name,length: 20) %></div>
          <br/>
          <!-- 料金 -->
         <div class="item-price"><%= item.fare %>円</div>
          <!-- 状態-->
-         <%= link_to item.borrow_state.name, tender_path(:id => item.id), class: "stus-icon item-stus" %>
+         <% if item.member_id == current_member.id%>
+           <span class="stus-icon item-stus"><%=item.borrow_state.name%></span>
+         <%else%>
+           <%= link_to item.borrow_state.name, edit_tender_path(:id => item.id), class: "stus-icon item-stus" %>
+         <% end%>
            <br/>
            <br/>
          <!-- 借りたい場所　-->

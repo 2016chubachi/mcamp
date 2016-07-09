@@ -42,3 +42,13 @@ Member.create(name:  "test04",
     #admin:     true,
     activated: true,
     activated_at: Time.zone.now)
+
+Member.create(name:  "mcampadmin",
+      user_name: "mcampadmin",
+      email: "mcamp2100@gmail.com",
+      password:              "a@Aqwer0987",
+      password_confirmation: "a@Aqwer0987",
+      authority_id:     2,
+      activated: true,
+      activated_at: Time.zone.now,
+      admin:     true)
