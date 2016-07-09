@@ -1,11 +1,11 @@
 <%= render partial: "shared/sidebar", locals:{subType: "Tenders"} %>
 
-  <div class="main">
+  <div id="main">
      <ul class="each-item">
         <% @borrow_items.each do |item|%><li>
        <div class="each-item">
         <!-- アイテム名 -->
-        <h3 class="item-title"><%= link_to item.item_name, edit_tender_path(item)%></h3>
+        <h5 class="item-title"><%= link_to item.item_name, edit_tender_path(item)%></h5>
          <!-- カテゴリー-->
          <div class="item-ctlg"><%= truncate(item.category.name,length: 20) %></div>
          <br/>
@@ -13,7 +13,7 @@
         <div class="item-price"><%= item.fare %>円</div>
          <!-- 状態-->
          <% if item.member_id == current_member.id%>
-           <span class="stus-icon item-stus"><%=item.borrow_state.name%></span>
+           <span class="stus-icon item-stus-gray"><%=item.borrow_state.name%></span>
          <%else%>
            <%= link_to item.borrow_state.name, edit_tender_path(:id => item.id), class: "stus-icon item-stus" %>
          <% end%>

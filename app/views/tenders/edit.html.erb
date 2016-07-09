@@ -1,88 +1,53 @@
 <%= render partial: "shared/sidebar", locals:{subType: "Tenders"} %>
-<span style="color:#ff0000">
-    <% if flash.notice %>
-      <p><%= flash.notice %></p>
-    <% end%>
-</span>
-<div>
-  <table >
-    <tbody>
-      <tr >
-        <th>
-          アイテム名
-        </th>
-        <td >
-          <%= truncate(@borrow_item.item_name,length: 15) %>
-        </td>
-        <th >
-          状態
-        </th>
-        <td >
-          <%= @borrow_item.borrow_state.name %>
-        </td>
-      </tr>
-      <tr >
-        <th >
-          カテゴリー
-        </th>
-        <td >
-          <%= @borrow_item.category.name %>
-        </td>
-        <th >
-          基本料金
-        </th>
-        <td >
-          <span style="color:#ff0000"><%= @borrow_item.fare %></span> 円
-        </td>
-      </tr>
-      <tr >
-        <th >
-          借りたい場所
-        </th>
-        <td colspan="3" >
-          <%= @borrow_item.location %>
-        </td>
-      </tr>
-      <tr >
-        <th >
-          借りたい条件
-        </th>
-        <td colspan="3" >
-          <%= @borrow_item.term %>
-        </td>
-      </tr>
-      <tr >
-        <th >
-          アイテム説明
-        </th>
-        <td colspan="3" >
-          <%= @borrow_item.item_description %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="messagenew">
-    <% if current_member %>
-      <hr>
-      <% if @borrowReplies%>
-        <% @borrowReplies.each do |reply|%>
-          <table width="100%">
-            <tbody>
-              <tr>
-                <td class="td1">
-                  <p><%="メッセージ （#{reply.message_state.name}）"%> </p>
-                </td>
-              </tr>
-              <tr>
-                <td class="td2">
-                  <p><%=reply.message%></p>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+
+<div id="main">
+
+  <% if flash.notice %>
+      <div class="tn-box tn-box-color">
+        <p id="p-tn-box"><%= flash.notice %></p>
+      </div>
+      <br/>
+  <% end%>
+
+
+  <!--アイテム名-->
+  <p id="show-itm-tle"><%= truncate(@borrow_item.item_name,length: 15) %></p>
+  <!--状態-->
+  <p class="stus-icon show-itm-stus"><%= @borrow_item.borrow_state.name %></p>
+  <h3 style="font-size: 16px;">基本資料</h3>
+
+  <div class="main_box2">
+    <ul id="show-item">
+      <!--カテゴリー-->
+      <li>カテゴリー：</li>
+      <p class="show-p"><%= @borrow_item.category.name %></p>
+      <hr size="1" />
+      <!--料金-->
+      <li>料金：</li>
+      <p class="show-p"><%= @borrow_item.fare %> 円</p>
+      <hr size="1" />
+      <!-- 場所 -->
+      <li>借りたい場所：</li>
+      <p class="show-p"><%= @borrow_item.location %></p>
+      <hr size="1" />
+      <!-- date -->
+      <li>更新日：</li>
+      <p class="show-p"><%= @borrow_item.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+      <hr size="1" />
+      <!--アイテム説明-->
+      <li>アイテム説明：</li>
+      <p class="show-p"><%= @borrow_item.item_description %></p>
+      <hr size="1" />
+      <!--貸出条件-->
+      <li>借りたい条件：</li>
+      <p class="show-p"><%= @borrow_item.term %></p>
+    </ul></div>
+  <input type="button" value="戻る" class="button" onclick="window.history.back()">
+
+
+
           <hr>
-        <% end%>
-      <% end%>
+
       <%= render "shared/errors", obj: @borrow_item %>
       <% if @newBorrowReply%>
         <%= form_for(@borrow_item,url: {:controller => :tenders,:action => :update}) do |form| %>
@@ -93,6 +58,5 @@
           <%= debug(params) if Rails.env.development? %>
         <% end%>
       <% end%>
-    <% end%>
+
   </div>
-</div>

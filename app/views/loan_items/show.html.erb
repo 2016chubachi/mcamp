@@ -31,7 +31,7 @@
   <li>貸出場所：</li>
   <p class="show-p"><%= @loan_item.location %></p>
   <hr size="1" />
-  <!-- 貸出場所 -->
+  <!-- date -->
   <li>更新日：</li>
   <p class="show-p"><%= @loan_item.created_at.strftime("%Y/%m/%d %H:%M") %></p>
   <hr size="1" />
@@ -44,73 +44,7 @@
   <p class="show-p"><%= @loan_item.term %></p>
   </ul></div>
   <input type="button" value="戻る" class="button" onclick="window.history.back()">
-<!--
-<div class="loanitemshow">
-  <table class="itemdetail">
-    <tbody>
-      <tr class="tr1">
-        <td class="tdlabel">
 
-        </td>
-        <td class="tdcontent1">
-
-        </td>
-        <td class="tdlabel">
-
-        </td>
-        <td class="tdcontent1">
-
-        </td>
-      </tr>
-      <tr class="tr1">
-        <td class="tdlabel">
-
-        </td>
-        <td class="tdcontent1">
-
-        </td>
-        <td class="tdlabel">
-
-        </td>
-        <td class="tdcontent1">
-          <span style="color:#ff0000">
-        </td>
-      </tr>
-      <tr class="tr2">
-        <td class="tdlabel">
-
-        </td>
-        <td colspan="3" class="tdcontent2">
-
-        </td>
-      </tr>
-      <tr class="tr3">
-        <td class="tdlabel">
-
-        </td>
-        <td colspan="3" class="tdcontent2">
-
-        </td>
-      </tr>
-      <tr class="tr3">
-        <td class="tdlabel">
-
-        </td>
-        <td colspan="3" class="tdcontent2">
-
-        </td>
-      </tr>
-      <tr class="tr3">
-        <td class="tdlabel">
-          画像
-        </td>
-        <td colspan="3" class="tdcontent2">
-
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>-->
 
   <%= debug(params) if Rails.env.development? %>
 </div>
