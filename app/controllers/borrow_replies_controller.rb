@@ -1,3 +1,4 @@
+#借りたい送信リクエスト一覧、更新
 class BorrowRepliesController < ApplicationController
   before_action :logged_in_member
   def index

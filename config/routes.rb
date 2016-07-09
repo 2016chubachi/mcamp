@@ -3,14 +3,14 @@ Rails.application.routes.draw do
 
   resources :members
   resources :loan_items
-  resources :borrows,only:[:index,:show,:update]
-  resources :requests,only:[:index,:show,:update]
+  resources :borrows,only:[:index,:edit,:update]
+  resources :requests,only:[:index,:edit,:update]
   resources :account_activations, only: [:edit]
   resources :password_resets, only:[:new, :create, :edit, :update]
   resources :receive_requests, only:[:index,:show,:update]
   resources :borrow_items
   resources :borrow_replies, only: [:index,:edit,:update]
-  resources :tenders, only: [:index,:show,:update]
+  resources :tenders, only: [:index,:edit,:update]
   resources :receive_replies, only: [:index,:edit,:update]
 
 
