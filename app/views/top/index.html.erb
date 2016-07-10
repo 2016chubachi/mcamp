@@ -28,15 +28,39 @@
     <h2>貸出アイテム一覧</h2>
     <div class="main_box">
       <% @loanItems.each do |loanItem|%>
+        <!-- 図 -->
         <%= loan_item_image_tag(loanItem, width: 100 ) %> <br>
+        <!-- アイテム名 -->
         <%= loanItem.item_name %> <br>
+        <!-- 料金 -->
+        <%= loanItem.fare %>円<br>
+        <!-- 貸出場所　-->
+        貸出場所：<%= loanItem.location %> <br>
+        <!-- 投稿者 -->
+        投稿者：<%= loanItem.member.user_name %>　
+        <!-- 更新日 -->
+        更新日：<%= loanItem.updated_at.strftime("%Y/%m/%d %H:%M")%><br>
+
+        <br>
+
       <% end %>
     </div>
 
-    <h2>募集中</h2>
+    <h2>募集中一覧</h2>
     <div class="main_box">
       <% @borrowItems.each do |borrowItem|%>
+        <!-- アイテム名 -->
         <%= borrowItem.item_name %> <br>
+        <!-- 料金 -->
+        <%= borrowItem.fare %>円<br>
+        <!-- 貸出場所　-->
+        貸出場所：<%= borrowItem.location %> <br>
+        <!-- 投稿者 -->
+        投稿者：<%= borrowItem.member.user_name %>　
+        <!-- 更新日 -->
+        更新日：<%= borrowItem.updated_at.strftime("%Y/%m/%d %H:%M")%><br>
+        
+        <br>
       <% end %>
     </div>
 
