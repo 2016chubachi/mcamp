@@ -21,3 +21,6 @@
 
 ## added by takeshitou 0615/2016
 /.idea
+
+## added by shaori 2016/07/09
+/app/views/borrows/index1.html.erb

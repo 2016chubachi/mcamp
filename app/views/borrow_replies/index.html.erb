@@ -6,7 +6,7 @@
       <tbody>
         <tr>
           <td class="td1">
-            <p class="p1"><%= link_to item.borrow_item.item_name,tender_path(item.borrow_item)%></p>
+            <p class="p1"><%= link_to item.borrow_item.item_name,edit_tender_path(item.borrow_item)%></p>
             <p class="p2"><%= link_to truncate(item.message,length: 20),[:edit,item] %></p>
             <!-- 投稿者-->
             <p class="p4 f1">申込日 <%= item.created_at.to_s %></p>

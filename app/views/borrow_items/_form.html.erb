@@ -1,56 +1,62 @@
 <%= render partial: "shared/errors", locals: {obj: @borrow_Item} %>
 
-<div>
-  <table>
-    <tbody>
+<table class="smart-green">
+  <tr>
+    <td>
+      <%= f.label :item_name %>
+    </td>
+    <td>
+      <%= f.text_field :item_name,:size=>"40*3" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :category_id %>
+    </td>
+    <td>
+      <%= f.collection_select :category_id, Category.all, :id, :name %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :fare %>
+    </td>
+    <td>
+      <%= f.text_field :fare %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :location %>
+    </td>
+    <td>
+      <%= f.text_field :location ,:size=>"40*3" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :term %>
+    </td>
+    <td>
+      <%= f.text_area :term ,:size=>"40*3" %>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      <%= f.label :item_description%>
+    </td>
+    <td>
+      <%= f.text_area :item_description,:size=>"40*3" %>
+    </td>
+  </tr>
+  <% if !f.object.new_record? %>
       <tr>
+        <td><%= f.label :borrow_state_id %></td>
         <td>
-          <%= f.label :item_name %>
-        </td>
-        <td>
-          <%= f.text_area :item_name,:size=>"40*3" %>
+          <%= f.collection_select :borrow_state_id, BorrowState.all, :id, :name, :selected => 1 %>
         </td>
       </tr>
-      <tr>
-        <td>
-          <%= f.label :category_id %>
-        </td>
-        <td>
-          <%= f.collection_select :category_id, Category.all, :id, :name%>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= f.label :item_description%>
-        </td>
-        <td>
-          <%= f.text_area :item_description,:size=>"40*3" %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= f.label :fare %>
-        </td>
-        <td>
-          <%= f.text_field :fare %>
-        </td>
-      <tr>
-      <tr>
-        <td>
-          <%= f.label :term %>
-        </td>
-        <td>
-          <%= f.text_area :term ,:size=>"40*3" %>
-        </td>
-      </tr>
-      <tr>
-        <td>
-          <%= f.label :location %>
-        </td>
-        <td>
-          <%= f.text_area :location ,:size=>"40*3" %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <% else %>
+      <%= f.hidden_field :borrow_state_id, :value => "1" %>
+      <%= f.hidden_field :member_id, :value => session[:member_id] %>
+  <% end %>

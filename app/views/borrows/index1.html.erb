@@ -1,0 +1,394 @@
+<%= render partial: "shared/sidebar", locals:{subType: "Borrows"} %>
+
+
+
+<!-- <div class="container"> -->
+  <div class="main">
+    <div id="cbp-vm" class="cbp-vm-switcher cbp-vm-view-grid">
+      <div class="cbp-vm-options">
+        <a href="#" class="cbp-vm-icon cbp-vm-grid cbp-vm-selected" data-view="cbp-vm-view-grid">Grid View</a>
+        <a href="#" class="cbp-vm-icon cbp-vm-list" data-view="cbp-vm-view-list">List View</a>
+      </div>  -->
+
+      <ul>
+        <% @loanItems.each do |item|%><li>
+        <!-- 図 -->
+        <%= loan_item_image_tag item, class: "cbp-vm-image" %>
+        <!-- アイテム名 -->
+        <h3 class="cbp-vm-title"><%= item.item_name %></h3>
+        <!-- 料金 -->
+        <div class="cbp-vm-price"><%= item.fare %>円</div>
+        <!-- 貸出場所　-->
+        <div class="cbp-vm-details">
+          <!-- カテゴリー-->
+          <p><%= truncate(item.category.name,length: 20) %></p>
+          貸出場所：<%= item.location %>
+          <!-- 投稿者-->
+          <p><%= item.member.user_name %> 投稿日 <%= item.created_at.to_s %></p>
+        </div>
+        <!-- 状態-->
+        <%= link_to item.loan_state.name, borrow_path(:id => item.id), class: "cbp-vm-icon cbp-vm-add" %>
+      </li>
+        <% end%>
+      </ul>
+    </div>
+  </div><!-- /main -->
+</div><!--  /container -->
+<script src="assets/subjs/classie.js"></script>
+<script src="assets/subjs/cbpViewModeSwitch.js"></script>
+
+
+
+//default.css
+@import url(http://fonts.useso.com/css?family=Lato:300,400,700);
+@font-face {
+font-family: 'bpicons';
+src:url('assets/bpicons/bpicons.eot');
+src:url('assets/bpicons/bpicons.eot?#iefix') format('embedded-opentype'),
+url('assets/bpicons/bpicons.woff') format('woff'),
+url('assets/bpicons/bpicons.ttf') format('truetype'),
+url('assets/bpicons/bpicons.svg#bpicons') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+//Made with http://icomoon.io/
+
+.clearfix:before, .clearfix:after { content: " "; display: table; }
+.clearfix:after { clear: both; }
+// Clearfix hack by Nicolas Gallagher: http://nicolasgallagher.com/micro-clearfix-hack/
+//default.css end
+
+
+
+//component.css
+@font-face {
+font-family: 'fontawesome';
+src:url('assets/fontawesome/fontawesome.eot');
+src:url('assets/fontawesome/fontawesome.eot?#iefix') format('embedded-opentype'),
+url('assets/fontawesome/fontawesome.woff') format('woff'),
+url('assets/fontawesome/fontawesome.ttf') format('truetype'),
+url('assets/fontawesome/fontawesome.svg#fontawesome') format('svg');
+font-weight: normal;
+font-style: normal;
+}
+
+/* Main container */
+.cbp-vm-switcher {
+padding: 20px;
+//border: 3px solid #9dc45f;
+}
+
+/* options/select wrapper with switch anchors */
+.cbp-vm-options {
+text-align: right;
+padding-bottom: 10px;
+border-bottom: 3px solid #9dc45f;
+}
+
+.cbp-vm-options a {
+display: inline-block;
+width: 40px;
+height: 40px;
+overflow: hidden;
+white-space: nowrap;
+color: #d0d0d0;
+margin: 2px;
+}
+
+.cbp-vm-options a:hover,
+.cbp-vm-options a.cbp-vm-selected {
+color: #9dc45f;
+}
+
+.cbp-vm-options a:before {
+width: 40px;
+height: 40px;
+line-height: 40px;
+font-size: 30px;
+text-align: center;
+display: inline-block;
+}
+
+/* General style of switch items' list */
+
+.cbp-vm-switcher ul {
+list-style: none;
+padding: 0;
+margin: 0;
+}
+
+/* Clear eventual floats */
+.cbp-vm-switcher ul:before,
+.cbp-vm-switcher ul:after {
+content: " ";
+display: table;
+}
+
+.cbp-vm-switcher ul:after {
+clear: both;
+}
+
+.cbp-vm-switcher ul li {
+display: block;
+position: relative;
+}
+
+.cbp-vm-image {
+display: block;
+margin: 0 auto;
+}
+
+.cbp-vm-image img {
+display: inline-block;
+max-width: 100%;
+border: none;
+}
+
+.cbp-vm-title {
+margin: 0;
+padding: 0;
+}
+
+.cbp-vm-price {
+color: #c0c0c0;
+}
+
+.cbp-vm-add {
+color: #fff;
+background: #9dc45f;
+padding: 10px 20px;
+border-radius: 2px;
+margin: 20px 0 0;
+display: inline-block;
+transition: background 0.2s;
+}
+
+.cbp-vm-add:hover {
+color: #fff;
+background: #80A24A;
+}
+
+.cbp-vm-add:before {
+margin-right: 5px;
+}
+
+/* Common icon styles */
+.cbp-vm-icon:before {
+font-family: 'fontawesome';
+speak: none;
+font-style: normal;
+font-weight: normal;
+font-variant: normal;
+text-transform: none;
+line-height: 1;
+-webkit-font-smoothing: antialiased;
+}
+
+.cbp-vm-grid:before {
+content: "\f00a";
+}
+
+.cbp-vm-list:before {
+content: "\f00b";
+}
+
+.cbp-vm-add:before {
+content: "\f055";
+}
+
+/* Individual view mode styles */
+
+/* Large grid view */
+.cbp-vm-view-grid ul {
+text-align: auto;
+}
+
+.cbp-vm-view-grid ul li {
+width: 30%;
+text-align: center;
+padding: 10px; //25px;
+margin: 20px 0 0;
+display: inline-block;
+min-height: 200px;
+vertical-align: top;
+}
+
+.cbp-vm-view-grid .cbp-vm-title {
+font-size: 1.75em;
+}
+
+.cbp-vm-view-grid .cbp-vm-details {
+max-width: 200px;
+min-height: 70px;
+margin: 0 auto;
+}
+
+.cbp-vm-view-grid .cbp-vm-price {
+margin: 10px 0;
+font-size: 1.5em;
+}
+
+
+/* List view */
+.cbp-vm-view-list li {
+padding: 20px 0;
+white-space: nowrap;
+}
+
+.cbp-vm-view-list .cbp-vm-image,
+.cbp-vm-view-list .cbp-vm-title,
+.cbp-vm-view-list .cbp-vm-details,
+.cbp-vm-view-list .cbp-vm-price,
+.cbp-vm-view-list .cbp-vm-add {
+display: inline-block;
+vertical-align: middle;
+}
+
+.cbp-vm-view-list .cbp-vm-image {
+width: 15%;
+}
+
+.cbp-vm-view-list .cbp-vm-title {
+font-size: 1.3em;
+padding: 0 10px;
+white-space: normal;
+width: 15%;
+}
+
+.cbp-vm-view-list .cbp-vm-price {
+font-size: 1.3em;
+width: 10%;
+}
+
+.cbp-vm-view-list .cbp-vm-details {
+width: 30%;
+padding: 0 15px;
+overflow: hidden;
+white-space: normal;
+}
+
+.cbp-vm-view-list .cbp-vm-add {
+margin: 0;
+}
+
+@media screen and (max-width: 66.7em) {
+.cbp-vm-view-list .cbp-vm-details  {
+width: 30%;
+}
+}
+
+@media screen and (max-width: 57em) {
+.cbp-vm-view-grid ul li {
+width: 49%;
+}
+}
+
+@media screen and (max-width: 47.375em) {
+.cbp-vm-view-list .cbp-vm-image {
+width: 20%;
+}
+
+.cbp-vm-view-list .cbp-vm-title {
+width: auto;
+}
+
+.cbp-vm-view-list .cbp-vm-details  {
+display: block;
+width: 100%;
+margin: 10px 0;
+}
+
+.cbp-vm-view-list .cbp-vm-add  {
+margin: 10px;
+}
+}
+
+@media screen and (max-width: 40.125em) {
+.cbp-vm-view-grid ul li {
+width: 100%;
+}
+}
+//component.css end
+
+//--------------------
+
+//edit.html.erb
+
+<div class="loanitemshow">
+  <table class="itemdetail">
+    <tbody>
+    <tr class="tr1">
+      <td class="tdlabel">
+        アイテム名
+      </td>
+      <td class="tdcontent1">
+
+      </td>
+      <td class="tdlabel">
+        状態
+      </td>
+      <td class="tdcontent1">
+
+      </td>
+    </tr>
+    <tr class="tr1">
+      <td class="tdlabel">
+        カテゴリー
+      </td>
+      <td class="tdcontent1">
+
+      </td>
+      <td class="tdlabel">
+        基本料金
+      </td>
+      <td class="tdcontent1">
+        <span style="color:#ff0000"></span> 円
+      </td>
+    </tr>
+    <tr class="tr2">
+      <td class="tdlabel">
+        貸出場所
+      </td>
+      <td colspan="3" class="tdcontent2">
+
+      </td>
+    </tr>
+    <tr class="tr3">
+      <td class="tdlabel">
+        貸出条件
+      </td>
+      <td colspan="3" class="tdcontent2">
+
+      </td>
+    </tr>
+    <tr class="tr3">
+      <td class="tdlabel">
+        アイテム説明
+      </td>
+      <td colspan="3" class="tdcontent2">
+
+      </td>
+    </tr>
+    <tr class="tr3">
+      <td class="tdlabel">
+        画像
+      </td>
+      <td colspan="3" class="tdcontent2">
+
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
