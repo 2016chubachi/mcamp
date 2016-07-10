@@ -10,8 +10,11 @@
 <%= link_to @receive_request.loan_item.item_name,
   loan_item_path(id: @receive_request.loan_item.id)  %> <br>
 
-アイテムの持ち主：
-<%= @receive_request.loan_item.member.name %><br>
+<!-- アイテムの持ち主：
+<%= @receive_request.loan_item.member.name %><br> -->
+
+<!-- 画像 -->
+<%= loan_item_image_tag @receive_request.loan_item %> <br>
 
 状態：
 <% if @receive_request.message_state %>
@@ -21,12 +24,15 @@
 申し込みユーザー：
 <%= @receive_request.member.user_name %> <br>
 
+更新日：
+<%= @receive_request.updated_at.strftime("%Y/%m/%d %H:%M") %> <br>
+
 メッセージ：
 <%= @receive_request.message %> <br>
 
 <%= form_for(@receive_request, url: {:controller => :receive_requests,:action => :update}) do |form| %>
-  <%= form.submit "承認",  :name => "accept_request" %>
-  <%= form.submit "拒否",  :name => "refuse_request" %>
+    <%= form.submit "承認",  :name => "accept_request" %>
+    <%= form.submit "拒否",  :name => "refuse_request" %>
 <% end %>
 <br>
 
