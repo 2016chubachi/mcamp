@@ -38,6 +38,13 @@ gem 'bcrypt', '3.1.11'
 # Use for internationalization language.
 gem 'rails-i18n'
 
+# for create test members.
+gem 'faker',                '1.6.5'
+
+# for pagination
+gem 'kaminari'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

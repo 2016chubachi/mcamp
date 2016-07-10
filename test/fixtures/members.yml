@@ -33,3 +33,12 @@ test01:
   #  admin: true
     activated: true
     activated_at: <%= Time.zone.now %>
+
+<% 30.times do |n| %>
+member_<%= n %>:
+  name:  <%= "User #{n}" %>
+  email: <%= "user-#{n}@example.com" %>
+  password_digest: <%= Member.digest('password') %>
+  activated: true
+  activated_at: <%= Time.zone.now %>
+<% end %>

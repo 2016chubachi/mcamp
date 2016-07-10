@@ -1,19 +1,22 @@
 <%= render partial: "shared/sidebar", locals:{subType: "LoanItems"} %>
 
 
-<div class="main">
+<div id="main">
 
   <% if flash.notice %>
-      <p class="notice"><%= flash.notice %></p>
+      <div class="tn-box tn-box-color">
+        <p id="p-tn-box"><%= flash.notice %></p>
+      </div>
+<br/>
   <% end%>
 
   <ul class="each-item">
     <% @loan_items.each do |loan_item| %><li>
     <div class="each-item">
-      <!-- 図 -->
-      <%= loan_item_image_tag loan_item, class: "item-pic" %>
+      <!-- 図-->
+      <div class="item-pic"><%= loan_item_image_tag loan_item %></div>
       <!-- アイテム名 -->
-      <h3 class="item-title"><%= link_to loan_item.item_name, loan_item %></h3>
+      <h5 class="item-title"><%= link_to loan_item.item_name, loan_item %></h5>
       <!-- カテゴリー-->
       <div class="item-ctlg"><%= loan_item.category.name %></div>
       <br/>

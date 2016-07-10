@@ -42,3 +42,26 @@ Member.create(name:  "test04",
     #admin:     true,
     activated: true,
     activated_at: Time.zone.now)
+
+Member.create(name:  "mcampadmin",
+        user_name: "mcampadmin",
+        email: "mcamp2100@gmail.com",
+        password:              "a@Aqwer0987",
+        password_confirmation: "a@Aqwer0987",
+        authority_id:     2,
+        activated: true,
+        activated_at: Time.zone.now,
+        admin:     true)
+
+
+# 99.times do |n|
+#       name  = "example-#{n+1}"
+#       email = "example-#{n+1}@mcamp.org"
+#       password = "password123"
+#       Member.create!(name:  name,
+#             email: email,
+#             password:              password,
+#             password_confirmation: password,
+#             activated: true,
+#             activated_at: Time.zone.now)
+# end

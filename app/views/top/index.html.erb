@@ -5,6 +5,9 @@
       <% if current_member %>
       <p class="member">
       <%= current_member.user_name %>さん<br>
+        <% if current_member.try(:admin?) %>
+           <%= link_to "メンバー一覧", members_path %></br>
+        <% end %>
        <%= link_to "ユーザー編集", edit_member_path(current_member) %><br>
        <%= link_to "ログアウト", logout_path, method: "delete", data: { confirm: "ログアウトしますか？" } %>
       </p>

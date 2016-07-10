@@ -149,6 +149,7 @@ ActiveRecord::Schema.define(version: 20160612091358) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.boolean  "admin",             default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
   end

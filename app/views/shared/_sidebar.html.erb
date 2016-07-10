@@ -6,20 +6,26 @@
       <ul>
         <li><%= link_to "アイテム登録", new_loan_item_path %></li>
         <li><%= link_to "アイテム一覧", loan_items_path %></li>
-        <li><%= link_to "受信リクエスト", receive_requests_path %></li>
+        <li><%= link_to "受信一覧", receive_requests_path %></li>
       </ul>
     <% when "Borrows" then%>
       <h2>借りる</h2>
       <ul>
         <li><%= link_to "アイテム一覧", borrows_path %></li>
-        <li><%= link_to "送信リクエスト", requests_path %></li>
+        <li><%= link_to "送信一覧", requests_path %></li>
       </ul>
     <% when "BorrowItems" then%>
-      <h2>借りたい</h2>
+      <h2>用品募集</h2>
       <ul>
-        <li><%= link_to "借りたい登録", new_borrow_item_path %></li>
-        <li><%= link_to "借りたい一覧", borrow_items_path %></li>
-        <li><%= link_to "受信リクエスト","#"%></li>
+        <li><%= link_to "用品募集", new_borrow_item_path %></li>
+        <li><%= link_to "募集一覧", borrow_items_path %></li>
+        <li><%= link_to "受信一覧",receive_replies_path%></li>
+      </ul>
+    <% when "Tenders" then%>
+      <h2>提供</h2>
+      <ul>
+        <li><%= link_to "募集一覧", :tenders %></li>
+        <li><%= link_to "送信一覧", :borrow_replies %></li>
       </ul>
     <% end%>
   </div>

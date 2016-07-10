@@ -1,5 +1,6 @@
+#借りる一覧、借りるリクエスト送信
 class BorrowsController < ApplicationController
-  before_action :logged_in_member, :except => ['index', 'show']
+  before_action :logged_in_member, :except => ['index']
 
   #貸出アイテム一覧表示
   def index
@@ -7,7 +8,7 @@ class BorrowsController < ApplicationController
     @loanItems = LoanItem.where(delete_flg: false).order(:loan_state_id)
   end
 
-  def show
+  def edit
     @loanItem = LoanItem.find(params[:id])
     if @loanItem.loan_state.id==1 && current_member
       #アイテムステータスが「貸出可能」の場合
@@ -23,9 +24,9 @@ class BorrowsController < ApplicationController
     if @loanItem.save
       flash.now[:notice] = "リクエストを送信しました。"
       @loanItem.update_attribute(:loan_state_id,2)
-      render "show"
+      render "edit"
     else
-      render "show"
+      render "edit"
     end
   end
   private

@@ -1,8 +1,13 @@
 class MembersController < ApplicationController
-  before_action :logged_in_member, only: [:index, :edit, :update]
+  # before_action :logged_in_member, only: [:edit, :update]
+  before_action :logged_in_member, only: [:edit, :update]
   before_action :correct_member, only: [:edit, :update]
+  before_action :admin_member,     only: [:index, :destroy]
+
 
   def index
+    # @members = Member.all
+    @members = Member.page(params[:page])
   end
 
   # member 新規作成フォーム
@@ -46,9 +51,9 @@ class MembersController < ApplicationController
 
     # 会員の削除
      def destroy
-       #@member = Member.find(params[:id])
-       #@member.destroy
-       #redirect_to :members, notice: "会員を削除しました。"
+       Member.find(params[:id]).destroy
+       flash.now[:info] = "ユーザーを削除しました。"
+       redirect_to members_path
      end
 
     private
@@ -72,6 +77,10 @@ class MembersController < ApplicationController
           @member = Member.find(params[:id])
           redirect_to(root_url) unless current_member?(@member)
         end
+
+        # def admin_user
+        #  redirect_to(root_url) unless current_user.admin?
+        # end
 
 
 end

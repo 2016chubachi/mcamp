@@ -1,3 +1,4 @@
+#借りる送信リクエスト一覧、更新
 class RequestsController < ApplicationController
   before_action :logged_in_member
   
@@ -5,7 +6,7 @@ class RequestsController < ApplicationController
     @requests = Request.where({member_id: current_member.id,delete_flg: false}).order(:message_state_id)
   end
   
-  def show
+  def edit
     @request = Request.find(params[:id])
   end
   

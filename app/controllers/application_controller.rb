@@ -27,4 +27,8 @@ class ApplicationController < ActionController::Base
       redirect_to(root_url) unless current_member?(@member)
     end
 
+    def admin_member
+     redirect_to(root_url) unless current_member.admin?
+    end
+
 end

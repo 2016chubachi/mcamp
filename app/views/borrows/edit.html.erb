@@ -1,0 +1,65 @@
+<%= render partial: "shared/sidebar", locals:{subType: "Borrows"} %>
+
+<div id="main">
+
+  <% if flash.notice %>
+      <div class="tn-box tn-box-color">
+        <p id="p-tn-box"><%= flash.notice %></p>
+      </div>
+  <% end%>
+
+  <!--アイテム名-->
+  <p id="show-itm-tle"><%= truncate(@loanItem.item_name,length: 15) %></p>
+  <!--状態-->
+  <p class="stus-icon show-itm-stus"><%= @loanItem.loan_state.name %></p>
+  <!--図-->
+  <div id="show-itm-pic"><%= loan_item_image_tag @loanItem %></div>
+  <h3 style="font-size: 16px;">基本資料</h3>
+
+  <div class="main_box2">
+    <ul id="show-item">
+      <!--カテゴリー-->
+      <li>カテゴリー：</li>
+      <p class="show-p"><%= @loanItem.category.name %></p>
+      <hr size="1" />
+      <!--料金-->
+      <li>料金：</li>
+      <p class="show-p"><%= @loanItem.fare %> 円</p>
+      <hr size="1" />
+      <!-- 貸出場所 -->
+      <li>貸出場所：</li>
+      <p class="show-p"><%= @loanItem.location %></p>
+      <hr size="1" />
+      <!-- date -->
+      <li>更新日：</li>
+      <p class="show-p"><%= @loanItem.created_at.to_s %></p>
+      <hr size="1" />
+      <!--アイテム説明-->
+      <li>アイテム説明：</li>
+      <p class="show-p"><%= @loanItem.item_description %></p>
+      <hr size="1" />
+      <!--貸出条件-->
+      <li>貸出条件：</li>
+      <p class="show-p"><%= @loanItem.term %></p>
+    </ul></div>
+  <input type="button" value="戻る" class="button" onclick="window.history.back()">
+<br/>
+  <br/>
+
+    <% if current_member && @loanItem.loan_state.id==1%>
+      <hr>
+      <%= render "shared/errors", obj: @loanItem %>
+      <%= form_for(@loanItem,url: {:controller => :borrows,:action => :update}) do |form| %>
+        <%= form.fields_for :requests do |message| %>
+          <% if current_member.id == message.object.member_id %>
+            <%= render partial: "form", locals:{f: message} %>
+          <% end%>  
+        <% end%>
+        
+        <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"} %>
+        
+        <%= debug(params) if Rails.env.development? %>
+      <% end%>
+    <% end%>
+  </div>
+</div>

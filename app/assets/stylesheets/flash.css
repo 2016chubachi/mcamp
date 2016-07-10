@@ -1,13 +1,26 @@
 /* フラッシュ */
-p.notice {
-  border: 1px solid blue;
-  padding: 3px;
-  background-color: #9CE5A1;
-  /*margin-left: 200px;*/
-  /*float: right;*/
-  /*position:absolute;
-  left:420px;*/
+.tn-box {
+    width: 360px;
+    position: relative;
+    padding: 2px 15px;
+    text-align: left;
+    border-radius: 5px;
+    box-shadow:
+            0 1px 1px rgba(0,0,0,0.1),
+            inset 0 1px 0 rgba(255,255,255,0.6);
+    cursor: default;
+    display: block;
 }
+
+.tn-box-color {
+    background: #99ffb1;
+    border: 1px solid #7ce294;
+}
+
+#p-tn-box {
+    font-size: 16px;
+    color: #2d8241;
+  }
 
 p.alert {
   border: 1px solid red;

@@ -1,64 +1,49 @@
 <%= render partial: "shared/sidebar", locals:{subType: "BorrowItems"} %>
-<span style="color:#ff0000">
-    <% if flash.notice %>
-      <p><%= flash.notice %></p>
-    <% end%>
-</span>
-<div>
-  <table >
-    <tbody>
-      <tr >
-        <th>
-          アイテム名
-        </th>
-        <td >
-          <%= truncate(@borrow_Item.item_name,length: 15) %>
-        </td>
-        <th >
-          状態
-        </th>
-        <td >
-          <%= @borrow_Item.borrow_state.name %>
-        </td>
-      </tr>
-      <tr >
-        <th >
-          カテゴリー
-        </th>
-        <td >
-          <%= @borrow_Item.category.name %>
-        </td>
-        <th >
-          基本料金
-        </th>
-        <td >
-          <span style="color:#ff0000"><%= @borrow_Item.fare %></span> 円
-        </td>
-      </tr>
-      <tr >
-        <th >
-          借りたい場所
-        </th>
-        <td colspan="3" >
-          <%= @borrow_Item.location %>
-        </td>
-      </tr>
-      <tr >
-        <th >
-          借りたい条件
-        </th>
-        <td colspan="3" >
-          <%= @borrow_Item.term %>
-        </td>
-      </tr>
-      <tr >
-        <th >
-          アイテム説明
-        </th>
-        <td colspan="3" >
-          <%= @borrow_Item.item_description %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+
+
+<div id="main">
+
+  <% if flash.notice %>
+      <div class="tn-box tn-box-color">
+        <p id="p-tn-box"><%= flash.notice %></p>
+      </div>
+      <br/>
+  <% end%>
+
+  <!--アイテム名-->
+  <p id="show-itm-tle"><%= truncate(@borrow_Item.item_name,length: 15) %></p>
+  <!--状態-->
+  <p class="stus-icon show-itm-stus"><%= @borrow_Item.borrow_state.name %></p>
+  <h3 style="font-size: 16px;">基本資料</h3>
+
+  <div class="main_box2">
+    <ul id="show-item">
+      <!--カテゴリー-->
+      <li>カテゴリー：</li>
+      <p class="show-p"><%= @borrow_Item.category.name %></p>
+      <hr size="1" />
+      <!--料金-->
+      <li>料金：</li>
+      <p class="show-p"><%= @borrow_Item.fare %> 円</p>
+      <hr size="1" />
+      <!-- 貸出場所 -->
+      <li>貸出場所：</li>
+      <p class="show-p"><%= @borrow_Item.location %></p>
+      <hr size="1" />
+      <!-- date -->
+      <li>更新日：</li>
+      <p class="show-p"><%= @borrow_Item.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+      <hr size="1" />
+      <!--アイテム説明-->
+      <li>アイテム説明：</li>
+      <p class="show-p"><%= @borrow_Item.item_description %></p>
+      <hr size="1" />
+      <!--貸出条件-->
+      <li>貸出条件：</li>
+      <p class="show-p"><%= @borrow_Item.term %></p>
+    </ul></div>
+  <input type="button" value="戻る" class="button" onclick="window.history.back()">
+
+
+  <%= debug(params) if Rails.env.development? %>
 </div>

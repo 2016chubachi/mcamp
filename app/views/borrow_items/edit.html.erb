@@ -3,10 +3,21 @@
 <div id="main">
 
 <%= form_for(@borrow_Item) do |form| %>
+
   <%= render "form", f: form %>
-  <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}%>
-  <%= submit_tag "削除", :name => "delete",data: {confirm: "削除しても宜しいですか？"} %>
+      <tr>
+        <th colspan="2" align="center">
+          <br/>
+  <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}, class: "button" %>　　　
+  <%= submit_tag "削除", :name => "delete",data: {confirm: "削除しても宜しいですか？"}, class: "button" %>
+        </th>
+
+      </tr></table>
+
   <%= debug(params) if Rails.env.development? %>
+
 <% end %>
 
 </div>
+
+

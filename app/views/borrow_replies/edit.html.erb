@@ -1,0 +1,36 @@
+<%= render partial: "shared/sidebar", locals:{subType: "Tenders"} %>
+
+<div class="borrowmessageshow">
+  <table class="itemdetail">
+    <tbody>
+      <tr class="tr1">
+        <td class="tdlabel">
+          アイテム名
+        </td>
+        <td class="tdcontent1">
+          <%= link_to @borrow_reply.borrow_item.item_name,edit_tender_path(@borrow_reply.borrow_item)%>
+        </td>
+        <td class="tdlabel">
+          状態
+        </td>
+        <td class="tdcontent1">
+          <%= @borrow_reply.message_state.name %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="4">
+        <%= render "shared/errors", obj: @borrow_reply %>
+        <%= form_for(@borrow_reply) do |form| %>
+          <%= render partial: "form", locals:{f: form} %>
+          
+          <% if @borrow_reply.message_state.id == 1%>
+            <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}%>
+            <%= submit_tag "リクエスト取消", :name => "cancel",data: {confirm: "取消しても宜しいですか？"} %>
+          <% end%>
+          <%= debug(params) if Rails.env.development? %>
+        <% end%>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

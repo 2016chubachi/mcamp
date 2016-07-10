@@ -1,6 +1,8 @@
 // Place all the styles related to the Borrows controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+//borrow.css
 @font-face {
   font-family: 'fontawesome';
   src:url('assets/fontawesome/fontawesome.eot');
@@ -17,32 +19,35 @@ ul.each-item{
   }
 
 div.each-item{
-  margin: 10px 200px 5px 200px;
-  width: 75%;
+  margin: 0 0 10px -30px;
+  width: 100%;
   border-bottom: 1px dashed gray;
   }
 
-.item-pic{
+.item-pic {
   display: block;
-  float:left;
-  width: 25%;
+  float: left;
+  width: 150px;
+  height: 150px;
   padding: 0;
   margin-right: 20px;
-  border: 1px dotted black;
 
-  &:hover{
-    border: 1px solid black;
+  img {
+    width:150px;
+    height:140px;
+    padding:0;
   }
 }
 
-img.item-pic a:hover{
-  border: 1px solid black;
-}
-
-h3.item-title{
+h5.item-title{
   display: inline;
   font-size: 24px;
 }
+
+h3{
+  font-size: 16px;
+}
+
 .item-ctlg{
   display: inline;
   margin: 5px 20px;
@@ -71,8 +76,8 @@ h3.item-title{
 .item-stus {
   display: inline;
   padding: 10px 20px;
+  margin: 20px 0;
   border-radius: 2px;
-  margin: 20px 0 0;
   color: #fff;
   background: #9dc45f;
   transition: background 0.2s;
@@ -86,7 +91,20 @@ h3.item-title{
     margin-right: 5px;
   }
 
-.item-icon:before {
+.item-stus-gray {
+  display: inline;
+  padding: 10px 20px;
+  margin: 20px 0;
+  border-radius: 2px;
+  color: #999;
+  transition: background 0.2s;
+ }
+
+.item-stus:before {
+  margin-right: 5px;
+}
+
+.stus-icon:before {
     font-family: 'fontawesome';
     speak: none;
     font-style: normal;
@@ -97,22 +115,80 @@ h3.item-title{
     -webkit-font-smoothing: antialiased;
   }
 
-/* Common icon styles */
 .stus-icon:before {
-  font-family: 'fontawesome';
-  speak: none;
-  font-style: normal;
-  font-weight: normal;
-  font-variant: normal;
-  text-transform: none;
-  line-height: 1;
-  -webkit-font-smoothing: antialiased;
-}
-
-.item-stus:before {
   content: "\f055";
 }
-  /* .loanitem{
+
+//borrow.css end
+//
+//
+//
+//
+//showitem.css
+
+
+#show-itm-pic{
+  display:block;
+  max-width:600px;
+  max-height: 480px;
+  padding:auto;
+  margin:15px auto;
+//  border: 1px solid #9CE5A1;
+}
+
+//the picture almost with the <a href> tag, edit later
+#show-itm-pic img{
+  max-width: 96%;
+  margin: 10px 20px 50px 10px;
+  vertical-align: middle;
+  text-align: center;
+}
+
+#show-itm-tle{
+  display: inline-table;
+  width: 65%;
+  padding: 7px;
+  border-bottom: 2px dotted #6e7955;
+  border-left: 10px solid #6e7955;
+  font-size: 18px;
+}
+
+ul#show-item{
+  list-style-image: url(/assets/icon_01.gif);
+
+  li{
+    color:#669900;
+  }
+}
+
+.show-itm-stus{
+  display: inline;
+  padding: 10px 20px;
+  margin-top: 30px;
+  margin-right: 30px;
+  border-radius: 2px;
+  color: #fff;
+  background: #9dc45f;
+}
+
+.show-itm-stus:before {
+  margin-right: 5px;
+}
+
+.show-p{
+  margin-left: 50px;
+  line-height: 5px;
+}
+
+
+
+
+
+
+
+
+
+/* .loanitem{
       padding:6px;margin-top:0px;
       .tb1{width:70%;}
       .tb1 td{border-bottom:1px solid #C2D5E3;padding:5px 0;}

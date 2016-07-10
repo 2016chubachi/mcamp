@@ -2,7 +2,9 @@ class BorrowItem < ActiveRecord::Base
     belongs_to :member
     belongs_to :category
     belongs_to :borrow_state
-    has_many :borrow_replies,:dependent => :destroy
+    has_many :borrow_replies,-> {where(delete_flg: false)},:dependent => :destroy
+    
+    accepts_nested_attributes_for :borrow_replies
     
     validates :item_name,:borrow_state, presence: true
     validates :item_name,:location,length: {maximum: 100}
@@ -11,7 +13,11 @@ class BorrowItem < ActiveRecord::Base
 
     #該当ユーザーの借りたい一覧
     scope :current_member_borrow_items,->(member){
-        where(member_id: member.id,delete_flg: false)
+        if member
+            where(member_id: member.id,delete_flg: false)
+        else
+            where(delete_flg: false)
+        end
     }
     
     def destroy
