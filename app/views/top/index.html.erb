@@ -1,13 +1,4 @@
 <div id="contents"><img src="/assets/logo.png" width="820" height="281" alt="" />
-  <!--サブメニュー-->
-  <!-- <p class="notice"><%= flash.notice %> -->
-    <% if flash.notice %>
-      <p class="notice"><%= flash.notice %></p>
-    <% end%>
-  <!-- <p id="alert"><%= alert %> -->
-    <% if flash.alert %>
-     <p class="alert"><%= flash.alert %></p>
-    <% end%>
   <div id="sidebar">
     <div id="side_txbox">
       <%= render :file => "sessions/new" unless current_member  %>
@@ -24,60 +15,56 @@
     </div>
   </div>
 
-    <!---
-       <div id="submenu">
-       <h2>SUBMENU(h2)</h2>
-       <ul>
-         <li><a href="#">submenu</a></li>
-         <li><a href="#">submenu</a></li>
-         <li><a href="#">submenu</a></li>
-         <li><a href="#">submenu</a></li>
-         <li><a href="#">submenu</a></li>
-         <li><a href="#">submenu</a></li>
-         </ul>
-     </div>
-     <div id="side_txbox">
-     <p>User Information</p>
-     <p>name:</p>
-     <p>icon</p>
-     <p>Logout</p>
-     <p>Information Edit <br />
-     </p>
-     </div>
- -->  </div>
-
   <!--メイン-->
   <div id="main">
-    <h2>最新登録</h2>
+    <% if flash.notice %>
+      <p class="notice"><%= flash.notice %></p>
+    <% end%>
+
+    <% if flash.alert %>
+     <p class="alert"><%= flash.alert %></p>
+    <% end%>
+
+    <h2>貸出アイテム一覧</h2>
     <div class="main_box">
-      <p>こちらの<a href="http://bluegreen.jp/template/licence/">ライセンスお申込みフォーム</a>よりお問い合わせください。<br />
-      </p>
+      <% @loanItems.each do |loanItem|%>
+        <!-- 図 -->
+        <%= loan_item_image_tag(loanItem, width: 100 ) %> <br>
+        <!-- アイテム名 -->
+        <%= loanItem.item_name %> <br>
+        <!-- 料金 -->
+        <%= loanItem.fare %>円<br>
+        <!-- 貸出場所　-->
+        貸出場所：<%= loanItem.location %> <br>
+        <!-- 投稿者 -->
+        投稿者：<%= loanItem.member.user_name %>　
+        <!-- 更新日 -->
+        更新日：<%= loanItem.updated_at.strftime("%Y/%m/%d %H:%M")%><br>
+
+        <br>
+
+      <% end %>
     </div>
 
-    <h2>貸すList</h2>
+    <h2>募集中一覧</h2>
     <div class="main_box">
-      <p><img src="/assets/icon_01.gif" alt="" width="13" height="13" class="img" />この上のバー↑は&lt;h2＞タグでくくると、背景画像が入ります。<br />※ &lt;h2&gt;タイトル&lt;/h2&gt;のように書きます。    </p>
-      <hr size="1" />
-      <p><img src="/assets/icon_01.gif" alt="" width="13" height="13" class="img" />テンプレートの編集方法については、サポート外となりますのでお問い合わせいただいてもお答えできません。申し訳ございませんがご了承ください。    </p>
-      <hr />
-      <p><img src="/assets/icon_01.gif" alt="" width="13" height="13" class="img" />サブページについては、「about」フォルダの中に、サブページの見本がありますのでそちらを参考にしてください。</p>
-      <hr />
+      <% @borrowItems.each do |borrowItem|%>
+        <!-- アイテム名 -->
+        <%= borrowItem.item_name %> <br>
+        <!-- 料金 -->
+        <%= borrowItem.fare %>円<br>
+        <!-- 貸出場所　-->
+        貸出場所：<%= borrowItem.location %> <br>
+        <!-- 投稿者 -->
+        投稿者：<%= borrowItem.member.user_name %>　
+        <!-- 更新日 -->
+        更新日：<%= borrowItem.updated_at.strftime("%Y/%m/%d %H:%M")%><br>
+        
+        <br>
+      <% end %>
     </div>
 
-    <h3>求めるList</h3>
-      <div class="main_box2"> <img src="/assets/icon_01.gif" alt="" width="13" height="13" class="img" /><span class="fc02">2010/1/1</span><br />
-        ホームページリニューアルしました。
-        <hr size="1" />
-        <img src="/assets/icon_01.gif" alt="" width="13" height="13" class="img" /><span class="fc02">2010/1/1
-        </span><br />
-        ホームページリニューアルしました。
-        <hr size="1" />
-        <img src="/assets/icon_01.gif" alt="" width="13" height="13" class="img" /><span class="fc02">2010/1/1</span><br />
-        ホームページリニューアルしました。
-        <hr size="1" />
-      </div>
   </div> <!--メイン-->
 
-  <!--pagetop-->
   <%= render 'shared/pagetop' %>
 </div> <!--contents-->
