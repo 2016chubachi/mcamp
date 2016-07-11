@@ -7,6 +7,8 @@ ja:
       borrow_item: 借りたい
       borrow_replies: 提供
       borrow_reply: 提供
+      requests: リクエスト
+      request: リクエスト
     attributes:
       loan_item:
         item_name: アイテム名
@@ -45,6 +47,9 @@ ja:
         message: メッセージ
       borrow_reply:
         message: メッセージ
+      requests:
+        message: メッセージ
+      request:
+        message: メッセージ
     errors:
       messages:
-        

@@ -1,7 +1,7 @@
 #借りたい一覧、借りたいリクエスト送信
 class TendersController < ApplicationController
   before_action :logged_in_member, :except => ['index']
-  
+
   # 借りたい投稿一覧
   def index
     @borrow_items = BorrowItem.current_member_borrow_items(nil).order(:borrow_state_id,:updated_at)
@@ -16,7 +16,7 @@ class TendersController < ApplicationController
     #end
     @borrow_item = BorrowItem.find(params[:id])
     #該当ユーザーのリクエスト
-    if current_member 
+    if current_member
       @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member)
     end
     #アイテムステータスが「募集中」の場合
@@ -24,7 +24,7 @@ class TendersController < ApplicationController
         @newBorrowReply = BorrowReply.new
     end
   end
-  
+
   def update
     @borrow_item = BorrowItem.find(params[:id])
     #やり方その1
@@ -38,7 +38,10 @@ class TendersController < ApplicationController
     @borrow_item.borrow_state_id = 2
     #http://tkot.hatenablog.com/entry/2013/07/06/010617
     if @borrow_item.save
-      redirect_to tenders_path
+      flash.now[:notice] = "リクエストを送信しました。"
+      #@borrow_item.update_attribute(:borrow_state_id,2)
+      @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member)
+      render "edit"
     else
       @borrow_item.borrow_state_id = 1
       @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member)
@@ -46,9 +49,9 @@ class TendersController < ApplicationController
       render "edit"
     end
   end
-  
+
   private
-  
+
   def borrow_reply_params
     attrs = [:message]
     params.require(:borrow_item).require(:borrow_reply).permit(attrs)

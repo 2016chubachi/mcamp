@@ -43,22 +43,38 @@
       <p class="show-p"><%= @loanItem.term %></p>
     </ul></div>
   <input type="button" value="戻る" class="button" onclick="window.history.back()">
-<br/>
   <br/>
-
-    <% if current_member && @loanItem.loan_state.id==1%>
+  <br/>
+  <div>
+    <% if current_member%>
       <hr>
+      <% if @requests%>
+          <% @requests.each do |request|%>
+              <table width="100%">
+                  <tbody>
+                      <tr>
+                          <td class="td1">
+                              <p><%="メッセージ （#{request.message_state.name}）"%> </p>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td class="td2">
+                              <p><%=request.message%></p>
+                          </td>
+                      </tr>
+                  </tbody>
+              </table>
+          <% end%>
+      <% end%>
       <%= render "shared/errors", obj: @loanItem %>
-      <%= form_for(@loanItem,url: {:controller => :borrows,:action => :update}) do |form| %>
-        <%= form.fields_for :requests do |message| %>
-          <% if current_member.id == message.object.member_id %>
-            <%= render partial: "form", locals:{f: message} %>
-          <% end%>  
+      <% if @newRequest %>
+        <%= form_for(@loanItem,url: {:controller => :borrows,:action => :update}) do |form| %>
+          <%= form.fields_for @newRequest do |message| %>
+              <%= render partial: "form", locals:{f: message} %>
+          <% end%>
+          <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"} %>
+          <%= debug(params) if Rails.env.development? %>
         <% end%>
-        
-        <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"} %>
-        
-        <%= debug(params) if Rails.env.development? %>
       <% end%>
     <% end%>
   </div>
