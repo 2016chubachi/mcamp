@@ -9,36 +9,49 @@ class BorrowsController < ApplicationController
   end
 
   def edit
+    #実装方法変更
+    # @loanItem = LoanItem.find(params[:id])
+    # if @loanItem.loan_state.id==1 && current_member
+    #   #アイテムステータスが「貸出可能」の場合
+    #    @loanItem.requests.build({member_id: current_member.id,message_state_id: 1,delete_flg: false})
+    # end
     @loanItem = LoanItem.find(params[:id])
-    if @loanItem.loan_state.id==1 && current_member
-      #アイテムステータスが「貸出可能」の場合
-       @loanItem.requests.build({member_id: current_member.id,message_state_id: 1,delete_flg: false})
+    #ログインされている場合
+    if current_member
+        @requests = @loanItem.requests.where(member_id: current_member.id)
+    end
+    #該当アイテムの状態が：貸出可能
+    if @loanItem.loan_state_id == 1
+        @newRequest = Request.new
     end
   end
 
   def update
     @loanItem = LoanItem.find(params[:id])
-    @loanItem.assign_attributes(loan_item_params)
-    #@loanItem.requests.build({member_id: 1,message_state_id: 1,delete_flg: false,message: })
-    #@loanItem.attributes=params[:loan_item]
+    @loanItem.requests.build({member_id: current_member.id,message_state_id: 1,delete_flg: false}.merge(request_params))
+    #@loanItem.requests.build(request_params[:requests_attributes]["0"].merge({member_id: current_member.id,message_state_id: 1,delete_flg: false}))
+    #@loanItem.assign_attributes(request_params[:requests_attributes]["0"].merge({member_id: current_member.id,message_state_id: 1,delete_flg: false}))
+    #request_params[:requests_attributes]["0"][:message]
+    #request_params[:requests_attributes]["0"].merge({member_id: current_member.id,message_state_id: 1,delete_flg: false})
+    @loanItem.loan_state_id = 2
     if @loanItem.save
       flash.now[:notice] = "リクエストを送信しました。"
-      @loanItem.update_attribute(:loan_state_id,2)
+      @requests = @loanItem.requests.where(member_id: current_member.id)
       render "edit"
     else
+      @loanItem.loan_state_id = 1
+      @requests = @loanItem.requests.where(member_id: current_member)
+      @newRequest = Request.new(request_params)
       render "edit"
     end
   end
+
   private
-    def loan_item_params
-      #attrs = [:item_name, :member_id, :category_id, :item_description,
-      #        :fare, :term, :location, :loan_state_id,:delete_flg]
-      #attrs << {requests_attributes: [:loan_item_id,:member_id,:message,:message_state_id,:delete_flg]}
-      attrs = [:loan_state_id]
-      attrs << {requests_attributes: [:loan_item_id,:member_id,:message,:message_state_id,:delete_flg]}
-      params.require(:loan_item).permit(attrs)
-      #params.require(:loan_item).map do |p|
-      #  ActionController::Parameters.new(p.to_hash).permit(:loan_item_id,:member_id,:message,:message_state_id,:delete_flg)
-      #end
+    def request_params
+      attrs = [:message]
+      params.require(:loan_item).require(:request).permit(attrs)
+      #attrs = []
+      #attrs << {requests_attributes: [:message]}
+      #params.require(:loan_item).permit(attrs)
     end
 end
