@@ -6,7 +6,12 @@
         <%= f.label :item_name %>
       </td>
       <td>
-        <%= f.text_field :item_name %>
+        <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
+          <%= f.text_field :item_name %>
+        <% else %>
+          <%#=  f.text_field :item_name, readonly: true  %>
+          <%=  @loan_item.item_name  %>
+        <% end %>
       </td>
     </tr>
     <tr>
@@ -14,7 +19,11 @@
         <%= f.label :category_id %>
       </td>
       <td>
-        <%= f.collection_select :category_id, Category.all, :id, :name %>
+        <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
+          <%= f.collection_select :category_id, Category.all, :id, :name %>
+        <% else %>
+          <%= @loan_item.category.name %>
+        <% end %>
       </td>
     </tr>
     <tr>
@@ -22,7 +31,11 @@
         <%= f.label :fare %>
       </td>
       <td>
-        <%= f.text_field :fare %>
+        <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
+          <%= f.text_field :fare %>
+        <% else %>
+          <%= @loan_item.fare %>
+        <% end %>
       </td>
     </tr>
     <tr>
@@ -30,7 +43,11 @@
         <%= f.label :location %>
       </td>
       <td>
-        <%= f.text_field :location %>
+        <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
+          <%= f.text_field :location %>
+        <% else %>
+          <%= @loan_item.location %>
+        <% end %>
       </td>
     </tr>
     <tr>
@@ -38,27 +55,32 @@
         <%= f.label :term %>
       </td>
       <td>
-        <%= f.text_area :term %>
+        <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
+          <%= f.text_area :term %>
+        <% else %>
+          <%= @loan_item.term %>
+        <% end %>
       </td>
     </tr>
     <tr>
       <td>
-        <%= f.label :item_description%>
+        <%= f.label :item_description %>
       </td>
       <td>
-        <%= f.text_area :item_description%>
+        <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
+          <%= f.text_area :item_description %>
+        <% else %>
+          <%= @loan_item.item_description %>
+        <% end %>
       </td>
     </tr>
     <% if !f.object.new_record? %>
         <tr>
           <td><%= f.label :loan_state_id %></td>
           <td>
-            <%= f.collection_select :loan_state_id, LoanState.all, :id, :name, :selected => 1 %>
+            <%= @loan_item.loan_state.name %>
           </td>
         </tr>
-    <% else %>
-        <%= f.hidden_field :loan_state_id, :value => "1" %>
-        <%= f.hidden_field :member_id, :value => session[:member_id] %>
     <% end %>
 
     <!--validationでエラーになるとnilになるので、画像選択が表示されないことの対応 -->
@@ -73,7 +95,9 @@
             <%= imgf.label :uploaded_image %>
           </td>
           <td>
-            <%= imgf.file_field :uploaded_image %></br>
+            <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
+              <%= imgf.file_field :uploaded_image %></br>
+            <% end %>
             <% if !imgf.object.new_record? && imgf.object.errors.empty? %>
                 <%# if !imgf.object.new_record? %>
                 <%= loan_item_image_tag @loan_item, width: 120 %>

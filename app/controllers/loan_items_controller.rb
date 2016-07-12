@@ -11,6 +11,7 @@ class LoanItemsController < ApplicationController
   def create
     # @loan_item = LoanItem.new(params[:loan_item])
     @loan_item = LoanItem.new(loan_item_params)
+    @loan_item.assign_attributes(loan_state_id: 1, member_id: current_member.id)
     if @loan_item.save
       redirect_to @loan_item, notice: "アイテムを登録しました"
     else
@@ -26,12 +27,21 @@ class LoanItemsController < ApplicationController
   def update
     @loan_item = LoanItem.find(params[:id])
     # @loan_item.assign_attributes(params[:loan_item])
-    @loan_item.assign_attributes(loan_item_params)
+
+    if params[:update_item]
+      @loan_item.assign_attributes(loan_item_params)
+      msg = "アイテムを更新しました"
+    elsif params[:return_item]
+      @loan_item.assign_attributes(loan_state_id:  1)
+      msg = "アイテムを返却しました"
+    end
+
     if @loan_item.save
-      redirect_to @loan_item, notice: "アイテムを更新しました"
+      redirect_to @loan_item, notice: msg
     else
       render "edit"
     end
+
   end
 
   def show
