@@ -12,7 +12,7 @@
   <!--アイテム名-->
     <p id="show-itm-tle"><%= @loan_item.item_name %></p>
   <!--状態-->
-  <p class="stus-icon show-itm-stus"><%= @loan_item.loan_state.name %></p>
+  <p class="stus-icon show-itm-stus"><%= @loan_item.loan_state.try(:name) %></p>
   <!--図-->
   <div id="show-itm-pic"><%= loan_item_image_tag @loan_item %></div>
   <h3 style="font-size: 16px;">基本資料</h3>
@@ -21,7 +21,7 @@
 <ul id="show-item">
   <!--カテゴリー-->
   <li>カテゴリー：</li>
-    <p class="show-p"><%= @loan_item.category.name %></p>
+    <p class="show-p"><%= @loan_item.category.try(:name) %></p>
   <hr size="1" />
   <!--料金-->
   <li>料金：</li>

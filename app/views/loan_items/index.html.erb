@@ -18,7 +18,7 @@
       <!-- アイテム名 -->
       <h5 class="item-title"><%= link_to loan_item.item_name, loan_item %></h5>
       <!-- カテゴリー-->
-      <div class="item-ctlg"><%= loan_item.category.name %></div>
+      <div class="item-ctlg"><%= loan_item.category.try(:name) %></div>
       <br/>
       <!-- 料金 -->
       <div class="item-price"><%= loan_item.fare %>円</div>
