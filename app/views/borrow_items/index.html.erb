@@ -2,7 +2,6 @@
 
 
 <div id="main">
-
   <ul class="each-item">
     <% @borrow_Items.each do |item|%>
     <li>
@@ -18,19 +17,19 @@
       <!-- 借りたい場所　-->
       <div class="item-place">借りたい場所：<%= truncate(item.location,length: 20) %></div>
       <!-- 更新日 -->
-      <div class="item-update">投稿者：<%= item.member.user_name %>　　更新日：<%= item.created_at.to_s %></div>
+      <div class="item-update">投稿者：<%= item.member.user_name %>　　更新日：<%= item.updated_at.to_s %></div>
       <!-- 状態-->
       状態：<%= item.borrow_state.name %>
-      <% if item.borrow_state.id==1%>　　　　　　　　　　　　
+      <% if item.borrow_state.id==1 || item.borrow_state.id==3%>　　
+        <% if item.borrow_state.id==1%>　　　　　　　　　　
           <%= link_to "編集", [:edit, item]%>　　
-          <%= link_to "削除", item, method: :delete , data: { confirm: "削除しても宜ですか？"} %>
+        <% end %>
+        <%= link_to "削除", item, method: :delete , data: { confirm: "削除しても宜ですか？"} %>
       <% end %>
     </div>
     </li>
     <% end %>
   </ul>
-
-      <%= debug(params) if Rails.env.development? %>
+<%= paginate @borrow_Items %>
+  <%= debug(params) if Rails.env.development? %>
 </div>
-
-

@@ -1,10 +1,11 @@
+#受信リクエスト一覧
 class ReceiveRepliesController < ApplicationController
   before_action :logged_in_member
-  
+
   def index
     @replies =BorrowReply.includes(:borrow_item).
               where(borrow_items: {member_id: current_member.id,delete_flg: false},
-              borrow_replies: {message_state_id: [1,2,3],delete_flg: false})
+              borrow_replies: {message_state_id: [1,2,3],delete_flg: false}).page(params[:page]).per(5)
   end
 
   def edit
@@ -35,7 +36,7 @@ class ReceiveRepliesController < ApplicationController
         flash.now[:notice] = "拒否しました。"
         render :action => :edit
       end
-    
+
     rescue => e
         #更新失敗の場合
         #更新ページにとどまる
@@ -44,6 +45,6 @@ class ReceiveRepliesController < ApplicationController
         #処理中
         @reply.borrow_item.borrow_state_id = 2
         render :action => :edit
-    end    
+    end
   end
 end

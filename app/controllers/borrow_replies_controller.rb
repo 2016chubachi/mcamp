@@ -2,13 +2,13 @@
 class BorrowRepliesController < ApplicationController
   before_action :logged_in_member
   def index
-    @borrow_replies = BorrowReply.current_member_reply(current_member).order(:message_state_id,:updated_at)
+    @borrow_replies = BorrowReply.current_member_reply(current_member).order(:message_state_id,updated_at: :DESC).page(params[:page]).per(5)
   end
 
   def edit
     @borrow_reply = BorrowReply.find(params[:id])
   end
-  
+
   def update
     @borrow_reply = BorrowReply.find(params[:id])
     begin
@@ -29,7 +29,7 @@ class BorrowRepliesController < ApplicationController
         #一覧に遷移
         redirect_to borrow_replies_path
       end
-    
+
     rescue => e
         #更新失敗の場合
         #更新ページにとどまる
@@ -40,7 +40,7 @@ class BorrowRepliesController < ApplicationController
         render :action => :edit
     end
   end
-  
+
   private
     def reply_params
       attrs = [:message]

@@ -5,7 +5,7 @@ class BorrowsController < ApplicationController
   #貸出アイテム一覧表示
   def index
     #削除されていないデータだけ表示
-    @loanItems = LoanItem.where(delete_flg: false).order(:loan_state_id)
+    @loanItems = LoanItem.where(delete_flg: false).order(:loan_state_id,updated_at: :DESC).page(params[:page]).per(5)
   end
 
   def edit
@@ -18,7 +18,7 @@ class BorrowsController < ApplicationController
     @loanItem = LoanItem.find(params[:id])
     #ログインされている場合
     if current_member
-        @requests = @loanItem.requests.where(member_id: current_member.id)
+        @requests = @loanItem.requests.where(member_id: current_member.id).page(params[:page]).per(3)
     end
     #該当アイテムの状態が：貸出可能
     if @loanItem.loan_state_id == 1
@@ -36,11 +36,11 @@ class BorrowsController < ApplicationController
     @loanItem.loan_state_id = 2
     if @loanItem.save
       flash.now[:notice] = "リクエストを送信しました。"
-      @requests = @loanItem.requests.where(member_id: current_member.id)
+      @requests = @loanItem.requests.where(member_id: current_member.id).page(params[:page]).per(3)
       render "edit"
     else
       @loanItem.loan_state_id = 1
-      @requests = @loanItem.requests.where(member_id: current_member)
+      @requests = @loanItem.requests.where(member_id: current_member).page(params[:page]).per(3)
       @newRequest = Request.new(request_params)
       render "edit"
     end

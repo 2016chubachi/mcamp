@@ -1,10 +1,10 @@
-#借りたい一覧、借りたいリクエスト送信
+#用品提供一覧、用品提供リクエスト送信
 class TendersController < ApplicationController
   before_action :logged_in_member, :except => ['index']
 
-  # 借りたい投稿一覧
+  # 用品提供投稿一覧
   def index
-    @borrow_items = BorrowItem.current_member_borrow_items(nil).order(:borrow_state_id,:updated_at)
+    @borrow_items = BorrowItem.current_member_borrow_items(nil).order(:borrow_state_id,updated_at: :DESC).page(params[:page]).per(5)
   end
 
   def edit
@@ -17,7 +17,7 @@ class TendersController < ApplicationController
     @borrow_item = BorrowItem.find(params[:id])
     #該当ユーザーのリクエスト
     if current_member
-      @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member)
+      @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member).page(params[:page]).per(3)
     end
     #アイテムステータスが「募集中」の場合
     if @borrow_item.borrow_state.id == 1
@@ -40,11 +40,11 @@ class TendersController < ApplicationController
     if @borrow_item.save
       flash.now[:notice] = "リクエストを送信しました。"
       #@borrow_item.update_attribute(:borrow_state_id,2)
-      @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member)
+      @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member).page(params[:page]).per(3)
       render "edit"
     else
       @borrow_item.borrow_state_id = 1
-      @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member)
+      @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member).page(params[:page]).per(3)
       @newBorrowReply = BorrowReply.new(borrow_reply_params)
       render "edit"
     end
