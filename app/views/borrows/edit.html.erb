@@ -32,7 +32,7 @@
       <hr size="1" />
       <!-- date -->
       <li>更新日：</li>
-      <p class="show-p"><%= @loanItem.created_at.to_s %></p>
+      <p class="show-p"><%= @loanItem.updated_at.strftime("%Y/%m/%d") %></p>
       <hr size="1" />
       <!--アイテム説明-->
       <li>アイテム説明：</li>

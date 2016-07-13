@@ -22,7 +22,7 @@
     <%= "貸出場所：#{item.location}" %></div>
     <!-- 更新日 -->
     <div class="item-update">
-    <%= "投稿者：#{item.member.user_name}" %>　<%= "更新日：#{item.updated_at.to_s}"  %></div>
+    <%= "投稿者：#{item.member.user_name}" %>　<%= "更新日：#{item.updated_at.strftime("%Y/%m/%d")}"  %></div>
     </div>
     </li>
     <% end%>
