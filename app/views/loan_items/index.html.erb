@@ -37,7 +37,7 @@
   </li>
     <% end%>
   </ul>
-
+  <%= paginate @loan_items %>
   <%= debug(params) if Rails.env.development? %>
 </div>
 
