@@ -65,6 +65,7 @@
                   </tbody>
               </table>
           <% end%>
+          <%= paginate @requests ,:params => {:controller => 'borrows', :action => 'edit'}%>
       <% end%>
       <%= render "shared/errors", obj: @loanItem %>
       <% if @newRequest %>

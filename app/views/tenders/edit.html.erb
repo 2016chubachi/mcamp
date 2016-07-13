@@ -61,7 +61,9 @@
                   </tbody>
               </table>
           <% end%>
+          <%= paginate @borrowReplies ,:params => {:controller => 'tenders', :action => 'edit'}%>
       <% end%>
+
       <%= render "shared/errors", obj: @borrow_item %>
       <% if @newBorrowReply%>
           <%= form_for(@borrow_item,url: {:controller => :tenders,:action => :update}) do |form| %>
