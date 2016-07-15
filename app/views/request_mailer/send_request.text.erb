@@ -1,0 +1,12 @@
+リクエスト送信通知
+
+こんにちは <%= @request.loan_item.member.name %>さん
+
+以下のアイテムへのリクエストが届きました。
+
+メッセージ内容：
+<%= @request.message %>
+<%= link_to @request.loan_item.item_name , receive_request_url(@request) %>
+
+申請者：<%= @request.member.name %>
+連絡先：<%= @request.member.email %>
