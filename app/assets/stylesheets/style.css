@@ -16,20 +16,20 @@ body {
 	color: #333;
 	background-repeat: repeat-x;
 	font: 14px/1.5 "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 
 
 	/* for IE7 */
 	*+html body {
-	font-family:'メイリオ', 'ＭＳ Ｐゴシック';
+	font-family: "メイリオ", "ＭＳ Ｐゴシック";
 	font-size:75%;
 	}
 
 	/* for IE6 */
 	* html body {
-	font-family:'ＭＳ Ｐゴシック';
+	font-family: "ＭＳ Ｐゴシック";
 	font-size:75%;
 	}
 
@@ -110,11 +110,8 @@ vertical-align: top;
 /*画像を中央に(垂直方向）*/
 .img{
 	vertical-align:middle;
-	padding: 0px;
-	margin-top: 0px;
+	padding: 0;
 	margin-right: 5px;
-	margin-bottom: 0px;
-	margin-left: 0px;
 }
 /*画像を右寄せ*/
 .imgright {
@@ -124,7 +121,7 @@ vertical-align: top;
 /*画像を左寄せ*/
 .imgleft {
 	float: left;
-	margin: 0px 10px 10px;
+	margin: 0 10px 10px;
 	}
 /* ---------- /img ---------- */
 
@@ -137,12 +134,12 @@ overflow:hidden;
 h1, h2, h3, h4, h5, h6 {
 	font-size:100%;
 	font-weight:normal;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 hr{
 	border: dashed #999;
-	border-width:1px 0px 0px 0px;
+	border-width:1px;
 }
 /*下余白指定*/
 .mb_10{
@@ -170,7 +167,7 @@ hr{
 	width: 820px;
 	margin: 0 auto;
 	text-align:left;
-	padding: 0px;
+	padding: 0;
 	overflow:hidden;
 }
 
@@ -180,8 +177,8 @@ hr{
 	background-image: url(/assets/head_bg.jpg);
 	background-repeat: no-repeat;
 	width: 100%;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 	height: 140px;
 }
 #header h1{
@@ -191,7 +188,7 @@ hr{
 #logo {
 	font-size: 20px;
 	color: #333;
-	margin: 0px;
+	margin: 0;
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
@@ -280,8 +277,8 @@ ul#globalNavi:after {
 #submenu ul{
 	list-style: none;
 	width: 200px;
-	margin: 0px;
-	padding: 0px;
+	margin: 0;
+	padding: 0;
 }
 
 #submenu li{
@@ -349,9 +346,9 @@ ul#globalNavi:after {
 }
 .main_box2 hr{
 	border-top: 1px dashed #690;
-	border-right: 0px dashed #690;
-	border-bottom: 0px dashed #690;
-	border-left: 0px dashed #690;
+	border-right: 0 dashed #690;
+	border-bottom: 0 dashed #690;
+	border-left: 0 dashed #690;
 }
 /*ページトップ*/
 #pagetop{

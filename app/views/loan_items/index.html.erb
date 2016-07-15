@@ -28,11 +28,13 @@
         貸出場所：<%= loan_item.location %></div>
       <!-- 更新日 -->
       <div class="item-update">
-        更新日：<%= loan_item.created_at.strftime("%Y/%m/%d %H:%M") %></div>
+        更新日：<%= loan_item.updated_at.strftime("%Y/%m/%d") %></div>
       <!-- 状態-->
-      状態：<%= loan_item.loan_state.name %>　　　　　　　　　　　　
+      状態：<%= loan_item.loan_state.name %>
+      <div class="function">
       <%= link_to "編集", [:edit, loan_item]%>　　
       <%= link_to "削除", loan_item, method: :delete , data: { confirm: "本当に削除しますか？"} %>
+        </div>
     </div>
   </li>
     <% end%>
