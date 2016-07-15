@@ -38,6 +38,8 @@ class BorrowsController < ApplicationController
     @loanItem.loan_state_id = 2
     if @loanItem.save
       flash.now[:notice] = "リクエストを送信しました。"
+      #メール送信
+      #RequestMailer.send_request(Request.where(member_id: current_member.id).order(id: :DESC).limit(1)[0]).deliver_now
       @requests = @loanItem.requests.where(member_id: current_member.id).page(params[:page]).per(3)
       render "edit"
     else
