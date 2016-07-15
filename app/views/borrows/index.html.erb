@@ -7,9 +7,9 @@
     <!-- 図 -->
     <div class="item-pic"><%= loan_item_image_tag item %></div>
     <!-- アイテム名 -->
-    <h5 class="item-title"><%= link_to item.item_name, edit_borrow_path(:id=> item.id)%></h5>
+    <h5 class="item-title"><%= link_to truncate(item.item_name,length: 15), edit_borrow_path(:id=> item.id)%></h5>
     <!-- カテゴリー-->
-    <div class="item-ctlg"><%= truncate(item.category.name,length: 20) %></div>
+    <div class="item-ctlg"><%= truncate(item.category.name,length: 8)%></div>
     <br/>
     <!-- 料金 -->
     <div class="item-price"><%= item.fare %>円</div>
@@ -19,7 +19,7 @@
     <br/>
     <!-- 貸出場所　-->
     <div class="item-place">
-    <%= "貸出場所：#{item.location}" %></div>
+    <%= "貸出場所：#{truncate(item.location,length: 15)}" %></div>
     <!-- 更新日 -->
     <div class="item-update">
     <%= "投稿者：#{item.member.user_name}" %>　<%= "更新日：#{item.updated_at.strftime("%Y/%m/%d")}"  %></div>
