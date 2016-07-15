@@ -8,7 +8,7 @@
           アイテム名
         </td>
         <td class="tdcontent1">
-          <%= link_to @borrow_reply.borrow_item.item_name,edit_tender_path(@borrow_reply.borrow_item)%>
+          <%= link_to truncate(@borrow_reply.borrow_item.item_name,length: 10),edit_tender_path(@borrow_reply.borrow_item)%>
         </td>
         <td class="tdlabel">
           状態
@@ -22,7 +22,7 @@
         <%= render "shared/errors", obj: @borrow_reply %>
         <%= form_for(@borrow_reply) do |form| %>
           <%= render partial: "form", locals:{f: form} %>
-          
+
           <% if @borrow_reply.message_state.id == 1%>
             <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}%>
             <%= submit_tag "リクエスト取消", :name => "cancel",data: {confirm: "取消しても宜しいですか？"} %>

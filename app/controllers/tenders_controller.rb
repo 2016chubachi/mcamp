@@ -15,13 +15,15 @@ class TendersController < ApplicationController
     #   @borrow_item.borrow_replies.build({member_id: current_member.id,message_state_id: 1,delete_flg: false})
     #end
     @borrow_item = BorrowItem.find(params[:id])
-    #該当ユーザーのリクエスト
-    if current_member
-      @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member).page(params[:page]).per(3)
-    end
-    #アイテムステータスが「募集中」の場合
-    if @borrow_item.borrow_state.id == 1
-        @newBorrowReply = BorrowReply.new
+    if current_member.id != @borrow_item.member_id
+      #該当ユーザーのリクエスト
+      if current_member
+        @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member).page(params[:page]).per(3)
+      end
+      #アイテムステータスが「募集中」の場合
+      if @borrow_item.borrow_state.id == 1
+          @newBorrowReply = BorrowReply.new
+      end
     end
   end
 

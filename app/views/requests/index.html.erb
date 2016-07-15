@@ -6,8 +6,8 @@
       <tbody>
         <tr>
           <td class="td1">
-            <p class="p1"><%= link_to item.loan_item.item_name,edit_borrow_path(:id => item.loan_item.id)%></p>
-            <p class="p2"><%= link_to truncate(item.message,length: 20),edit_request_path(id: item.id) %></p>
+            <p class="p1"><%= link_to truncate(item.loan_item.item_name,length: 15),edit_borrow_path(:id => item.loan_item.id)%></p>
+            <p class="p2"><%= link_to truncate(item.message,length: 15),edit_request_path(id: item.id) %></p>
             <!-- 投稿者-->
             <p class="p4 f1">申込日 <%= item.created_at.to_s %></p>
             <p class="p4 f1">更新日 <%= item.updated_at.to_s %></p>
