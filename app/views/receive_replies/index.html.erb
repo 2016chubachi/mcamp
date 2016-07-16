@@ -1,30 +1,20 @@
 <%= render partial: "shared/sidebar", locals:{subType: "BorrowItems"} %>
-<div class="sendrequest">
+<div id="main">
   <% if @replies %>
-    <table class="tb1">
-      <% @replies.each do |item|%>
-      <tbody>
-        <tr>
-          <td class="td1">
-            <p class="p1"><%= link_to truncate(item.borrow_item.item_name,length: 15),item.borrow_item%></p>
-            <p class="p2"><%= link_to truncate(item.message,length: 15),edit_receive_reply_path(item) %></p>
-            <!-- 投稿者-->
-            <p class="p4 f1">申込日 <%= item.created_at.to_s %></p>
-            <p class="p4 f1">更新日 <%= item.updated_at.to_s %></p>
-          </td>
-          <td class="td2">
-            <!-- 状態-->
-            <% if item.message_state %>
-              <%= item.message_state.name %>
-            <% end %>
-          </td>
-          <td class="td3">
-              <%= link_to "編集", edit_receive_reply_path(item) %>
-          </td>
-        </tr>
-      </tbody>
-     <% end %>
-    </table>
+        <% @replies.each do |item|%>
+          <!--item name-->
+          <p class="rcv-msg"><%= link_to truncate(item.borrow_item.item_name,length: 15),item.borrow_item %></p>
+          <!-- status -->
+              <% if item.message_state %>
+              <%= link_to item.message_state.name, edit_receive_reply_path(item), class: "stus-icon stus-rply" %>
+              <% end %>
+          <!-- message -->
+          <%= truncate(item.message,length: 15) %>
+          <!-- date -->
+          <p>申込日 <%= item.created_at.to_s %>　　更新日 <%= item.updated_at.to_s %></p>
+          <br/>
+      <% end %>
     <%= paginate @replies %>
   <% end %>
 </div>
+
