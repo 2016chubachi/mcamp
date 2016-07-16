@@ -1,13 +1,8 @@
 <%= render "shared/errors", obj: @loanItem %>
-<table>
-  <tbody>
-    <tr>
-      <td class="tdlabel">
-          <%= f.label :message, "メッセージ" %>
-      </td>
-    </tr>
-    <tr>
-      <td class="td2">
+
+      <p class="cuttingline">><%= f.label :message, "メッセージ" %></p>
+
+
         <% if @request.message_state.id == 1 %>
           <%= f.text_area :message ,:size => "81x5" %>
         <% else %>
@@ -17,7 +12,3 @@
           <%= f.hidden_field :member_id %>
           <%= f.hidden_field :message_state_id %>
           <%= f.hidden_field :delete_flg %>
-      </td>
-    </tr>
-  </tbody>
-</table>

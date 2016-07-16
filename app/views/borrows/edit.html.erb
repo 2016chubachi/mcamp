@@ -8,13 +8,14 @@
       </div>
   <% end%>
 
+  <!--deatails-->
   <!--アイテム名-->
   <p id="show-itm-tle"><%= truncate(@loanItem.item_name,length: 20) %></p>
   <!--状態-->
   <p class="stus-icon show-itm-stus"><%= @loanItem.loan_state.name %></p>
   <!--図-->
   <div id="show-itm-pic"><%= loan_item_image_tag @loanItem %></div>
-  <h3 style="font-size: 16px;">基本資料</h3>
+  <h3>基本資料</h3>
 
   <div class="main_box2">
     <ul id="show-item">
@@ -45,38 +46,35 @@
   <input type="button" value="戻る" class="button" onclick="window.history.back()">
   <br/>
   <br/>
-  <div>
-    <% if current_member%>
-      <hr>
+
+  <!--request form-->
+<div>
+  <% if current_member%>
       <% if @requests%>
           <% @requests.each do |request|%>
-              <table width="100%">
-                  <tbody>
-                      <tr>
-                          <td class="td1">
-                              <p><%="メッセージ （#{request.message_state.name}）"%> </p>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td class="td2">
-                              <p><%=request.message%></p>
-                          </td>
-                      </tr>
-                  </tbody>
-              </table>
+              From
+              <hr>
+              <p class="msg"><%=request.message%>
+              <br/>
+              <%= "#{request.message_state.name}"%></p>
+              <br/>
+              <br/>
           <% end%>
           <%= paginate @requests ,:params => {:controller => 'borrows', :action => 'edit'}%>
       <% end%>
+
       <%= render "shared/errors", obj: @loanItem %>
       <% if @newRequest %>
-        <%= form_for(@loanItem,url: {:controller => :borrows,:action => :update}) do |form| %>
-          <%= form.fields_for @newRequest do |message| %>
-              <%= render partial: "form", locals:{f: message} %>
+          <%= form_for(@loanItem,url: {:controller => :borrows,:action => :update}) do |form| %>
+              <%= form.fields_for @newRequest do |message| %>
+                  <%= render partial: "form", locals:{f: message} %>
+              <% end%>
+              <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"}, class:"button" %>
+              <%= debug(params) if Rails.env.development? %>
           <% end%>
-          <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"} %>
-          <%= debug(params) if Rails.env.development? %>
-        <% end%>
       <% end%>
-    <% end%>
-  </div>
+  <% end%>
+
+</div>
+
 </div>

@@ -18,6 +18,11 @@
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
 
+  p{
+    color: #009900;
+    font-weight: bold;
+  }
+
   th{
     width: 30%;
   }
@@ -27,7 +32,7 @@
     height: 30px;
     line-height: 15px;
     width: 80%;
-    padding: 0px 0px;
+    padding: 0 0;
     margin-top: 2px;
     border: 1px solid #E5E5E5;
     background: #FBFBFB;
@@ -41,8 +46,8 @@
     padding-top: 10px;
   }
   select {
-    background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
-    background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FBFBFB), color-stop(100%, #E9E9E9));
+    background: url('/assets/down-arrow1.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
+    background: url('/assets/down-arrow1.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%, #FBFBFB), color-stop(100%, #E9E9E9));
     appearance: none;
     -webkit-appearance: none;
     -moz-appearance: none;

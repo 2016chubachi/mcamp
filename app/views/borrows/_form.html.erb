@@ -1,4 +1,21 @@
-<table>
+<!-- message and status-->
+<% if f.object.new_record? %>
+    <h2><%= f.label :message, "申込メッセージ" %></h2>
+<% else %>
+    <hr>
+    <p class="msg"><%= f.label :message, "メッセージ （"+f.object.message_state.name+"）" %></p>
+<% end %>
+<br/>
+<!-- kind of message-->
+<% if f.object.new_record? %>
+    <%= f.text_area :message ,:size => "83x5" %>
+<% else %>
+    <%= f.text_area :message ,:size => "83x5", :readonly => true%>
+<% end %>
+
+
+<!--
+table>
   <tbody>
     <tr>
       <td class="td1">
@@ -19,4 +36,5 @@
       </td>
     </tr>
   </tbody>
-</table>
+</table
+-->

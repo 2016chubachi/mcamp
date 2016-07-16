@@ -1,36 +1,39 @@
 <%= render partial: "shared/sidebar", locals:{subType: "Tenders"} %>
 
-<div class="borrowmessageshow">
-  <table class="itemdetail">
-    <tbody>
-      <tr class="tr1">
-        <td class="tdlabel">
-          アイテム名
-        </td>
-        <td class="tdcontent1">
-          <%= link_to truncate(@borrow_reply.borrow_item.item_name,length: 10),edit_tender_path(@borrow_reply.borrow_item)%>
-        </td>
-        <td class="tdlabel">
-          状態
-        </td>
-        <td class="tdcontent1">
-          <%= @borrow_reply.message_state.name %>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="4">
+<div id="main">
+<br/>
+  <table class="smart-green">
+    <tr>
+      <th>
+        アイテム名
+      </th>
+      <td>
+        <%= truncate(@borrow_reply.borrow_item.item_name,length: 10) %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        状態
+      </th>
+      <td>
+        <p><%= @borrow_reply.message_state.name %></p>
+      </td>
+    </tr>
+    <tr>
         <%= render "shared/errors", obj: @borrow_reply %>
         <%= form_for(@borrow_reply) do |form| %>
-          <%= render partial: "form", locals:{f: form} %>
+            <%= render partial: "form", locals:{f: form} %>
 
-          <% if @borrow_reply.message_state.id == 1%>
-            <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}%>
-            <%= submit_tag "リクエスト取消", :name => "cancel",data: {confirm: "取消しても宜しいですか？"} %>
-          <% end%>
-          <%= debug(params) if Rails.env.development? %>
+            <% if @borrow_reply.message_state.id == 1%>
+                <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}, class: "button" %>　　　　
+                <%= submit_tag "キャンセル", :name => "cancel",data: {confirm: "取消しても宜しいですか？"}, class: "button" %>
+            <% end%>
         <% end%>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+    </tr>
+    </table>
+
+  <input type="button" value="戻る" class="button" onclick="window.history.back()" style="margin-left: 30px">
+
+  <%= debug(params) if Rails.env.development? %>
+
 </div>
