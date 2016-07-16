@@ -5,16 +5,15 @@
   <% if @borrow_replies %>
         <% @borrow_replies.each do |item|%>
           <!--item name-->
-            <p class="webcri"><%= link_to truncate(item.borrow_item.item_name,length: 15),edit_tender_path(item.borrow_item)%></h2>
+            <p class="webcri"><%= link_to truncate(item.borrow_item.item_name,length: 15),edit_tender_path(item.borrow_item)%></p>
           <!-- 状態-->
             <% if item.message_state %>
-              <p class="stus-icon item-stus"><%= item.message_state.name %></p>
+              <%= link_to item.message_state.name,[:edit,item], class: "stus-icon stus-rply" %>
             <% end %>
           <!--message-->
           <p><%= truncate(item.message,length: 15) %></p>
             <!-- date-->
             <p>申込日 <%= item.created_at.to_s %>　　更新日 <%= item.updated_at.to_s %></p>
-          <div class="function"><%= link_to "編集", [:edit,item] %></div>
           <br/>
           <br/>
         <% end %>
