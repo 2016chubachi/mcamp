@@ -43,7 +43,6 @@
       <li>貸出条件：</li>
       <p class="show-p"><%= @loanItem.term %></p>
     </ul></div>
-  <input type="button" value="戻る" class="button" onclick="window.history.back()">
   <br/>
   <br/>
 
@@ -63,19 +62,19 @@
           <% end%>
           <%= paginate @requests ,:params => {:controller => 'borrows', :action => 'edit'}%>
       <% end%>
-<!---requst form-->
+<!--error message-->
       <%= render "shared/errors", obj: @loanItem %>
+      <!---requst form-->
       <% if @newRequest %>
           <%= form_for(@loanItem,url: {:controller => :borrows,:action => :update}) do |form| %>
               <%= form.fields_for @newRequest do |message| %>
                   <%= render partial: "form", locals:{f: message} %>
               <% end%>
               <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"}, class:"button" %>
-              <%= debug(params) if Rails.env.development? %>
           <% end%>
       <% end%>
   <% end%>
 
 </div>
-
+  <br/>
 </div>
