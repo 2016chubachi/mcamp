@@ -5,28 +5,21 @@
 <div id="main">
 <% @receive_requests.each do |request|%>
 
-  アイテム名：
-  <%= link_to request.loan_item.item_name, loan_item_path(id: request.loan_item.id) %><br>
+      <!--アイテム名 and 申し込みユーザー-->
+      <p class="rcv-msg"><%= link_to request.loan_item.item_name, loan_item_path(id: request.loan_item.id) %> from <%= request.member.user_name %></p>
 
-  <!-- 画像 -->
-  <%= loan_item_image_tag request.loan_item %> <br>
 
-  状態：
-  <% if request.message_state %>
-    <%= request.message_state.name %><br>
-  <% end %>
+      <!--状態-->
+      <% if request.message_state %>
+          <%= link_to request.message_state.name, receive_request_path(id: request.id), class: "stus-icon stus-rply" %>
+      <% end %>
 
-  申し込みユーザー：
-  <%= request.member.user_name %> <br>
+      <!--メッセージ-->
+      <%= truncate(request.message, length: 20) %>
+      <!-- date -->
+      <p>申込日 <%= request.created_at.to_s %>　　更新日 <%= request.updated_at.to_s %></p>
+ <br/>
 
-  更新日：
-  <%= request.updated_at.strftime("%Y/%m/%d %H:%M") %> <br>
-
-  メッセージ：
-  <%= truncate(request.message, length: 80) %> <br>
-
-  <%= link_to "詳細", receive_request_path(id: request.id) %> <br>
-  <br>
 
 <% end %>
 <%= debug(params) %>
