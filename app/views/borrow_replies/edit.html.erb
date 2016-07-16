@@ -25,8 +25,8 @@
             <%= render partial: "form", locals:{f: form} %>
 
             <% if @borrow_reply.message_state.id == 1%>
-                <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}, class: "button" %>　　　　
-                <%= submit_tag "キャンセル", :name => "cancel",data: {confirm: "取消しても宜しいですか？"}, class: "button" %>
+                <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}, class: "button" %>　　　
+                <%= submit_tag "取消", :name => "cancel",data: {confirm: "取消しても宜しいですか？"}, class: "button" %>
             <% end%>
         <% end%>
     </tr>

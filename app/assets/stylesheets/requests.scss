@@ -1,47 +1,129 @@
 // Place all the styles related to the Requests controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.sendrequest{
-    padding:6px;margin-top:0px;
-    .tb1{width:70%;}
-    .tb1 td{border-bottom:1px solid #C2D5E3;padding:5px 0;}
-    .tb1 .f1{color:#999999;}
-    .tb1 .td1{width:60%;height:100px;padding: 5px;}
-    .tb1 .td2{line-height:22px;}
-    .td2{width:20%;}
-    .tb1 .td2 .p1 a{font-size:15px;}
-    .td3{width:20%;text-align:right;}
-    .p1{display:block;height:23px;width:250px;overflow:hidden;margin-top: 5px;margin-bottom: 5px;}
-    .p2{display:block;height:20px;width:250px;overflow:hidden;margin-top: 1px;margin-bottom: 1px}
-    .p3{display:block;height:20px;width:250px;overflow:hidden;margin-top: 1px;margin-bottom: 1px}
-    .p4{display:block;height:20px;width:250px;overflow:hidden;margin-top: 1px;margin-bottom: 1px}
+//reply and send.css
+
+.webcri {
+  position: relative;
+  padding-left: 25px;
+  border-bottom: 3px solid #090;
+  color: #666;
+  font-size: 23px;
+  line-height: 32px;
 }
-.borrowmessageshow{
-    padding-top:20px;
-    .itemdetail{
-        width:65%;
-        border-color:red;
-        padding-left:10px;
-        td{
-            border: 2px silver solid;
-        }
-    }
-    .tr1{
-        height:30px;
-    }
-    .tr2{
-        height:50px;
-    }
-    .tr3{
-        height:100px;
-    }
-    .tdlabel{
-        width:20%;
-        background-color:silver;
-    }
-    .tdcontent1{
-        width:30%;
-    }
-    .tdcontent2{
-    }
+
+.webcri:before {
+  position: absolute;
+  top: -8px;
+  left: 7px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  height: 12px;
+  width: 12px;
+  background: #9DC45F;
+  content: "";
+}
+
+.webcri:after {
+  position: absolute;
+  top: 8px;
+  left: 2px;
+  transform: rotate(15deg);
+  -webkit-transform: rotate(15deg);
+  height: 8px;
+  width: 8px;
+  background: #9DC45F;
+  content: "";
+}
+
+.msg{
+  position:relative;
+  margin:0 22px 0 10px;
+  padding:14px 15px 0 20px;
+  font:normal 22px/1.3 serif;
+  color:#090;
+  background:#ffc;
+  box-shadow:
+          12px 0 0 0 #ffc,
+          0 12px 0 0 #ffc,
+          1px 15px 4px -3px rgba(0,0,0,0.2);
+}
+
+.msg:before{
+  content:" ";
+  position:absolute;
+  top:100%;
+  left:100%;
+  width:0;
+  height:0;
+  border-width:12px 12px 0 0;
+  border-style:solid;
+  border-color:transparent;
+  border-top-color:#cc9;
+}
+
+.msg:after{
+  content:" ";
+  position:absolute;
+  padding:0 20px;
+  bottom:0;
+  right:10px;
+  width:120px;
+  height:20px;
+  background:rgba(255,182,182,0.4);
+  -webkit-transform: rotate(-1deg);
+  -moz-transform: rotate(-1deg);
+  -o-transform: rotate(-1deg);
+  transform: rotate(-1deg);
+}
+
+.stus-rply {
+  display: inline;
+  float:right;
+  padding: 10px 20px;
+  margin-top: -20px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 14px;
+  background: #9dc45f;
+  transition: background 0.2s;
+
+  &:hover {
+    color: #fff;
+    background: #80A24A;
+  }
+}
+
+.stus-rply:before {
+  margin-right: 5px;
+}
+
+//receive.css
+
+.rcv-msg {
+  position: relative;
+  padding-left: 35px;
+  border-bottom: 3px solid forestgreen;
+  color: #f333;
+  font-size: 23px;
+  line-height: 32px;
+}
+.rcv-msg:before {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  width: 13px;
+  height: 13px;
+  border: 2px solid #090;
+  content: "";
+}
+
+.rcv-msg:after {
+  position: absolute;
+  top: 3px;
+  left: 9px;
+  width: 10px;
+  height: 10px;
+  border: 2px solid #7ce294;
+  content: "";
 }
