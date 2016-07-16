@@ -2,40 +2,37 @@
 
 <div id="main">
 
+  <!--error message-->
 <% if flash.notice %>
   <p class="notice"><%= flash.notice %></p>
 <% end%>
 
-アイテム名：
-<%= link_to @receive_request.loan_item.item_name,
-  loan_item_path(id: @receive_request.loan_item.id)  %> <br>
+
+  <!--message form-->
+  <!--item name and applyer-->
+    <p class="rcv-msg"><%= link_to @receive_request.loan_item.item_name,
+  loan_item_path(id: @receive_request.loan_item.id) %> from <%= @receive_request.member.user_name %> </p>
 
 <!-- アイテムの持ち主：
-<%= @receive_request.loan_item.member.name %><br> -->
+<%#= @receive_request.loan_item.member.name %><br> -->
 
-<!-- 画像 -->
-<%= loan_item_image_tag @receive_request.loan_item %> <br>
-
-状態：
-<% if @receive_request.message_state %>
-  <%= @receive_request.message_state.name %><br>
-<% end %>
-
-申し込みユーザー：
-<%= @receive_request.member.user_name %> <br>
-
-更新日：
-<%= @receive_request.updated_at.strftime("%Y/%m/%d %H:%M") %> <br>
-
-メッセージ：
-<%= @receive_request.message %> <br>
-
-<%= form_for(@receive_request, url: {:controller => :receive_requests,:action => :update}) do |form| %>
-    <%= form.submit "承認",  :name => "accept_request" %>
-    <%= form.submit "拒否",  :name => "refuse_request" %>
-<% end %>
-<br>
-
-<%= debug(params) if Rails.env.development? %>
-
+<!-- 画像
+<%#= loan_item_image_tag @receive_request.loan_item %> <br-->
+  <!--message-->
+  <div class="msg">
+    <%= form_for(@receive_request, url: {:controller => :receive_requests,:action => :update}) do |form| %>
+    <%= @receive_request.message %>
+        <br/>更新日：<%= @receive_request.updated_at.to_s %>
+        <!--status-->
+        <p align="right">
+          <% if @receive_request.message_state %>
+              <%= @receive_request.message_state.name %><br>
+          <% end %>
+        </p>
+  </div>
+        <div class="function">
+          <%= form.submit "承認",  :name => "accept_request",data: {confirm: "承認しても宜しいですか？"}, class: "button" %>　　
+          <%= form.submit "拒否",  :name => "refuse_request",data: {confirm: "拒否しても宜しいですか？"}, class: "button" %>
+        </div>
+  <% end %>
 </div>
