@@ -2,9 +2,9 @@
 
   <table class="smart-green">
     <tr>
-      <td>
+      <th>
         <%= f.label :item_name %>
-      </td>
+      </th>
       <td>
         <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
           <%= f.text_field :item_name %>
@@ -15,9 +15,9 @@
       </td>
     </tr>
     <tr>
-      <td>
+      <th>
         <%= f.label :category_id %>
-      </td>
+      </th>
       <td>
         <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
           <%= f.collection_select :category_id, Category.all, :id, :name %>
@@ -27,9 +27,9 @@
       </td>
     </tr>
     <tr>
-      <td>
+      <th>
         <%= f.label :fare %>
-      </td>
+      </th>
       <td>
         <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
           <%= f.text_field :fare %>
@@ -39,9 +39,9 @@
       </td>
     </tr>
     <tr>
-      <td>
+      <th>
         <%= f.label :location %>
-      </td>
+      </th>
       <td>
         <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
           <%= f.text_field :location %>
@@ -51,9 +51,9 @@
       </td>
     </tr>
     <tr>
-      <td>
+      <th>
         <%= f.label :term %>
-      </td>
+      </th>
       <td>
         <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
           <%= f.text_area :term %>
@@ -63,9 +63,9 @@
       </td>
     </tr>
     <tr>
-      <td>
+      <th>
         <%= f.label :item_description %>
-      </td>
+      </th>
       <td>
         <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
           <%= f.text_area :item_description %>
@@ -76,7 +76,7 @@
     </tr>
     <% if !f.object.new_record? %>
         <tr>
-          <td><%= f.label :loan_state_id %></td>
+          <th><%= f.label :loan_state_id %></th>
           <td>
             <%= @loan_item.loan_state.name %>
           </td>
@@ -90,10 +90,10 @@
 
     <%= f.fields_for :loan_item_image do |imgf| %>
         <tr>
-          <td>
+          <th>
             <!--画像-->
             <%= imgf.label :uploaded_image %>
-          </td>
+          </th>
           <td>
             <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
               <%= imgf.file_field :uploaded_image %></br>

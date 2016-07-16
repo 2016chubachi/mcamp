@@ -2,56 +2,56 @@
 
 <table class="smart-green">
   <tr>
-    <td>
+    <th>
       <%= f.label :item_name %>
-    </td>
+    </th>
     <td>
       <%= f.text_field :item_name,:size=>"40*3" %>
     </td>
   </tr>
   <tr>
-    <td>
+    <th>
       <%= f.label :category_id %>
-    </td>
+    </th>
     <td>
       <%= f.collection_select :category_id, Category.all, :id, :name %>
     </td>
   </tr>
   <tr>
-    <td>
+    <th>
       <%= f.label :fare %>
-    </td>
+    </th>
     <td>
       <%= f.text_field :fare %>
     </td>
   </tr>
   <tr>
-    <td>
+    <th>
       <%= f.label :location %>
-    </td>
+    </th>
     <td>
       <%= f.text_field :location ,:size=>"40*3" %>
     </td>
   </tr>
   <tr>
-    <td>
+    <th>
       <%= f.label :term %>
-    </td>
+    </th>
     <td>
       <%= f.text_area :term ,:size=>"40*3" %>
     </td>
   </tr>
   <tr>
-    <td>
+    <th>
       <%= f.label :item_description%>
-    </td>
+    </th>
     <td>
       <%= f.text_area :item_description,:size=>"40*3" %>
     </td>
   </tr>
   <% if !f.object.new_record? %>
       <tr>
-        <td><%= f.label :borrow_state_id %></td>
+        <th><%= f.label :borrow_state_id %></th>
         <td>
           <%= f.collection_select :borrow_state_id, BorrowState.all, :id, :name, :selected => 1 %>
         </td>
