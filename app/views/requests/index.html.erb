@@ -1,29 +1,23 @@
 <%= render partial: "shared/sidebar", locals:{subType: "Borrows"} %>
-<div class="sendrequest">
+
+<div id="main">
+
   <% if @requests %>
-    <table class="tb1">
+
       <% @requests.each do |item|%>
-      <tbody>
-        <tr>
-          <td class="td1">
-            <p class="p1"><%= link_to truncate(item.loan_item.item_name,length: 15),edit_borrow_path(:id => item.loan_item.id)%></p>
-            <p class="p2"><%= link_to truncate(item.message,length: 15),edit_request_path(id: item.id) %></p>
-            <!-- 投稿者-->
-            <p class="p4 f1">申込日 <%= item.created_at.to_s %></p>
-            <p class="p4 f1">更新日 <%= item.updated_at.to_s %></p>
-          </td>
-          <td class="td2">
-            <!-- 状態-->
-            <% if item.message_state %>
-              <%= item.message_state.name %>
-            <% end %>
-          </td>
-          <td class="td3">
-              <%= link_to "編集", edit_request_path(id: item.id) %>
-          </td>
-        </tr>
-      </tbody>
-     <% end %>
-    </table>
+            <!--item name-->
+              <p class="webcri"><%= link_to truncate(item.loan_item.item_name,length: 15),edit_borrow_path(:id => item.loan_item.id)%></p>
+          <!-- 状態-->
+          <% if item.message_state %>
+              <%= link_to item.message_state.name, edit_request_path(id: item.id), class:"stus-icon stus-rply" %>
+          <% end %>
+            <!--message-->
+          <p><%= truncate(item.message,length: 15) %></p>
+            <!--date-->
+          <p>申込日 <%= item.created_at.to_s %>　　更新日 <%= item.updated_at.to_s %></p>
+          <br/>
+      <% end %>
+
   <% end %>
+
 </div>
