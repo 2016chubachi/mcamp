@@ -7,6 +7,8 @@
       </div>
       <br/>
   <% end%>
+
+  <!--details-->
   <!--アイテム名-->
   <p id="show-itm-tle"><%= truncate(@borrow_item.item_name,length: 20) %></p>
   <!--状態-->
@@ -41,39 +43,36 @@
     </ul>
   </div>
   <input type="button" value="戻る" class="button" onclick="window.history.back()">
+
+ <!--send message-->
   <div>
   <% if current_member %>
-    <hr>
       <% if @borrowReplies%>
           <% @borrowReplies.each do |reply|%>
-              <table width="100%">
-                  <tbody>
-                      <tr>
-                          <td class="td1">
-                              <p><%="メッセージ （#{reply.message_state.name}）"%> </p>
-                          </td>
-                      </tr>
-                      <tr>
-                          <td class="td2">
-                              <p><%=reply.message%></p>
-                          </td>
-                      </tr>
-                  </tbody>
-              </table>
+
+              <p align="right"><%= reply.updated_at.to_s %></p>
+                <hr>
+                <div class="msg">
+                  <%=reply.message%>
+              <p align="right"><%="#{reply.message_state.name}"%></p>
+            </div>
+            <br/>
+
           <% end%>
           <%= paginate @borrowReplies ,:params => {:controller => 'tenders', :action => 'edit'}%>
       <% end%>
 
+ <!--message form-->
       <%= render "shared/errors", obj: @borrow_item %>
-      <% if @newBorrowReply%>
+      <% if @newBorrowReply %>
           <%= form_for(@borrow_item,url: {:controller => :tenders,:action => :update}) do |form| %>
               <%= form.fields_for @newBorrowReply do |reply| %>
                 <%= render partial: "form", locals:{f: reply} %>
               <% end%>
-              <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"}%>
-              <%= debug(params) if Rails.env.development? %>
+              <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"}, class:"button" %>
           <% end%>
       <% end%>
+        <br/>
   <% end%>
   </div>
 </div>
