@@ -1,14 +1,29 @@
 <%= render "shared/errors", obj: @loanItem %>
 
-      <p class="cuttingline">><%= f.label :message, "メッセージ" %></p>
+
+<th colspan="2">
+  <%= f.label :message, "メッセージ" %>
+</th>
+
+</tr>
+<tr>
+  <th colspan="2">
+    <% if @request.message_state.id == 1 %>
+        <%= f.text_area :message ,:size => "81x5" %>
+    <% else %>
+        <%= f.text_area :message ,:size => "81x5", :readonly => true%>
+    <% end %>
+    <%= f.hidden_field :loan_item_id %>
+    <%= f.hidden_field :member_id %>
+    <%= f.hidden_field :message_state_id %>
+    <%= f.hidden_field :delete_flg %>
+  </th>
+</tr>
+<tr>
+  <th colspan="2" style="padding-left: 220px">
 
 
-        <% if @request.message_state.id == 1 %>
-          <%= f.text_area :message ,:size => "81x5" %>
-        <% else %>
-          <%= f.text_area :message ,:size => "81x5", :readonly => true%>
-        <% end %>
-          <%= f.hidden_field :loan_item_id %>
-          <%= f.hidden_field :member_id %>
-          <%= f.hidden_field :message_state_id %>
-          <%= f.hidden_field :delete_flg %>
+
+
+
+
