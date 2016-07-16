@@ -27,10 +27,11 @@ div.each-item{
 .item-pic {
   display: block;
   float: left;
-  width: 150px;
-  height: 150px;
+  width: 110px;
+  height: 110px;
   padding: 0;
   margin-right: 10px;
+  clear:left;
 
   img {
     width:100px;
@@ -42,6 +43,7 @@ div.each-item{
 .item-title{
   display: inline;
   font-size: 20px;
+  //margin-left: 10px;
 }
 
 h3{
@@ -68,8 +70,8 @@ h3{
   color: #80A24A;
 }
 .item-update{
-  display: block;
-  margin: 10px 80px 10px 0;
+  display: inline;
+  margin: 10px 0;
   white-space: normal;
   }
 
@@ -113,6 +115,7 @@ h3{
   float:right;
   margin-right: 15px;
   margin-bottom: 10px;
+  //clear:right;
 }
 
 //borrow.css end
@@ -175,6 +178,22 @@ ul#show-item{
   line-height: 5px;
 }
 
+.lb-itm-stus{
+  float: right;
+  display: inline;
+  padding: 8px 15px;
+  margin-top: 0;
+  margin-right: 10px;
+  border-radius: 2px;
+  color: #fff;
+  clear:right;
+  background: #9dc45f;
+}
+
+.lb-itm-stus:before {
+  margin-right: 5px;
+}
+
 //show.css end
 //------------------------------
 //index-list.css
@@ -182,28 +201,24 @@ ul#show-item{
 .ind-lst-div{
   margin: 10px 0 30px -30px;
   width: 100%;
-  height: 115px;
+  //height: 115px;
   border-bottom: 1px dashed gray;
-  padding-bottom: 5px;
+  padding-bottom: 3px;
 }
 
 .ind-lst-pic{
   display: block;
   float: left;
   width: 120px;
-  height: 150px;
+  height: 100px;
   padding: 0;
   margin: 0;
-  clear:left;
+  //clear:left;
 
   img {
     width:100px;
     height:90px;
     padding:0;
-    border: 1px solid black;
-  }
-  img:hover{
-    border: 1px solid black;
   }
 
 }

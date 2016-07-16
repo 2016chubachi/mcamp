@@ -12,12 +12,13 @@
       <div class="item-ctlg"><%= truncate(item.category.name,length: 8) %></div>
       <br/>
       <!-- 料金 -->
-      <div class="item-price"><%= item.fare %> 円</div><!-- 借りたい場所　-->
+      <div class="item-price"><%= item.fare %> 円</div>
+      <!-- 状態-->
+      <div class="stus-icon lb-itm-stus"><%= item.borrow_state.name %></div>
+      <!-- 借りたい場所　-->
       <div class="item-place"><%= "借りたい場所：#{truncate(item.location,length: 15)}" %></div>
       <!-- 更新日 -->
-      <div class="item-update">投稿者：<%= item.member.user_name %>　　更新日：<%= item.updated_at.strftime("%Y/%m/%d") %></div>
-      <!-- 状態-->
-      状態：<%= item.borrow_state.name %>
+      <div class="item-update">更新日：<%= item.updated_at.to_s %></div>
       <div class="function">
       <% if item.borrow_state.id==1 || item.borrow_state.id==3%>　　
           <% if item.borrow_state.id==1%>　　　　　　　　　　
