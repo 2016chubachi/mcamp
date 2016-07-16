@@ -22,46 +22,47 @@
     <% end%>
 
     <% if flash.alert %>
-     <p class="alert"><%= flash.alert %></p>
+     <p class="notice"><%= flash.alert %></p>
     <% end%>
 
-    <h2>貸出アイテム一覧</h2>
-    <div class="main_box">
-      <% @loanItems.each do |loanItem|%>
-        <!-- 図 -->
-        <%= loan_item_image_tag(loanItem, width: 100 ) %> <br>
-        <!-- アイテム名 -->
-        <%= loanItem.item_name %> <br>
-        <!-- 料金 -->
-        <%= loanItem.fare %>円<br>
-        <!-- 貸出場所　-->
-        貸出場所：<%= loanItem.location %> <br>
-        <!-- 投稿者 -->
-        投稿者：<%= loanItem.member.user_name %>　
-        <!-- 更新日 -->
-        更新日：<%= loanItem.updated_at.strftime("%Y/%m/%d %H:%M")%><br>
-
-        <br>
-
-      <% end %>
-    </div>
-
     <h2>募集中一覧</h2>
+    <div class="main_box2">
+      <ul id="show-lst">
+        <% @borrowItems.each do |borrowItem|%>
+            <!-- アイテム名 -->
+            <li>
+              <span class="ind-lst-title"><%= borrowItem.item_name %></span>
+              <!-- 料金 -->
+              <div class="ind-lst-price"><%= borrowItem.fare %>円</div>
+              <!--link-->
+              <%= link_to "詳細", borrowItem, class:"stus-icon ind-lst-lnk" %>
+              <!-- 貸出場所　-->
+              <div class="ind-lst-lctn">貸出場所：<%= borrowItem.location %>　　
+                投稿者：<%= borrowItem.member.user_name %></div>
+              <!-- 投稿者 -->
+            </li>　
+        <% end %>
+        </ul>
+    </div>
+<br/>
+    <h3>貸出アイテム一覧</h3>
     <div class="main_box">
-      <% @borrowItems.each do |borrowItem|%>
+      <ul class="each-item">
+      <% @loanItems.each do |loanItem|%><li>
+        <div class="ind-lst-div">
+        <!-- 図 -->
+        <span class="ind-lst-pic"><%= loan_item_image_tag(loanItem, width: 100 ) %> </span>
         <!-- アイテム名 -->
-        <%= borrowItem.item_name %> <br>
+        <span class="ind-lst-title"><%= loanItem.item_name %></span>
         <!-- 料金 -->
-        <%= borrowItem.fare %>円<br>
-        <!-- 貸出場所　-->
-        貸出場所：<%= borrowItem.location %> <br>
-        <!-- 投稿者 -->
-        投稿者：<%= borrowItem.member.user_name %>　
-        <!-- 更新日 -->
-        更新日：<%= borrowItem.updated_at.strftime("%Y/%m/%d %H:%M")%><br>
-        
-        <br>
-      <% end %>
+        <div class="ind-lst-price"><%= loanItem.fare %>円</div>
+          <!--link-->
+        <%= link_to "詳細", loanItem, class:"stus-icon ind-lst-lnk" %>
+        <!-- location -->
+        <div class="ind-lst-lctn">貸出場所：<%= loanItem.location %> </div>
+          <br/>
+        </div></li>
+      <% end %></ul>
     </div>
 
   </div> <!--メイン-->

@@ -39,7 +39,7 @@ div.each-item{
   }
 }
 
-h5.item-title{
+.item-title{
   display: inline;
   font-size: 20px;
 }
@@ -175,7 +175,107 @@ ul#show-item{
   line-height: 5px;
 }
 
+//show.css end
+//------------------------------
+//index-list.css
 
+.ind-lst-div{
+  margin: 10px 0 30px -30px;
+  width: 100%;
+  height: 115px;
+  border-bottom: 1px dashed gray;
+  padding-bottom: 5px;
+}
+
+.ind-lst-pic{
+  display: block;
+  float: left;
+  width: 120px;
+  height: 150px;
+  padding: 0;
+  margin: 0;
+  clear:left;
+
+  img {
+    width:100px;
+    height:90px;
+    padding:0;
+    border: 1px solid black;
+  }
+  img:hover{
+    border: 1px solid black;
+  }
+
+}
+.ind-lst-title{
+  display: inline;
+  font-size:20px;
+  width:200px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  line-height: 25px;
+}
+
+.ind-lst-price{
+  display: inline;
+  font-size: 20px;
+  color: #80A24A;
+  margin-bottom: 20px;
+}
+
+.ind-lst-lctn{
+  display: block;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+.ind-lst-lnk {
+  display: inline;
+  float:right;
+  clear:right;
+  padding: 10px 15px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 2px;
+  color: #fff;
+  background: #9dc45f;
+  transition: background 0.2s;
+
+  &:hover {
+    color: #fff;
+    background: #80A24A;
+  }
+}
+.ind-lst-lnk:before {
+  margin-right: 5px;
+}
+
+.stus-icon:before {
+  font-family: 'fontawesome';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stus-icon:before {
+  content: "\f055";
+}
+
+ul#show-lst{
+  list-style-image: url(/assets/icon_01.gif);
+
+  li{
+    color:#5E5E5E;
+    border-bottom: 1px dashed dimgray;
+  }
+}
+//index-list.css end
+
+/*
 .messagenew{
     width:75%;
     float: right;
@@ -199,5 +299,5 @@ ul#show-item{
 
 
 
-//
+*/
 //
