@@ -47,22 +47,23 @@
   <br/>
   <br/>
 
-  <!--request form-->
+  <!--request message-->
 <div>
   <% if current_member%>
       <% if @requests%>
           <% @requests.each do |request|%>
-              From
+              <p align="right"><%= request.updated_at.to_s%></p>
               <hr>
-              <p class="msg"><%=request.message%>
+              <div class="msg"><%=request.message%>
               <br/>
-              <%= "#{request.message_state.name}"%></p>
+              <p align="right"><%= "#{request.message_state.name}" %></p>
+              </div>
               <br/>
               <br/>
           <% end%>
           <%= paginate @requests ,:params => {:controller => 'borrows', :action => 'edit'}%>
       <% end%>
-
+<!---requst form-->
       <%= render "shared/errors", obj: @loanItem %>
       <% if @newRequest %>
           <%= form_for(@loanItem,url: {:controller => :borrows,:action => :update}) do |form| %>
