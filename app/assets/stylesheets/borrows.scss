@@ -22,7 +22,8 @@ div.each-item{
   margin: 0 0 10px -30px;
   width: 100%;
   border-bottom: 1px dashed gray;
-  }
+  padding-bottom: 10px;
+}
 
 .item-pic {
   display: block;
@@ -115,6 +116,7 @@ h3{
   float:right;
   margin-right: 15px;
   margin-bottom: 10px;
+  padding-bottom: 0;
   //clear:right;
 }
 
@@ -289,30 +291,3 @@ ul#show-lst{
   }
 }
 //index-list.css end
-
-/*
-.messagenew{
-    width:75%;
-    float: right;
-    margin-right:5px;
-
-    .td1{
-      text-align:center;
-      background-color:#eee;
-      height:30px;
-      border:1px silver solid;
-      padding:0;
-      margin:0;
-    }
-    .td2{
-      padding:0;
-      margin:0;
-      border:1px silver solid;
-    }
-  }
-
-
-
-
-*/
-//

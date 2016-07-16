@@ -70,6 +70,7 @@
               <%= form.fields_for @newRequest do |message| %>
                   <%= render partial: "form", locals:{f: message} %>
               <% end%>
+              <br/>
               <%= form.submit "リクエスト" ,data: {confirm: "リクエストを送信しても宜しいですか？"}, class:"button" %>
           <% end%>
       <% end%>
