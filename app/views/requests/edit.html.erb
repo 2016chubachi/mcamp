@@ -8,7 +8,7 @@
           アイテム名
         </td>
         <td class="tdcontent1">
-          <%= link_to @request.loan_item.item_name,borrow_path(:id => @request.loan_item.id)%>
+          <%= link_to truncate(@request.loan_item.item_name,length: 10),borrow_path(:id => @request.loan_item.id)%>
         </td>
         <td class="tdlabel">
           状態
@@ -21,7 +21,7 @@
         <td colspan="4">
         <%= form_for(@request) do |form| %>
           <%= render partial: "form", locals:{f: form} %>
-          
+
           <% if @request.message_state.id == 1%>
             <%= submit_tag "更新", :name => "request_update",data: {confirm: "更新しても宜しいですか？"}%>
             <%= submit_tag "リクエスト取消", :name => "request_cancel",data: {confirm: "取消しても宜しいですか？"} %>

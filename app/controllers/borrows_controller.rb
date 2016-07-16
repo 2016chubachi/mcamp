@@ -16,13 +16,15 @@ class BorrowsController < ApplicationController
     #    @loanItem.requests.build({member_id: current_member.id,message_state_id: 1,delete_flg: false})
     # end
     @loanItem = LoanItem.find(params[:id])
-    #ログインされている場合
-    if current_member
-        @requests = @loanItem.requests.where(member_id: current_member.id).page(params[:page]).per(3)
-    end
-    #該当アイテムの状態が：貸出可能
-    if @loanItem.loan_state_id == 1
-        @newRequest = Request.new
+    if current_member.id != @loanItem.member_id
+      #ログインされている場合
+      if current_member
+          @requests = @loanItem.requests.where(member_id: current_member.id).page(params[:page]).per(3)
+      end
+      #該当アイテムの状態が：貸出可能
+      if @loanItem.loan_state_id == 1
+          @newRequest = Request.new
+      end
     end
   end
 
@@ -36,6 +38,8 @@ class BorrowsController < ApplicationController
     @loanItem.loan_state_id = 2
     if @loanItem.save
       flash.now[:notice] = "リクエストを送信しました。"
+      #メール送信
+      #RequestMailer.send_request(Request.where(member_id: current_member.id).order(id: :DESC).limit(1)[0]).deliver_now
       @requests = @loanItem.requests.where(member_id: current_member.id).page(params[:page]).per(3)
       render "edit"
     else
