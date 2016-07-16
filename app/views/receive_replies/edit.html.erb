@@ -1,39 +1,33 @@
 <%= render partial: "shared/sidebar", locals:{subType: "BorrowItems"} %>
 
+<div id="main">
+
+  <!--error message-->
+
 <% if flash.notice %>
   <p class="notice"><%= flash.notice %></p>
 <% end%>
-<div class="borrowmessageshow">
-  <table class="itemdetail">
-    <tbody>
-      <tr class="tr1">
-        <td class="tdlabel">
-          アイテム名
-        </td>
-        <td class="tdcontent1">
-          <%= link_to truncate(@reply.borrow_item.item_name,length: 10),@reply.borrow_item%>
-        </td>
-        <td class="tdlabel">
-          状態
-        </td>
-        <td class="tdcontent1">
-          <%= @reply.message_state.name %>
-        </td>
-      </tr>
-      <tr>
-        <td colspan="4">
-        <%= render "shared/errors", obj: @reply %>
-        <%= form_for(@reply,url: {controller: :receive_replies,action: :update}) do |form| %>
-          <%= render partial: "form", locals:{f: form} %>
 
-          <% if @reply.message_state.id == 1%>
-            <%= submit_tag "承認", :name => "approval",data: {confirm: "承認しても宜しいですか？"}%>
-            <%= submit_tag "拒否", :name => "rejection",data: {confirm: "拒否しても宜しいですか？"} %>
-          <% end%>
-          <%= debug(params) if Rails.env.development? %>
-        <% end%>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  <!--message form-->
+  <!--item name-->
+  <p class="rcv-msg"><%= link_to truncate(@reply.borrow_item.item_name,length: 10),@reply.borrow_item%></p>
+  <!--message-->
+  <div class="msg">
+    <%= render "shared/errors", obj: @reply %>
+
+    <%= form_for(@reply,url: {controller: :receive_replies,action: :update}) do |form| %>
+        <%= render partial: "form", locals:{f: form} %>
+  <!--status-->
+    <p align="right"><%= @reply.message_state.name %></p>
+  </div>
+  <br/>
+  <!--button-->
+  <% if @reply.message_state.id == 1%>
+     <div class="function">
+       <%= submit_tag "承認", :name => "approval",data: {confirm: "承認しても宜しいですか？"}, class: "button" %>　　
+       <%= submit_tag "拒否", :name => "rejection",data: {confirm: "拒否しても宜しいですか？"}, class: "button" %>
+     </div>
+  <% end%>
+
+    <% end %>
 </div>
