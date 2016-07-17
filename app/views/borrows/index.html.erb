@@ -10,12 +10,11 @@
     <h5 class="item-title"><%= link_to truncate(item.item_name,length: 15), edit_borrow_path(:id=> item.id)%></h5>
     <!-- カテゴリー-->
     <div class="item-ctlg"><%= truncate(item.category.name,length: 8)%></div>
+      <!-- 状態-->
+      <%= link_to item.loan_state.name, edit_borrow_path(:id => item.id), class: "stus-icon item-stus" %>
     <br/>
     <!-- 料金 -->
     <div class="item-price"><%= item.fare %>円</div>
-    <!-- 状態-->
-    <%= link_to item.loan_state.name, edit_borrow_path(:id => item.id), class: "stus-icon item-stus" %>
-    <br/>
     <br/>
     <!-- 貸出場所　-->
     <div class="item-place">

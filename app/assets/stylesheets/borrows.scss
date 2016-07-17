@@ -22,15 +22,17 @@ div.each-item{
   margin: 0 0 10px -30px;
   width: 100%;
   border-bottom: 1px dashed gray;
-  }
+  padding-bottom: 10px;
+}
 
 .item-pic {
   display: block;
   float: left;
-  width: 150px;
-  height: 150px;
+  width: 110px;
+  height: 110px;
   padding: 0;
   margin-right: 10px;
+  clear:left;
 
   img {
     width:100px;
@@ -39,9 +41,10 @@ div.each-item{
   }
 }
 
-h5.item-title{
+.item-title{
   display: inline;
   font-size: 20px;
+  //margin-left: 10px;
 }
 
 h3{
@@ -68,8 +71,8 @@ h3{
   color: #80A24A;
 }
 .item-update{
-  display: block;
-  margin: 10px 80px 10px 0;
+  display: inline;
+  margin: 10px 0;
   white-space: normal;
   }
 
@@ -113,6 +116,8 @@ h3{
   float:right;
   margin-right: 15px;
   margin-bottom: 10px;
+  padding-bottom: 0;
+  //clear:right;
 }
 
 //borrow.css end
@@ -175,29 +180,114 @@ ul#show-item{
   line-height: 5px;
 }
 
+.lb-itm-stus{
+  float: right;
+  display: inline;
+  padding: 8px 15px;
+  margin-top: 0;
+  margin-right: 10px;
+  border-radius: 2px;
+  color: #fff;
+  clear:right;
+  background: #9dc45f;
+}
 
-.messagenew{
-    width:75%;
-    float: right;
-    margin-right:5px;
+.lb-itm-stus:before {
+  margin-right: 5px;
+}
 
-    .td1{
-      text-align:center;
-      background-color:#eee;
-      height:30px;
-      border:1px silver solid;
-      padding:0;
-      margin:0;
-    }
-    .td2{
-      padding:0;
-      margin:0;
-      border:1px silver solid;
-    }
+//show.css end
+//------------------------------
+//index-list.css
+
+.ind-lst-div{
+  margin: 10px 0 30px -30px;
+  width: 100%;
+  //height: 115px;
+  border-bottom: 1px dashed gray;
+  padding-bottom: 3px;
+}
+
+.ind-lst-pic{
+  display: block;
+  float: left;
+  width: 120px;
+  height: 100px;
+  padding: 0;
+  margin: 0;
+  //clear:left;
+
+  img {
+    width:100px;
+    height:90px;
+    padding:0;
   }
 
+}
+.ind-lst-title{
+  display: inline;
+  font-size:20px;
+  width:200px;
+  margin-right: 20px;
+  margin-bottom: 20px;
+  line-height: 25px;
+}
 
+.ind-lst-price{
+  display: inline;
+  font-size: 20px;
+  color: #80A24A;
+  margin-bottom: 20px;
+}
 
+.ind-lst-lctn{
+  display: block;
+  margin: 10px 0;
+  font-size: 16px;
+}
 
-//
-//
+.ind-lst-lnk {
+  display: inline;
+  float:right;
+  clear:right;
+  padding: 10px 15px;
+  margin-top: 10px;
+  margin-right: 10px;
+  border-radius: 2px;
+  color: #fff;
+  background: #9dc45f;
+  transition: background 0.2s;
+
+  &:hover {
+    color: #fff;
+    background: #80A24A;
+  }
+}
+.ind-lst-lnk:before {
+  margin-right: 5px;
+}
+
+.stus-icon:before {
+  font-family: 'fontawesome';
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+}
+
+.stus-icon:before {
+  content: "\f055";
+}
+
+ul#show-lst{
+  list-style-image: url(/assets/icon_01.gif);
+
+  li{
+    color:#5E5E5E;
+    border-bottom: 1px dashed dimgray;
+  }
+}
+//index-list.css end

@@ -31,8 +31,9 @@
         </p>
   </div>
         <div class="function">
-          <%= form.submit "承認",  :name => "accept_request",data: {confirm: "承認しても宜しいですか？"}, class: "button" %>　　
-          <%= form.submit "拒否",  :name => "refuse_request",data: {confirm: "拒否しても宜しいですか？"}, class: "button" %>
+          <%= form.submit "承認",  :name => "accept_request", class: "button" %>　　
+          <%= form.submit "拒否",  :name => "refuse_request", class: "button" %>
+          <br/>
         </div>
   <% end %>
 </div>
