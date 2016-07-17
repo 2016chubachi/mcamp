@@ -14,4 +14,16 @@ class LoanItem < ActiveRecord::Base
     validates :item_name, presence: true
     validates :fare, numericality: { only_integer: true, greater_than_or_equal_to: 0}
 
+
+    class << self
+      def search(query)
+        #nilを返さ無いように初期値をセット
+        rel = LoanItem
+        if query.present?
+          rel = rel.where(" item_name LIKE ? ", "%#{query}%")
+        end
+        rel
+      end
+    end
+
 end

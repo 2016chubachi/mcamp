@@ -52,6 +52,11 @@ class TendersController < ApplicationController
     end
   end
 
+  def search
+    @borrow_items = BorrowItem.search(params[:q]).current_member_borrow_items(nil).order(:borrow_state_id,updated_at: :DESC).page(params[:page]).per(5)
+    render "index"
+  end
+
   private
 
   def borrow_reply_params

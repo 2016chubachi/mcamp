@@ -50,6 +50,11 @@ class BorrowsController < ApplicationController
     end
   end
 
+  def search
+    @loanItems = LoanItem.search(params[:q]).where(delete_flg: false).order(:loan_state_id,updated_at: :DESC).page(params[:page]).per(5)
+    render "index"
+  end
+
   private
     def request_params
       attrs = [:message]

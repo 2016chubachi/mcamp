@@ -8,7 +8,7 @@
         <li><%= link_to "アイテム一覧", loan_items_path %></li>
         <li><%= link_to "受信一覧", receive_requests_path %></li>
       </ul>
-    <% when "Borrows" then%>
+    <% when "Borrows", "Requests" then%>
       <h2>借りる</h2>
       <ul>
         <li><%= link_to "アイテム一覧", borrows_path %></li>
@@ -21,7 +21,7 @@
         <li><%= link_to "募集一覧", borrow_items_path %></li>
         <li><%= link_to "受信一覧",receive_replies_path%></li>
       </ul>
-    <% when "Tenders" then%>
+    <% when "Tenders", "BorrowReplies" then%>
       <h2>提供</h2>
       <ul>
         <li><%= link_to "募集一覧", :tenders %></li>
@@ -29,4 +29,26 @@
       </ul>
     <% end%>
   </div>
+
+  <% case subType %>
+  <% when "Borrows" then%>
+    <div id="side_txbox">
+      <!-- 下記のどのかけ方でも通った -->
+      <%#= form_tag({:controller => 'borrows', :action => 'search'}, {:method => :get }) do %>
+      <%#= form_tag({ controller: :borrows , action: :search }, { method: :get }) do %>
+      <%= form_tag :search_borrows, method: :get do %>
+        <%= label_tag "q", "アイテム名" %>
+        <%= text_field_tag "q", params[:q] %>
+        <%= submit_tag "検索" %>
+      <% end %>
+    </div>
+  <% when "Tenders" then%>
+    <div id="side_txbox">
+      <%= form_tag :search_tenders, method: :get do %>
+        <%= label_tag "q", "アイテム名" %>
+        <%= text_field_tag "q", params[:q] %>
+        <%= submit_tag "検索" %>
+      <% end %>
+    </div>
+  <% end %>
 </div>

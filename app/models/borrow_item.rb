@@ -30,4 +30,15 @@ class BorrowItem < ActiveRecord::Base
         save
     end
 
+    class << self
+      def search(query)
+        #nilを返さ無いように初期値をセット
+        rel = BorrowItem
+        if query.present?
+          rel = rel.where(" item_name LIKE ? ", "%#{query}%")
+        end
+        rel
+      end
+    end
+
 end
