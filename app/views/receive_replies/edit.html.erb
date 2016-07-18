@@ -1,33 +1,28 @@
 <%= render partial: "shared/sidebar", locals:{subType: "BorrowItems"} %>
-
 <div id="main">
-
   <!--error message-->
-
-<% if flash.notice %>
-  <p class="notice"><%= flash.notice %></p>
-<% end%>
-
+  <% if flash.notice %>
+    <p class="notice"><%= flash.notice %></p>
+  <% end%>
   <!--message form-->
   <!--item name-->
   <p class="rcv-msg"><%= link_to truncate(@reply.borrow_item.item_name,length: 10),@reply.borrow_item%></p>
   <!--message-->
-  <div class="msg">
-    <%= render "shared/errors", obj: @reply %>
-
-    <%= form_for(@reply,url: {controller: :receive_replies,action: :update}) do |form| %>
+  <div>
+    <div class="msg">
+      <%= render "shared/errors", obj: @reply %>
+      <%= form_for(@reply,url: {controller: :receive_replies,action: :update}) do |form| %>
         <%= render partial: "form", locals:{f: form} %>
-  <!--status-->
-    <p align="right"><%= @reply.message_state.name %></p>
+        <!--status-->
+        <p align="right"><%= @reply.message_state.name %></p>
+        <br/>
+        <!--button-->
+        <% if @reply.message_state.id == 1%>
+          <div class="function">
+            <%= submit_tag "承認", :name => "approval",data: {confirm: "承認しても宜しいですか？"}, class: "button" %>　　
+            <%= submit_tag "拒否", :name => "rejection",data: {confirm: "拒否しても宜しいですか？"}, class: "button" %>
+          </div>
+        <% end%>
+      <% end %>
   </div>
-  <br/>
-  <!--button-->
-  <% if @reply.message_state.id == 1%>
-     <div class="function">
-       <%= submit_tag "承認", :name => "approval",data: {confirm: "承認しても宜しいですか？"}, class: "button" %>　　
-       <%= submit_tag "拒否", :name => "rejection",data: {confirm: "拒否しても宜しいですか？"}, class: "button" %>
-     </div>
-  <% end%>
-
-    <% end %>
 </div>

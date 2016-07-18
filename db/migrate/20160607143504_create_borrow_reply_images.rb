@@ -3,6 +3,7 @@ class CreateBorrowReplyImages < ActiveRecord::Migration
     create_table :borrow_reply_images do |t|
       t.integer :borrow_reply_id
       t.binary :image
+      t.string :content_type
 
       t.timestamps null: false
     end

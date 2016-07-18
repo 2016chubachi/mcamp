@@ -1,39 +1,31 @@
 <%= render partial: "shared/sidebar", locals:{subType: "Requests"} %>
-
 <div id="main">
   <br/>
   <table class="smart-green">
     <tr>
       <th>
-        アイテム名
+      アイテム名
       </th>
       <td>
-        <%= link_to truncate(@request.loan_item.item_name,length: 10),edit_borrow_path(:id => @request.loan_item.id) %>
+      <%= link_to truncate(@request.loan_item.item_name,length: 10),edit_borrow_path(:id => @request.loan_item.id) %>
       </td>
     </tr>
     <tr>
       <th>
-        状態
+      状態
       </th>
       <td>
-        <p><%= @request.message_state.name %></p>
+      <p><%= @request.message_state.name %></p>
       </td>
     </tr>
     <tr>
-      <%= form_for(@request) do |form| %>
-          <%= render partial: "form", locals:{f: form} %>
-
-          <% if @request.message_state.id == 1%>
-              <%= submit_tag "更新", :name => "request_update",data: {confirm: "更新しても宜しいですか？"}, class: "button" %>　
-              <%= submit_tag "取消", :name => "request_cancel",data: {confirm: "取消しても宜しいですか？"}, class: "button" %>
-          <% end%>
-
-      <% end%>
+      <th colspan="2">
+        <%= form_for(@request) do |form| %>
+        <%= render partial: "form", locals:{f: form} %>
+        <% end%>
+      </th>
     </tr>
   </table>
-
   <input type="button" value="戻る" class="button" onclick="window.history.back()" style="margin-left: 30px">
-
   <%= debug(params) if Rails.env.development? %>
-
 </div>

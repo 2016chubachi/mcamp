@@ -1,17 +1,24 @@
-
-      <th colspan="2">
-          <%= f.label :message, "メッセージ" %>
-      </th>
-
-      </tr>
-      <tr>
-      <th colspan="2">
-        <% if @borrow_reply.message_state.id == 1 %>
-          <%= f.text_area :message ,:size => "81x5" %>
-        <% else %>
-          <%= f.text_area :message ,:size => "81x5", :readonly => true%>
-        <% end %>
-      </th>
-      </tr>
-      <tr>
-      <th colspan="2" style="padding-left: 220px">
+<table>
+  <tr>
+    <th colspan="2">
+      <%= f.label :message, "メッセージ" %>
+    </th>
+  </tr>
+  <tr>
+    <th colspan="2">
+      <% if @borrow_reply.message_state.id == 1 %>
+      <%= f.text_area :message ,:size => "81x5" %>
+      <% else %>
+      <%= f.text_area :message ,:size => "81x5", :readonly => true%>
+      <% end %>
+    </th>
+  </tr>
+  <tr>
+    <th colspan="2" style="padding-left: 220px">
+      <% if @borrow_reply.message_state.id == 1%>
+      <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}, class: "button" %>　　　
+      <%= submit_tag "取消", :name => "cancel",data: {confirm: "取消しても宜しいですか？"}, class: "button" %>
+      <% end%>
+    </th>
+  </tr>
+</table>
