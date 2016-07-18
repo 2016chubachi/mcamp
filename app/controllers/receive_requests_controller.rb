@@ -19,17 +19,37 @@ class ReceiveRequestsController < ApplicationController
 
   def update
     @receive_request = Request.find(params[:id])
-    if params[:accept_request]
-      @receive_request.update_attribute(:message_state_id,2)
-      @receive_request.loan_item.update_attribute(:loan_state_id,3)
-      # RequestMailer.accept_request(@receive_request).deliver_now
-      flash.now[:notice] = "リクエストを承認しました"
-      render "show"
-    elsif params[:refuse_request]
-      @receive_request.update_attribute(:message_state_id,3)
-      @receive_request.loan_item.update_attribute(:loan_state_id,1)
-      # RequestMailer.refuse_request(@receive_request).deliver_now
-      flash.now[:notice] = "リクエストを拒否しました"
+    begin
+      if params[:accept_request]
+        #承認
+        ActiveRecord::Base.transaction do
+          #承認済み
+          raise "更新失敗" unless @receive_request.update_attribute(:message_state_id,2)
+          #貸出中
+          raise "更新失敗" unless @receive_request.loan_item.update_attribute(:loan_state_id,3)
+        end
+        # RequestMailer.accept_request(@receive_request).deliver_now
+        flash.now[:notice] = "リクエストを承認しました"
+        render "show"
+      elsif params[:refuse_request]
+        #拒否
+        ActiveRecord::Base.transaction do
+          #拒否済み
+          raise "更新失敗" unless @receive_request.update_attribute(:message_state_id,3)
+          #貸出可能
+          raise "更新失敗" unless @receive_request.loan_item.update_attribute(:loan_state_id,1)
+        end
+        # RequestMailer.refuse_request(@receive_request).deliver_now
+        flash.now[:notice] = "リクエストを拒否しました"
+        render "show"
+      end
+    rescue => e
+      # warn "#{e.class}  / #{e.message}"
+      #承認待ち
+      @receive_request.message_state_id = 1
+      #申込中
+      @receive_request.loan_item.loan_state_id = 2
+      #render text: "例外発生 #{@receive_request.message_state_id} #{@receive_request.loan_item.loan_state_id } "
       render "show"
     end
   end
