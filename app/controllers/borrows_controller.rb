@@ -1,6 +1,6 @@
 #借りる一覧、借りるリクエスト送信
 class BorrowsController < ApplicationController
-  before_action :logged_in_member, :except => ['index']
+  before_action :logged_in_member, :except => ['index', 'search']
 
   #貸出アイテム一覧表示
   def index
