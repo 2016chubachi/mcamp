@@ -1,6 +1,6 @@
 #用品提供一覧、用品提供リクエスト送信
 class TendersController < ApplicationController
-  before_action :logged_in_member, :except => ['index']
+  before_action :logged_in_member, :except => ['index','search']
 
   # 用品提供投稿一覧
   def index
