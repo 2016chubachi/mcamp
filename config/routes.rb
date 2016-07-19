@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :password_resets, only:[:new, :create, :edit, :update]
   resources :receive_requests, only:[:index,:show,:update]
   resources :borrow_items
-  resources :borrow_replies, only: [:index,:edit,:update]
+  resources :borrow_replies, only: [:index,:edit,:update] do
+    resources :borrow_reply_images,only: [:show]
+  end
   resources :tenders, only: [:index,:edit,:update] do
     collection { get "search" }
   end

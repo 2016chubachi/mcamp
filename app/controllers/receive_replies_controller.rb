@@ -5,7 +5,7 @@ class ReceiveRepliesController < ApplicationController
   def index
     @replies =BorrowReply.includes(:borrow_item).
               where(borrow_items: {member_id: current_member.id,delete_flg: false},
-              borrow_replies: {message_state_id: [1,2,3],delete_flg: false}).page(params[:page]).per(5)
+              borrow_replies: {message_state_id: [1,2,3],delete_flg: false}).order(updated_at: :DESC).page(params[:page]).per(5)
   end
 
   def edit
