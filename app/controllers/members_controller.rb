@@ -62,7 +62,7 @@ class MembersController < ApplicationController
          params.require(:member).permit(:name, :user_name, :email, :password,
                                    :password_confirmation,  :gender,
                                    :authority_id, :generation_id, :self_introduction,:activation_digest,
-                                   :password_digest)
+                                   :password_digest, :agreement)
        end
 
         # def logged_in_member

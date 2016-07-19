@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612091358) do
+ActiveRecord::Schema.define(version: 20160719051246) do
 
   create_table "ad_users", force: :cascade do |t|
     t.string   "company"
@@ -153,6 +153,7 @@ ActiveRecord::Schema.define(version: 20160612091358) do
     t.boolean  "admin",             default: false
     t.datetime "created_at",                        null: false
     t.datetime "updated_at",                        null: false
+    t.boolean  "agreement",         default: false
   end
 
   create_table "message_states", force: :cascade do |t|
