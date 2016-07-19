@@ -34,6 +34,7 @@ ja:
         generation_id: 世代
         user_name: ユーザー名
         administrator: 管理者
+        agreement: 利用規約に同意
       borrow_item:
         item_name: アイテム名
         member_id: 借りたいユーザー
