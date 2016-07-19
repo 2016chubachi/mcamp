@@ -14,6 +14,13 @@
       <%= form_for(@reply,url: {controller: :receive_replies,action: :update}) do |form| %>
         <%= render partial: "form", locals:{f: form} %>
         <!--status-->
+        <div>
+          <% if @reply.borrow_reply_images%>
+            <% @reply.borrow_reply_images.each do |reply_image|%>
+              <%= borrow_reply_image_tag @reply,reply_image,:size => '50x50'%>
+            <% end%>
+          <% end%>
+        </div>
         <p align="right"><%= @reply.message_state.name %></p>
         <br/>
         <!--button-->

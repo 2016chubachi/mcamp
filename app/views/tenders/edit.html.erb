@@ -49,11 +49,17 @@
   <% if current_member %>
       <% if @borrowReplies%>
           <% @borrowReplies.each do |reply|%>
-
               <p align="right"><%= reply.updated_at.to_s %></p>
-                <hr>
-                <div class="msg">
-                  <%=reply.message%>
+              <hr>
+              <div class="msg">
+              <%=reply.message%>
+              <div>
+                <% if reply.borrow_reply_images%>
+                  <% reply.borrow_reply_images.each do |reply_image|%>
+                    <%= borrow_reply_image_tag reply,reply_image,:size => '50x50'%>
+                  <% end%>
+                <% end%>
+              </div>
               <p align="right"><%="#{reply.message_state.name}"%></p>
             </div>
             <br/>
