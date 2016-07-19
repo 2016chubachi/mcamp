@@ -54,6 +54,11 @@
     <td><%= f.text_area :self_introduction, cols: 4, rows: 5 %></td>
   </tr>
 
+  <tr>
+    <th><%= f.label :agreement, "利用規約に同意" %></th>
+    <%= f.check_box :agreement %>
+  </tr>
+
       <tr>
         <th colspan="2" align="center"><%= f.submit "ユーザー登録",data: { confirm: 'ユーザー登録をしてもいいですか？', disabled_with: '処理中...'}, class: "button" %>
           <input type="button" value="戻る" class="button" onclick="window.history.back()"></th>

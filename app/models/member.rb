@@ -29,6 +29,8 @@ class Member < ActiveRecord::Base
                            uniqueness: true
     validates :self_introduction, length: { maximum: 200}
 
+    validates :agreement, acceptance: true
+
      class << self
       def digest(string)
        cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :

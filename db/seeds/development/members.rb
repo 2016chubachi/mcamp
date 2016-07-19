@@ -3,9 +3,9 @@ Member.create(name:  "adminuser",
   email: "aprisun@gmail.com",
   password:              "redhat123",
   password_confirmation: "redhat123",
-  #admin:     true,
   activated: true,
-  activated_at: Time.zone.now)
+  activated_at: Time.zone.now,
+  agreement: true)
 
 Member.create(name:  "test01",
     user_name:  "test01",
@@ -14,7 +14,8 @@ Member.create(name:  "test01",
     password_confirmation: "redhat123",
     #admin:     true,
     activated: true,
-    activated_at: Time.zone.now)
+    activated_at: Time.zone.now,
+    agreement: true)
 
 Member.create(name:  "test02",
     user_name: "test02",
@@ -23,7 +24,8 @@ Member.create(name:  "test02",
     password_confirmation: "redhat123",
     #admin:     true,
     activated: true,
-    activated_at: Time.zone.now)
+    activated_at: Time.zone.now,
+    agreement: true)
 
 Member.create(name:  "test03",
     user_name: "test03",
@@ -32,7 +34,8 @@ Member.create(name:  "test03",
     password_confirmation: "redhat123",
     #admin:     true,
     activated: true,
-    activated_at: Time.zone.now)
+    activated_at: Time.zone.now,
+    agreement: true)
 
 Member.create(name:  "test04",
     user_name: "test04",
@@ -41,18 +44,19 @@ Member.create(name:  "test04",
     password_confirmation: "redhat123",
     #admin:     true,
     activated: true,
-    activated_at: Time.zone.now)
+    activated_at: Time.zone.now,
+    agreement: true)
 
 Member.create(name:  "mcampadmin",
-        user_name: "mcampadmin",
-        email: "mcamp2100@gmail.com",
-        password:              "a@Aqwer0987",
-        password_confirmation: "a@Aqwer0987",
-        authority_id:     2,
-        activated: true,
-        activated_at: Time.zone.now,
-        admin:     true)
-
+      user_name: "mcampadmin",
+      email: "mcamp2100@gmail.com",
+      password:              "a@Aqwer0987",
+      password_confirmation: "a@Aqwer0987",
+      authority_id:     2,
+      activated: true,
+      activated_at: Time.zone.now,
+      admin:     true,
+      agreement: true)
 
 # 99.times do |n|
 #       name  = "example-#{n+1}"
