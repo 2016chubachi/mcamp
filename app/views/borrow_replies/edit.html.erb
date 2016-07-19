@@ -1,7 +1,6 @@
 <%= render partial: "shared/sidebar", locals:{subType: "BorrowReplies"} %>
-
 <div id="main">
-<br/>
+  <br/>
   <table class="smart-green">
     <tr>
       <th>
@@ -20,20 +19,14 @@
       </td>
     </tr>
     <tr>
+      <th colspan="2">
         <%= render "shared/errors", obj: @borrow_reply %>
-        <%= form_for(@borrow_reply) do |form| %>
-            <%= render partial: "form", locals:{f: form} %>
-
-            <% if @borrow_reply.message_state.id == 1%>
-                <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}, class: "button" %>　　　
-                <%= submit_tag "取消", :name => "cancel",data: {confirm: "取消しても宜しいですか？"}, class: "button" %>
-            <% end%>
+          <%= form_for(@borrow_reply) do |form| %>
+          <%= render partial: "form", locals:{f: form} %>
         <% end%>
+      </th>
     </tr>
-    </table>
-
+  </table>
   <input type="button" value="戻る" class="button" onclick="window.history.back()" style="margin-left: 30px">
-
   <%= debug(params) if Rails.env.development? %>
-
 </div>

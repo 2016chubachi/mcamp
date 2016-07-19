@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 20160612091358) do
   create_table "borrow_reply_images", force: :cascade do |t|
     t.integer  "borrow_reply_id"
     t.binary   "image"
+    t.string   "content_type"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end

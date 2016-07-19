@@ -41,7 +41,13 @@ class TendersController < ApplicationController
     #http://tkot.hatenablog.com/entry/2013/07/06/010617
     if @borrow_item.save
       flash.now[:notice] = "リクエストを送信しました。"
-      #@borrow_item.update_attribute(:borrow_state_id,2)
+      #画像の保存
+      images = BorrowReplyImage.image_files(params[:borrow_item][:uploaded_images])
+      unless images.empty?
+        reply = @borrow_item.borrow_replies.where(member_id: current_member).last
+        reply.borrow_reply_images.build(images)
+        reply.save
+      end
       @borrowReplies = @borrow_item.borrow_replies.where(member_id: current_member).page(params[:page]).per(3)
       render "edit"
     else
