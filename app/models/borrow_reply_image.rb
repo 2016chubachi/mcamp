@@ -2,6 +2,13 @@ class BorrowReplyImage < ActiveRecord::Base
     belongs_to :borrow_reply
     attr_reader :uploaded_images
 
+    IMAGE_TYPES =
+      { "image/jpeg" => "jpg", "image/gif" => "gif", "image/png" => "png" }
+
+    def extension
+      IMAGE_TYPES[content_type]
+    end
+
   class << self
       def image_files(files)
         images = []

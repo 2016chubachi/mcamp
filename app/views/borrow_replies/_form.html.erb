@@ -14,6 +14,15 @@
     </th>
   </tr>
   <tr>
+    <th colspan="2">
+      <% if @borrow_reply.borrow_reply_images%>
+        <% @borrow_reply.borrow_reply_images.each do |reply_image|%>
+          <%= borrow_reply_image_tag @borrow_reply,reply_image,:size => '50x50'%>
+        <% end%>
+      <% end%>
+    </th>
+  </tr>
+  <tr>
     <th colspan="2" style="padding-left: 220px">
       <% if @borrow_reply.message_state.id == 1%>
       <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}, class: "button" %>　　　
