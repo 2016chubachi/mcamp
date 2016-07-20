@@ -1,7 +1,7 @@
 <%= render "shared/errors", obj: @loan_item %>
-<!--
+
 <br/>
- -->
+  <table class="smart-green">
     <tr>
       <th>
         <%= f.label :item_name %>
