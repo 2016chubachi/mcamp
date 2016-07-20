@@ -2,7 +2,10 @@
 <div id="main">
   <!--error message-->
   <% if flash.notice %>
-    <p class="notice"><%= flash.notice %></p>
+    <div class="tn-box tn-box-color">
+      <p id="p-tn-box"><%= flash.notice %></p>
+    </div>
+    <br/>
   <% end%>
   <!--message form-->
   <!--item name and applyer-->
@@ -13,16 +16,18 @@
   <!-- 画像
   <%#= loan_item_image_tag @receive_request.loan_item %> <br-->
   <!--message-->
-  <div class="msg">
+
     <%= form_for(@receive_request, url: {:controller => :receive_requests,:action => :update}) do |form| %>
-      <%= @receive_request.message %>
-      <br/>更新日：<%= @receive_request.updated_at.to_s %>
-      <!--status-->
-      <p align="right">
-      <% if @receive_request.message_state %>
-      <%= @receive_request.message_state.name %><br>
-      <% end %>
-      </p>  </div>
+      <div class="msg">
+        <%= @receive_request.message %>
+        <br/>更新日：<%= @receive_request.updated_at.to_s %>
+        <!--status-->
+        <p align="right">
+        <% if @receive_request.message_state %>
+          <%= @receive_request.message_state.name %><br>
+        <% end %>
+        </p>
+      </div>
       <% if @receive_request.message_state_id == 1 %>
         <div class="function">
           <%= form.submit "承認",  :name => "accept_request",data: {confirm: "承認しても宜しいですか？"}, class: "button" %>　　
@@ -31,3 +36,4 @@
       <% end %>
     <% end %>
     </div>
+</div>

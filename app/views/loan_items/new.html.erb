@@ -2,17 +2,20 @@
 
 <div id="main">
 
+<br>
+
 <%= form_for(@loan_item) do |form| %>
+<table class="smart-green">
   <%= render "form", f: form %>
       <tr>
         <th colspan="2" align="center">
           <br/>
-  <%= form.submit "登録", class: "button" %>　　　
-      <input type="button" value="戻る" class="button" onclick="window.history.back()"></th>
-
-      </tr></table>
-
-      <%= debug(params) if Rails.env.development? %>
+        <%= form.submit "登録", class: "button" %>　　　
+        <!-- <input type="button" value="戻る" class="button" onclick="window.history.back()"> -->
+        </th>
+      </tr>
+</table>
 <% end %>
 
+<%= debug(params) if Rails.env.development? %>
 </div>
