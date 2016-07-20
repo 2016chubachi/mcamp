@@ -56,7 +56,7 @@ class LoanItemsController < ApplicationController
   def index
     # @loan_items = LoanItem.all
     @loan_items = LoanItem.where(member_id: current_member.id)
-                    .order(:loan_state_id,updated_at: :DESC).page(params[:page]).per(2)
+                    .order(:loan_state_id,updated_at: :DESC).page(params[:page]).per(5)
   end
 
   def destroy
