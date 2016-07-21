@@ -6,7 +6,7 @@
 <% @receive_requests.each do |request|%>
 
       <!--アイテム名 and 申し込みユーザー-->
-      <p class="rcv-msg"><%= link_to request.loan_item.item_name, loan_item_path(id: request.loan_item.id) %> from <%= request.member.user_name %></p>
+      <p class="rcv-msg"><%= link_to request.loan_item.item_name, loan_item_path(id: request.loan_item.id) %> <span> request from <%= request.member.user_name %></span></p>
 
 
       <!--状態-->

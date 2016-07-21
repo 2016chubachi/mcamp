@@ -107,6 +107,11 @@
   color: #f333;
   font-size: 23px;
   line-height: 32px;
+
+  span{
+    display: inline;
+    font-size: 16px;
+  }
 }
 .rcv-msg:before {
   position: absolute;

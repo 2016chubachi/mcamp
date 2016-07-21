@@ -1,29 +1,55 @@
-<% provide(:title, "Log in") %>
-<h1>ログイン</h1>
-<!-- <p id="notice"><%= notice %> -->
-<!-- <p class="alert"><%= flash.alert %> -->
+<div id="login-main">
 <% if flash.alert %>
-  <p class="alert"><%= flash.alert %></p>
+      <br/><div class="tn-box tn-box-color">
+    <p id="p-tn-box"><%= flash.alert %></p></div>
 <% end%>
-<div class="row">
-  <div class="col-md-6 col-md-offset-3">
+
+
+<div>
     <%= form_for(:session, url: login_path) do |f| %>
-
-      <%= f.label :email, "メールアドレス:" %>
-      <%= f.email_field :email, class: 'form-control' %></br>
-
-      <%= f.label :password, "パスワード:"%>
-      <%= f.password_field :password, class: 'form-control' %></br>
-      <%= link_to "(パスワードリセット)", new_password_reset_path %></br>
-
-      <%= f.label :remember_me, class: "checkbox inline" do %>
-      <%= f.check_box :remember_me %>
-      <span>パスワードを記憶させる</span>
-      <% end %>
-
-
-      <%= f.submit "ログイン", class: "btn btn-primary" %>
-    <% end %>
-    <p>ユーザー登録していませんか? <%= link_to "ユーザ登録", signup_path %></p>
+      <h2 class="heading">Login</h2>
+      <div class="controls">
+        <%= f.email_field :email, class: "floatLabel" %>
+        <%= f.label :email, "EMAIL" %>
+        </div>
+        <div class="controls">
+        <%= f.password_field :password, class: "floatLabel" %>
+        <%= f.label :password, "PassWord"%>
+        </div><br/>
+        <%= f.label :remember_me do %>
+            　 <%= f.check_box :remember_me %>パスワード記録
+        <% end %>
+          <%= f.submit "LogIn", class:"controls button"%>
+      <div class="controls">
+      <%= link_to "Forgot password?", new_password_reset_path %>
+　　<% end %></div>
+  　　<h2 class="heading">SignUp</h2>
+    <p class="controls">ユーザー登録していませんか?</p>
+  <br/>
+      <div class="controls"><%= link_to "Signup Here", signup_path %></div>
   </div>
 </div>
+<br/>
+<br/>
+
+<!--script src="http://libs.useso.com/js/jquery/2.1.1/jquery.min.js" type="text/javascript"></script-->
+<script>window.jQuery || document.write('<script src="/assets/jquery-2.1.1.min.js"><\/script>')</script>
+<script>
+  (function ($) {
+    function floatLabel(inputType) {
+      $(inputType).each(function () {
+        var $this = $(this);
+        $this.focus(function () {
+          $this.next().addClass('active');
+        });
+        $this.blur(function () {
+          if ($this.val() === '' || $this.val() === 'blank') {
+            $this.next().removeClass();
+          }
+        });
+      });
+    }
+    floatLabel('.floatLabel');
+  }(jQuery));
+</script>
+
