@@ -1,4 +1,7 @@
 class ReceiveRequestsController < ApplicationController
+  before_action :logged_in_member
+  before_action :correct_rec_request_member, only: [:show, :update]
+
   def index
     # joins(:関連名).where(テーブル名: {member_id: 1} )
     # @receive_requests = Request.joins(:loan_item).where(loan_items: {member_id: current_member.id} )
@@ -9,8 +12,6 @@ class ReceiveRequestsController < ApplicationController
     @receive_requests = Request.includes(:loan_item).where(loan_items: {member_id: current_member.id})
                                                     .where.not(message_state_id: [4])
                                                     .order(:message_state_id, updated_at: :DESC)
-
-
   end
 
   def show
