@@ -31,4 +31,7 @@ class ApplicationController < ActionController::Base
      redirect_to(root_url) unless current_member.admin?
     end
 
+    def  correct_rec_request_member
+      redirect_to(root_url) unless current_member.id == Request.find(params[:id]).loan_item.member_id
+    end
 end
