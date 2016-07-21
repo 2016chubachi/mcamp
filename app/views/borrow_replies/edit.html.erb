@@ -1,6 +1,10 @@
 <%= render partial: "shared/sidebar", locals:{subType: "BorrowReplies"} %>
 <div id="main">
-  <br/>
+  <% if flash.notice %>
+      <div class="tn-box tn-box-color">
+        <p id="p-tn-box"><%= flash.notice %></p>
+      </div>
+  <% end%>
   <table class="smart-green">
     <tr>
       <th>

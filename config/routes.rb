@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resources :receive_requests, only:[:index,:show,:update]
   resources :borrow_items
   resources :borrow_replies, only: [:index,:edit,:update] do
-    resources :borrow_reply_images,only: [:show]
+    resources :borrow_reply_images,only: [:show,:destroy]
   end
   resources :tenders, only: [:index,:edit,:update] do
     collection { get "search" }

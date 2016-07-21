@@ -15,9 +15,17 @@ class BorrowRepliesController < ApplicationController
       if params[:update]
         #更新
         @borrow_reply.assign_attributes(reply_params)
+        #画像の保存
+        images = BorrowReplyImage.image_files(params[:borrow_reply][:uploaded_images])
+        unless images.empty?
+          @borrow_reply.borrow_reply_images.build(images)
+        end
         if @borrow_reply.save
-          redirect_to borrow_replies_path
+          #redirect_to borrow_replies_path
+          flash.now[:notice] = "更新しました。"
+          render :action => :edit
         else
+          flash.now[:notice] = "更新できませんでした。"
           render :action => :edit
         end
       elsif params[:cancel]
