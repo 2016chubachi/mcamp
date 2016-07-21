@@ -15,9 +15,15 @@
   </tr>
   <tr>
     <th colspan="2">
+      <%= f.file_field :uploaded_images,:multiple => true,:size => "10*1" %>
+    </th>
+  </tr>
+  <tr>
+    <th colspan="2">
       <% if @borrow_reply.borrow_reply_images%>
         <% @borrow_reply.borrow_reply_images.each do |reply_image|%>
           <%= borrow_reply_image_tag @borrow_reply,reply_image,:size => '50x50'%>
+          <%= link_to "削除",borrow_reply_borrow_reply_image_path(@borrow_reply,reply_image),:method => :delete %>
         <% end%>
       <% end%>
     </th>

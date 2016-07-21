@@ -12,8 +12,13 @@
             <% end %>
           <!--message-->
           <p><%= truncate(item.message,length: 15) %></p>
-            <!-- date-->
-            <p>申込日 <%= item.created_at.to_s %>　　更新日 <%= item.updated_at.to_s %></p>
+          <% if item.borrow_reply_images%>
+            <% item.borrow_reply_images.each do |reply_image|%>
+              <%= borrow_reply_image_tag item,reply_image,:size => '50x50'%>
+            <% end%>
+          <% end%>
+          <!-- date-->
+          <p>申込日 <%= item.created_at.to_s %>　　更新日 <%= item.updated_at.to_s %></p>
           <br/>
           <br/>
         <% end %>
