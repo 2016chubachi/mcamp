@@ -18,11 +18,17 @@
   <!--メイン-->
   <div id="main">
     <% if flash.notice %>
-      <p class="notice"><%= flash.notice %></p>
+      <div class="tn-box tn-box-color">
+        <p id="p-tn-box"><%= flash.notice %></p>
+      </div>
+      <br/>
     <% end%>
 
     <% if flash.alert %>
-     <p class="notice"><%= flash.alert %></p>
+     <div class="tn-box tn-box-color">
+       <p id="p-tn-box"><%= flash.alert %></p>
+     </div>
+     <br/>
     <% end%>
 
     <h2>募集中一覧</h2>
