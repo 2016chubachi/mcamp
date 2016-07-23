@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160612091358) do
+ActiveRecord::Schema.define(version: 20160722143530) do
 
   create_table "ad_users", force: :cascade do |t|
     t.string   "company"
@@ -234,6 +234,12 @@ ActiveRecord::Schema.define(version: 20160612091358) do
     t.boolean  "delete_flg",       default: false
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+  end
+
+  create_table "submit_tokens", id: false, force: :cascade do |t|
+    t.string   "token_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
