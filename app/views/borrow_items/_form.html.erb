@@ -53,7 +53,7 @@
       <tr>
         <th><%= f.label :borrow_state_id %></th>
         <td>
-          <%= f.collection_select :borrow_state_id, BorrowState.all, :id, :name, :selected => 1 %>
+          <%= f.collection_select :borrow_state_id, BorrowState.all, :id, :name, {:selected => 1},{disabled: "disabled"} %>
         </td>
       </tr>
   <% else %>
