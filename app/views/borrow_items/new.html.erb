@@ -7,12 +7,10 @@
       <tr>
         <th colspan="2" align="center">
           <br/>
-  <%= form.submit "登録", class: "button" %>
-          <input type="button" value="戻る" class="button" onclick="window.history.back()"></th>
-
-      </tr></table>
-
-      <%= debug(params) if Rails.env.development? %>
+          <%= form.submit "登録", class: "button" %>
+        </th>
+      </tr>
+  </table>
+  <%= debug(params) if Rails.env.development? %>
 <% end %>
-
 </div>
