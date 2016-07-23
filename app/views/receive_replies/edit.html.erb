@@ -2,7 +2,10 @@
 <div id="main">
   <!--error message-->
   <% if flash.notice %>
-    <p class="notice"><%= flash.notice %></p>
+    <div class="tn-box tn-box-color">
+      <p id="p-tn-box"><%= flash.notice %></p>
+    </div>
+    <br/>
   <% end%>
   <!--message form-->
   <!--item name-->

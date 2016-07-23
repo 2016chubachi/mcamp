@@ -4,7 +4,10 @@
 <h1 class="h1">ユーザー登録
   <span class="h1">Please fill all the texts in the fields.</span></h1>
 <% if flash.notice %>
-  <p class="notice"><%= flash.notice %></p>
+  <div class="tn-box tn-box-color">
+    <p id="p-tn-box"><%= flash.notice %></p>
+  </div>
+  <br/>
 <% end%>
 
 <!-- <p class="alert"><%= flash.alert %> -->
