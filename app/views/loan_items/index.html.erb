@@ -16,7 +16,7 @@
       <!-- 図-->
       <div class="item-pic"><%= loan_item_image_tag loan_item %></div>
       <!-- アイテム名 -->
-      <h5 class="item-title"><%= link_to loan_item.item_name, loan_item %></h5>
+      <h5 class="item-title"><%= link_to truncate(loan_item.item_name,length: 15), loan_item %></h5>
       <!-- カテゴリー-->
       <div class="item-ctlg"><%= loan_item.category.try(:name) %></div>
       <!-- 状態-->
@@ -27,7 +27,7 @@
       <br/>
       <!-- 貸出場所　-->
       <div class="item-place">
-        貸出場所：<%= loan_item.location %></div>
+        貸出場所：<%= truncate(loan_item.location,length: 15) %></div>
       <!-- 更新日 -->
       <div class="item-update">
         更新日：<%= loan_item.updated_at.to_s %></div>
