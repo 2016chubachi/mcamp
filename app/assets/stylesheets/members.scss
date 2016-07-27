@@ -125,8 +125,14 @@ h2.heading {
   text-align: left;
   color: #506982;
   border-bottom: 1px solid #506982;
-
 }
+.heading-span {
+  display: block;
+  float: right;
+  padding-right: 28%;
+  padding-top: 0;
+  margin-top: -10px;
+  }
 
 .login-main{
   margin:20px;
@@ -139,12 +145,12 @@ h2.heading {
   text-align: left;
   position: relative;
 }
+
 .controls input[type="text"],
 .controls input[type="email"],
 .controls input[type="password"],
 .controls textarea,
-.controls a,
-.controls select {
+.controls a {
   padding: 10px;
   font-size: 14px;
   border: 1px solid #c6c6c6;
@@ -163,28 +169,51 @@ h2.heading {
   -webkit-transition: all 0.3s;
   transition: all 0.3s;
 }
-.controls input[type="text"]:focus, .controls input[type="text"]:hover,
+
+.controls select {
+  padding: 10px;
+  font-size: 14px;
+  border: 1px solid #c6c6c6;
+  width: 73%;
+  margin-bottom: 18px;
+  color: #888;
+  font-family: 'Lato', 'sans-serif';
+  //font-size: 16px;
+  font-weight: 300;
+  background-color: #fff;
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  -moz-transition: all 0.3s;
+  -o-transition: all 0.3s;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.controls input[type="text"]:focus,
+.controls input[type="text"]:hover,
 .controls input[type="email"]:focus,
 .controls input[type="email"]:hover,
 .controls input[type="password"]:focus,
 .controls input[type="password"]:hover,
 .controls textarea:focus,
 .controls textarea:hover,
-//.controls a:focus,
 .controls a:hover,
 .controls select:focus,
 .controls select:hover {
   outline: none;
   border-color: #9DC45F;
 }
-.controls input[type="text"]:focus + label, .controls input[type="text"]:hover + label,
+
+.controls input[type="text"]:focus + label,
+.controls input[type="text"]:hover + label,
 .controls input[type="email"]:focus + label,
 .controls input[type="email"]:hover + label,
 .controls input[type="password"]:focus + label,
 .controls input[type="password"]:hover + label,
 .controls textarea:focus + label,
 .controls textarea:hover + label,
-//.controls a:focus + label,
+.controls a:focus,
 .controls a:hover + label,
 .controls select:focus + label,
 .controls select:hover + label {
@@ -194,6 +223,18 @@ h2.heading {
 }
 
 //--------------
+.controls .fa-sort {
+  position: absolute;
+  right: 10px;
+  top: 17px;
+  color: #999;
+}
+
+.controls select {
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
 
 .controls label {
   position: absolute;
@@ -218,4 +259,9 @@ h2.heading {
   top: -14px;
   color: #555;
   background-color: white;
+}
+
+.controls textarea {
+  resize: none;
+  height: 200px;
 }

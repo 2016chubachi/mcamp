@@ -16,7 +16,7 @@
       <%= render "shared/errors", obj: @reply %>
       <%= form_for(@reply,url: {controller: :receive_replies,action: :update}) do |form| %>
         <%= render partial: "form", locals:{f: form} %>
-        <!--status-->
+        <!--images-->
         <div>
           <% if @reply.borrow_reply_images%>
             <% @reply.borrow_reply_images.each do |reply_image|%>
@@ -24,9 +24,10 @@
             <% end%>
           <% end%>
         </div>
+        <!--status-->
         <p align="right"><%= @reply.message_state.name %></p>
-        <br/>
-        <!--button-->
+          </div>
+          <!--button-->
         <% if @reply.message_state.id == 1%>
           <div class="function">
             <%= submit_tag "承認", :name => "approval",data: {confirm: "承認しても宜しいですか？"}, class: "button" %>　　
@@ -34,5 +35,5 @@
           </div>
         <% end%>
       <% end %>
-  </div>
+
 </div>
