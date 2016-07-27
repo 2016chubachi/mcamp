@@ -211,12 +211,12 @@ ul#globalNavi li {
 	margin: 0;
 	padding: 0 5px 0 0;
 	float: left;
-	width: 100px;
+	/*width: 100px;*/
 	text-align: center;
 }
 
 ul#globalNavi li a {
-	padding: 8px 20px;
+	padding: 8px 41px;
 	display: block;
 	position: relative; /* for IE6 */
 	color: #333;

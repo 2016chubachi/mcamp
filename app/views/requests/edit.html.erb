@@ -1,15 +1,17 @@
 <%= render partial: "shared/sidebar", locals:{subType: "Requests"} %>
 <div id="main">
+  <!--item name-->
+  <p class="webcri"><%= link_to truncate(@request.loan_item.item_name,length: 10),edit_borrow_path(:id => @request.loan_item.id) %></p>
   <br/>
   <table class="smart-green">
-    <tr>
+    <!--tr>
       <th>
       アイテム名
       </th>
       <td>
-      <%= link_to truncate(@request.loan_item.item_name,length: 10),edit_borrow_path(:id => @request.loan_item.id) %>
+      <%#= link_to truncate(@request.loan_item.item_name,length: 10),edit_borrow_path(:id => @request.loan_item.id) %>
       </td>
-    </tr>
+    </tr-->
     <tr>
       <th>
       状態
