@@ -18,6 +18,8 @@ class RequestsController < ApplicationController
       if @request.save
         self.index()
         render :action => :index
+      else
+        render :action => :edit
       end
     elsif params[:request_cancel]
       #取消
