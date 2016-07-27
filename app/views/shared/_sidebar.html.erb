@@ -15,14 +15,14 @@
         <li><%= link_to "送信一覧", requests_path %></li>
       </ul>
     <% when "BorrowItems" then%>
-      <h2>用品募集</h2>
+      <h2>借りたい</h2>
       <ul>
-        <li><%= link_to "用品募集", new_borrow_item_path %></li>
+        <li><%= link_to "借りたい", new_borrow_item_path %></li>
         <li><%= link_to "募集一覧", borrow_items_path %></li>
         <li><%= link_to "受信一覧",receive_replies_path%></li>
       </ul>
     <% when "Tenders", "BorrowReplies" then%>
-      <h2>提供</h2>
+      <h2>貸します</h2>
       <ul>
         <li><%= link_to "募集一覧", :tenders %></li>
         <li><%= link_to "送信一覧", :borrow_replies %></li>
