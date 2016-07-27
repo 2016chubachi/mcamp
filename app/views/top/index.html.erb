@@ -37,13 +37,13 @@
         <% @borrowItems.each do |borrowItem|%>
             <!-- アイテム名 -->
             <li>
-              <span class="ind-lst-title"><%= borrowItem.item_name %></span>
+              <span class="ind-lst-title"><%= truncate(borrowItem.item_name,length: 20) %></span>
               <!-- 料金 -->
               <div class="ind-lst-price"><%= borrowItem.fare %>円</div>
               <!--link-->
               <%= link_to "詳細", borrowItem, class:"stus-icon ind-lst-lnk" %>
               <!-- 貸出場所　-->
-              <div class="ind-lst-lctn">貸出場所：<%= borrowItem.location %>　　
+              <div class="ind-lst-lctn">貸出場所：<%= truncate(borrowItem.location,length: 12) %>　　
                 投稿者：<%= borrowItem.member.user_name %></div>
               <!-- 投稿者 -->
             </li>　
@@ -59,14 +59,14 @@
         <!-- 図 -->
         <span class="ind-lst-pic"><%= loan_item_image_tag(loanItem, width: 100 ) %> </span>
         <!-- アイテム名 -->
-        <span class="ind-lst-title"><%= loanItem.item_name %></span>
+        <span class="ind-lst-title"><%= truncate(loanItem.item_name,length: 13) %></span>
         <!-- 料金 -->
         <div class="ind-lst-price"><%= loanItem.fare %>円</div>
           <!--link-->
         <%= link_to "詳細", loanItem, class:"stus-icon ind-lst-lnk" %>
         <!-- location -->
-        <div class="ind-lst-lctn">貸出場所：<%= loanItem.location %> </div>
-          <br/>
+        <div class="ind-lst-lctn">貸出場所：<%= truncate(loanItem.location,length: 15) %> </div>
+        <div class="ind-lst-lctn"><%= "投稿者：#{loanItem.member.name}" %> </div>
         </div></li>
       <% end %></ul>
     </div>
