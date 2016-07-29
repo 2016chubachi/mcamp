@@ -132,3 +132,14 @@
   border: 2px solid #7ce294;
   content: "";
 }
+
+.tbl-rpy{
+  padding:15px;
+  width:85%;
+  background:#fff;
+  font-size:14pt;
+  color:#1f3134;
+  -webkit-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),15px 15px 0 -5px #fff,15px 15px 1px -4px rgba(0,0,0,0.2);
+  -moz-box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),15px 15px 0 -5px #fff,15px 15px 1px -4px rgba(0,0,0,0.2);
+  box-shadow:1px 1px 1px 1px rgba(0,0,0,0.1),15px 15px 0 -5px #fff,15px 15px 1px -4px rgba(0,0,0,0.2);
+}

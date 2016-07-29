@@ -9,29 +9,33 @@
 
   <p class="webcri"><%= truncate(@borrow_reply.borrow_item.item_name,length: 10) %></p>
   <br/>
-  <table class="smart-green">
-    <!--tr>
+  <div class="tbl-rpy">
+    <p>状態 <%= @borrow_reply.message_state.name %>
+      <%= render "shared/errors", obj: @borrow_reply %>
+      <%= form_for(@borrow_reply) do |form| %>
+          <%= render partial: "form", locals:{f: form} %>
+      <% end%>
+    </div>
+  <!--table class="smart-green">
+    <tr>
       <th>
         アイテム名
       </th>
       <td>
 
       </td>
-    </tr-->
+    </tr>
     <tr>
       <th>
-        状態
+        <!--status>
       </th>
       <td>
-        <p><%= @borrow_reply.message_state.name %></p>
+        <p></p>
       </td>
     </tr>
     <tr>
       <th colspan="2">
-        <%= render "shared/errors", obj: @borrow_reply %>
-          <%= form_for(@borrow_reply) do |form| %>
-          <%= render partial: "form", locals:{f: form} %>
-        <% end%>
+
       </th>
     </tr>
   </table>
