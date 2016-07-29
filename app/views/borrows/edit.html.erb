@@ -10,7 +10,7 @@
 
   <!--deatails-->
   <!--アイテム名-->
-  <p id="show-itm-tle"><%= truncate(@loanItem.item_name,length: 20) %></p>
+  <p id="show-itm-tle"><%= @loanItem.item_name %></p>
   <!--状態-->
   <p class="stus-icon show-itm-stus"><%= @loanItem.loan_state.name %></p>
   <!--図-->

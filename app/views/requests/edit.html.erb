@@ -1,7 +1,7 @@
 <%= render partial: "shared/sidebar", locals:{subType: "Requests"} %>
 <div id="main">
   <!--item name-->
-  <p class="webcri"><%= link_to truncate(@request.loan_item.item_name,length: 10),edit_borrow_path(:id => @request.loan_item.id) %></p>
+  <p class="webcri"><%= link_to truncate(@request.loan_item.item_name,length: 25),edit_borrow_path(:id => @request.loan_item.id) %></p>
   <br/>
   <table class="smart-green">
     <!--tr>

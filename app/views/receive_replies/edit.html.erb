@@ -9,7 +9,7 @@
   <% end%>
   <!--message form-->
   <!--item name-->
-  <p class="rcv-msg"><%= link_to truncate(@reply.borrow_item.item_name,length: 10),@reply.borrow_item%></p>
+  <p class="rcv-msg"><%= link_to truncate(@reply.borrow_item.item_name,length: 25),@reply.borrow_item%><span> <%= "　　送信者： #{@reply.member.name}" %></span></p>
   <!--message-->
   <div>
     <div class="msg">
