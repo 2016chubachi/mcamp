@@ -132,3 +132,123 @@
   border: 2px solid #7ce294;
   content: "";
 }
+
+.bubble {
+  clear: both;
+  margin: 0 auto 20px;
+  width: 500px;
+  padding:20px 20px 0 20px;
+  background: #fff;
+  -moz-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  -khtml-box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  -webkit-box-shadow: 0 0 8px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 90; /* the stack order: displayed under ribbon rectangle (100) */
+}
+
+.rectangle {
+  height: 50px;
+  width: 570px;
+  position: relative;
+  left:-35px;
+  top: 15px;
+  float: left;
+  background: #7ce294;
+  -moz-box-shadow: 0 0 4px rgba(0,0,0,0.55);
+  -khtml-box-shadow: 0 0 4px rgba(0,0,0,0.55);
+  -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.55);
+  z-index: 100; /* the stack order: foreground */
+
+  span {
+    display: block;
+    color: #fff;
+    padding-top: 8px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    text-align: center;
+    font-size: 20px;
+  }
+}
+
+.triangle-l {
+  border-color: transparent #80A24A transparent transparent;
+  border-style:solid;
+  border-width:15px;
+  height:0;
+  width:0;
+  position: relative;
+  left: -50px;
+  top: 50px;
+  z-index: -1; /* displayed under bubble */
+}
+
+.triangle-r {
+  border-color: transparent transparent transparent #80A24A;
+  border-style:solid;
+  border-width:15px;
+  height:0;
+  width:0;
+  position: relative;
+  left: 520px;
+  top: 20px;
+  z-index: -1; /* displayed under bubble */
+}
+
+.info {
+  padding: 30px 10px 10px;
+}
+
+.bar{
+  display: block;
+  margin: 10px 0;
+}
+
+//images
+
+.box{
+  display: inline;
+  position: relative;
+  perspective: 1000px;
+  -webkit-perspective: 1000px; /* Safari and Chrome */
+}
+
+.box-lst{
+  list-style: none;
+  margin:0;
+  padding: 0;
+
+  li{
+    display: inline;
+    margin:0 5px;
+
+  }
+}
+
+.box .box-img{
+  display: inline;
+  transform: rotateY(0);
+  transition: all 0.50s ease-in-out 0s;
+}
+
+.box:hover .box-img{
+  transform: rotateY(-90deg);
+}
+
+.box .box-content{
+  display: inline;
+  width: auto;
+  position: absolute;
+  top: -3px;
+  left: 50px;
+  padding: 8px;
+  background: rgba(0,0,0,0.7);
+  transform: rotateY(90deg);
+  transition: all 0.50s ease-in-out 0s;
+}
+
+.box:hover .box-content{
+  transform: rotateY(0);
+}
+
