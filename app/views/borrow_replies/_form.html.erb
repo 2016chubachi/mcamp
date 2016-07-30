@@ -20,11 +20,11 @@
               <div class="box-img">
                  <%= borrow_reply_image_tag @borrow_reply,reply_image,:size => '100x100'%>
               </div>
-              <div class="box-content">
-                  <% if @borrow_reply.message_state.id == 1%>
+                <% if @borrow_reply.message_state.id == 1%>
+                  <div class="box-content">
                      <%= link_to "X",borrow_reply_borrow_reply_image_path(@borrow_reply,reply_image),:method => :delete, :class => 'icono-crossCircle' %>
-                  <% end%>
-              </div>
+                  </div>
+                <% end%>
               </div>
             </li>
         <% end%>
