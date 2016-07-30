@@ -1,9 +1,9 @@
 <ul id="show-item"><li>送ったメッセージ</li></ul>
 <div class="bar">
   <% if @borrow_reply.message_state.id == 1 %>
-      <%= f.text_area :message ,:size => "75x5" %>
+      <%= f.text_area :message ,:rows => "5" %>
   <% else %>
-      <%= f.text_area :message ,:size => "75x5", :readonly => true%>
+      <%= f.text_area :message ,:rows => "5", :readonly => true%>
   <% end %>
   </div>
 <div class="bar">
