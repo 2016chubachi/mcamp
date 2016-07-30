@@ -211,7 +211,7 @@
   display: inline;
   position: relative;
   perspective: 1000px;
-  -webkit-perspective: 1000px; /* Safari 和 Chrome */
+  -webkit-perspective: 1000px; /* Safari and Chrome */
 }
 
 .box-lst{
@@ -240,7 +240,6 @@
   display: inline;
   width: auto;
   position: absolute;
-  //float:right;
   top: -3px;
   left: 50px;
   padding: 8px;
@@ -252,3 +251,4 @@
 .box:hover .box-content{
   transform: rotateY(0);
 }
+
