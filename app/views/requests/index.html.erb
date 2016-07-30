@@ -6,13 +6,13 @@
 
       <% @requests.each do |item|%>
             <!--item name-->
-              <p class="webcri"><%= link_to truncate(item.loan_item.item_name,length: 15),edit_borrow_path(:id => item.loan_item.id)%></p>
+              <p class="webcri"><%= link_to truncate(item.loan_item.item_name,length: 25),edit_borrow_path(:id => item.loan_item.id)%></p>
           <!-- 状態-->
           <% if item.message_state %>
               <%= link_to item.message_state.name, edit_request_path(id: item.id), class:"stus-icon stus-rply" %>
           <% end %>
             <!--message-->
-          <p><%= truncate(item.message,length: 15) %></p>
+          <p><%= truncate(item.message,length: 35) %></p>
             <!--date-->
           <p>申込日 <%= item.created_at.to_s %>　　更新日 <%= item.updated_at.to_s %></p>
           <br/>

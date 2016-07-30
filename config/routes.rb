@@ -30,8 +30,8 @@ Rails.application.routes.draw do
   #modify for f5 reload error fix
   get 'borrows/:id' => 'borrows#edit'
   get 'requests/:id' => 'requests#edit'
-  ####必要かどうかはマイクさんと確認
-  #get 'password_resets/:id' => 'password_resets#edit'
+  get 'password_resets' => 'password_resets#new'
+  get 'password_resets/:id' => 'password_resets#edit'
   get 'borrow_replies/:id' => 'borrow_replies#edit'
   get 'tenders/:id' => 'tenders#edit'
 

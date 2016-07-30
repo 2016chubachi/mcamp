@@ -31,7 +31,7 @@
      <br/>
     <% end%>
 
-    <h2>募集中一覧</h2>
+    <h2>借りたい（アイテム募集中）</h2>
     <div class="main_box2">
       <ul id="show-lst">
         <% @borrowItems.each do |borrowItem|%>
@@ -51,7 +51,7 @@
         </ul>
     </div>
 <br/>
-    <h2>貸出アイテム一覧</h2>
+    <h2>借りる（貸出可能）</h2>
     <div class="main_box2">
       <ul class="each-item">
       <% @loanItems.each do |loanItem|%><li>

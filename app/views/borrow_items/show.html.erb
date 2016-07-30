@@ -11,7 +11,7 @@
   <% end%>
 
   <!--アイテム名-->
-  <p id="show-itm-tle"><%= truncate(@borrow_Item.item_name,length: 15) %></p>
+  <p id="show-itm-tle"><%= @borrow_Item.item_name %></p>
   <!--状態-->
   <p class="stus-icon show-itm-stus"><%= @borrow_Item.borrow_state.name %></p>
   <h3 style="font-size: 16px;">基本資料</h3>

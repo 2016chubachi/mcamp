@@ -18,13 +18,13 @@
       <h2>借りたい</h2>
       <ul>
         <li><%= link_to "借りたい", new_borrow_item_path %></li>
-        <li><%= link_to "募集一覧", borrow_items_path %></li>
+        <li><%= link_to "借りたい一覧", borrow_items_path %></li>
         <li><%= link_to "受信一覧",receive_replies_path%></li>
       </ul>
     <% when "Tenders", "BorrowReplies" then%>
       <h2>貸します</h2>
       <ul>
-        <li><%= link_to "募集一覧", :tenders %></li>
+        <li><%= link_to "借りたい一覧", :tenders %></li>
         <li><%= link_to "送信一覧", :borrow_replies %></li>
       </ul>
     <% end%>
