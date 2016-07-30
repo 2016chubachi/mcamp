@@ -10,8 +10,8 @@
         <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
           <%= f.text_field :item_name %>
         <% else %>
-          <%#=  f.text_field :item_name, readonly: true  %>
-          <%=  @loan_item.item_name  %>
+          <%=  f.text_field :item_name, readonly: true  %>
+          <%#=  @loan_item.item_name  %>
         <% end %>
       </td>
     </tr>
@@ -23,7 +23,8 @@
         <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
           <%= f.collection_select :category_id, Category.all, :id, :name %>
         <% else %>
-          <%= @loan_item.category.name %>
+          <%= f.collection_select :category_id, Category.all, :id, :name %>
+          <%#= @loan_item.category.name %>
         <% end %>
       </td>
     </tr>
@@ -35,7 +36,8 @@
         <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
           <%= f.text_field :fare %>
         <% else %>
-          <%= @loan_item.fare %>
+          <%= f.text_field :fare, readonly: true  %>
+          <%#= @loan_item.fare %>
         <% end %>
       </td>
     </tr>
@@ -47,7 +49,8 @@
         <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
           <%= f.text_field :location %>
         <% else %>
-          <%= @loan_item.location %>
+          <%= f.text_field :location, readonly: true %>
+          <%#= @loan_item.location %>
         <% end %>
       </td>
     </tr>
@@ -59,7 +62,8 @@
         <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
           <%= f.text_area :term %>
         <% else %>
-          <%= @loan_item.term %>
+          <%= f.text_area :term, readonly: true  %>
+          <%#= @loan_item.term %>
         <% end %>
       </td>
     </tr>
@@ -71,7 +75,8 @@
         <% if @loan_item.loan_state_id.blank? or @loan_item.loan_state_id == 1  %>
           <%= f.text_area :item_description %>
         <% else %>
-          <%= @loan_item.item_description %>
+          <%= f.text_area :item_description, readonly: true %>
+          <%#= @loan_item.item_description %>
         <% end %>
       </td>
     </tr>
