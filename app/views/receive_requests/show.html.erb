@@ -9,7 +9,7 @@
   <% end%>
   <!--message form-->
   <!--item name and applyer-->
-  <p class="rcv-msg"><%= link_to @receive_request.loan_item.item_name,
+  <p class="rcv-msg"><%= link_to truncate(@receive_request.loan_item.item_name,length: 15),
   loan_item_path(id: @receive_request.loan_item.id) %> <span><%= "　　送信者： #{@receive_request.member.user_name}" %></span></p>
   <!-- アイテムの持ち主：
   <%#= @receive_request.loan_item.member.name %><br> -->
@@ -35,5 +35,4 @@
         </div>
       <% end %>
     <% end %>
-    </div>
 </div>

@@ -25,7 +25,6 @@ class BorrowRepliesController < ApplicationController
           flash.now[:notice] = "更新しました。"
           render :action => :edit
         else
-          flash.now[:notice] = "更新できませんでした。"
           render :action => :edit
         end
       elsif params[:cancel]
