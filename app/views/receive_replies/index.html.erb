@@ -3,13 +3,13 @@
   <% if @replies %>
         <% @replies.each do |item|%>
           <!--item name-->
-          <p class="rcv-msg"><%= link_to truncate(item.borrow_item.item_name,length: 15),item.borrow_item %><span> supplied from <%= item.member.name %></span></p>
+          <p class="rcv-msg"><%= link_to truncate(item.borrow_item.item_name,length: 15),item.borrow_item %><span> <%= "　　送信者： #{item.member.name}" %></span></p>
           <!-- status -->
               <% if item.message_state %>
               <%= link_to item.message_state.name, edit_receive_reply_path(item), class: "stus-icon stus-rply" %>
               <% end %>
           <!-- message -->
-          <p><%= truncate(item.message,length: 15) %></p>
+          <p><%= truncate(item.message,length: 35) %></p>
           <% if item.borrow_reply_images%>
             <% item.borrow_reply_images.each do |reply_image|%>
               <%= borrow_reply_image_tag item,reply_image,:size => '50x50'%>
