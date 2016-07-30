@@ -1,4 +1,5 @@
 <%= render partial: "shared/sidebar", locals:{subType: "BorrowReplies"} %>
+<link rel="stylesheet" href="http://icono-49d6.kxcdn.com/icono.min.css">
 <div id="main">
   <% if flash.notice %>
       <div class="tn-box tn-box-color">
@@ -6,37 +7,19 @@
       </div>
       <br/>
   <% end%>
-
   <p class="webcri"><%= truncate(@borrow_reply.borrow_item.item_name,length: 10) %></p>
-  <br/>
-  <div class="tbl-rpy">
-    <p>状態 <%= @borrow_reply.message_state.name %>
-      <%= render "shared/errors", obj: @borrow_reply %>
+
+  <div class="bubble">
+    <div class="rectangle"><span>今は<%= @borrow_reply.message_state.name %>の状態</span></div>
+    <div class="triangle-l"></div>
+    <div class="triangle-r"></div>
+    <div class="info">
       <%= form_for(@borrow_reply) do |form| %>
           <%= render partial: "form", locals:{f: form} %>
       <% end%>
     </div>
-  <!--table class="smart-green">
-    <tr>
-      <th>
-        アイテム名
-      </th>
-      <td>
+  </div>
 
-      </td>
-    </tr>
-    <tr>
-      <th>
-        <!--status>
-      </th>
-      <td>
-        <p></p>
-      </td>
-    </tr>
-    <tr>
-      <th colspan="2">
-
-      </th>
-    </tr>
-  </table>
-</div>
+ <br/>
+  <%= render "shared/errors", obj: @borrow_reply %>
+  <br/>

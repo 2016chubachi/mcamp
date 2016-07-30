@@ -1,43 +1,37 @@
-<table>
-  <tr>
-    <th colspan="2">
-      <%= f.label :message, "メッセージ" %>
-    </th>
-  </tr>
-  <tr>
-    <th colspan="2">
-      <% if @borrow_reply.message_state.id == 1 %>
-      <%= f.text_area :message ,:size => "81x5" %>
-      <% else %>
-      <%= f.text_area :message ,:size => "81x5", :readonly => true%>
-      <% end %>
-    </th>
-  </tr>
-  <tr>
-    <th colspan="2">
-      <% if @borrow_reply.message_state.id == 1%>
-        <%= f.file_field :uploaded_images,:multiple => true,:size => "10*1" %>
-      <% end%>
-    </th>
-  </tr>
-  <tr>
-    <th colspan="2">
-      <% if @borrow_reply.borrow_reply_images%>
+<ul id="show-item"><li>送ったメッセージ</li></ul>
+<div class="bar">
+  <% if @borrow_reply.message_state.id == 1 %>
+      <%= f.text_area :message ,:size => "75x5" %>
+  <% else %>
+      <%= f.text_area :message ,:size => "75x5", :readonly => true%>
+  <% end %>
+  </div>
+<div class="bar">
+  <% if @borrow_reply.message_state.id == 1%>
+      <%= f.file_field :uploaded_images,:multiple => true,:size => "10*1" %>
+  <% end%>
+  </div>
+
+  <% if @borrow_reply.borrow_reply_images%>
+      <ul class="box-lst">
         <% @borrow_reply.borrow_reply_images.each do |reply_image|%>
-          <%= borrow_reply_image_tag @borrow_reply,reply_image,:size => '50x50'%>
-          <% if @borrow_reply.message_state.id == 1%>
-            <%= link_to "削除",borrow_reply_borrow_reply_image_path(@borrow_reply,reply_image),:method => :delete %>
-          <% end%>
+            <li>
+              <div class="box">
+              <div class="box-img">
+                 <%= borrow_reply_image_tag @borrow_reply,reply_image,:size => '100x100'%>
+              </div>
+              <div class="box-content">
+                  <% if @borrow_reply.message_state.id == 1%>
+                     <%= link_to "X",borrow_reply_borrow_reply_image_path(@borrow_reply,reply_image),:method => :delete, :class => 'icono-crossCircle' %>
+                  <% end%>
+              </div>
+              </div>
+            </li>
         <% end%>
-      <% end%>
-    </th>
-  </tr>
-  <tr>
-    <th colspan="2" style="padding-left: 220px">
-      <% if @borrow_reply.message_state.id == 1%>
-      <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}, class: "button" %>　　　
-      <%= submit_tag "取消", :name => "cancel",data: {confirm: "取消しても宜しいですか？"}, class: "button" %>
-      <% end%>
-    </th>
-  </tr>
-</table>
+      </ul>
+  <% end%>
+<% if @borrow_reply.message_state.id == 1%>
+    <br/>
+    <%= submit_tag "更新", :name => "update",data: {confirm: "更新しても宜しいですか？"}, class: "button" %>　　　
+    <%= submit_tag "取消", :name => "cancel",data: {confirm: "取消しても宜しいですか？"}, class: "button" %>
+<% end%>

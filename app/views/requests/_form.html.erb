@@ -1,30 +1,18 @@
-<%= render "shared/errors", obj: @request %>
-
-<table>
-  <tr>
-    <th colspan="2">
-      <%= f.label :message, "メッセージ" %>
-    </th>
-  </tr>
-  <tr>
-    <th colspan="2">
+<ul id="show-item"><li>送ったメッセージ</li></ul>
+<div>
       <% if @request.message_state.id == 1 %>
-          <%= f.text_area :message ,:size => "81x5" %>
+          <%= f.text_area :message ,:size => "75x5" %>
       <% else %>
-          <%= f.text_area :message ,:size => "81x5", :readonly => true%>
+          <%= f.text_area :message ,:size => "75x5", :readonly => true%>
       <% end %>
       <%= f.hidden_field :loan_item_id %>
       <%= f.hidden_field :member_id %>
       <%= f.hidden_field :message_state_id %>
       <%= f.hidden_field :delete_flg %>
-    </th>
-  </tr>
-  <tr>
-    <th colspan="2" style="padding-left: 220px">
+    </div>
+  <br/>
       <% if @request.message_state.id == 1%>
           <%= submit_tag "更新", :name => "request_update",data: {confirm: "更新しても宜しいですか？"}, class: "button" %>　
           <%= submit_tag "取消", :name => "request_cancel",data: {confirm: "取消しても宜しいですか？"}, class: "button" %>
       <% end%>
-    </th>
-  </tr>
-</table>
+    </br>
