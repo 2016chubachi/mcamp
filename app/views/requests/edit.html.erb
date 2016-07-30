@@ -1,7 +1,7 @@
 <%= render partial: "shared/sidebar", locals:{subType: "Requests"} %>
 <div id="main">
   <!--item name-->
-
+  <%= render "shared/errors", obj: @request %>
   <p class="webcri"><%= link_to truncate(@request.loan_item.item_name,length: 25),edit_borrow_path(:id => @request.loan_item.id) %></p>
 
   <div class="bubble">
@@ -15,6 +15,4 @@
     </div>
   </div>
   <br/>
-  <%= render "shared/errors", obj: @request %>
-
 </div>

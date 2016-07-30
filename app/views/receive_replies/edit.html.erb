@@ -9,7 +9,7 @@
   <% end%>
   <!--message form-->
   <!--item name-->
-  <p class="rcv-msg"><%= link_to truncate(@reply.borrow_item.item_name,length: 25),@reply.borrow_item%><span> <%= "　　送信者： #{@reply.member.name}" %></span></p>
+  <p class="rcv-msg"><%= link_to truncate(@reply.borrow_item.item_name,length: 15),@reply.borrow_item%><span> <%= "　　送信者： #{@reply.member.name}" %></span></p>
   <!--message-->
   <div>
     <div class="msg">
@@ -26,7 +26,6 @@
         </div>
         <!--status-->
         <p align="right"><%= @reply.message_state.name %></p>
-          </div>
           <!--button-->
         <% if @reply.message_state.id == 1%>
           <div class="function">
@@ -35,5 +34,6 @@
           </div>
         <% end%>
       <% end %>
-
+</div>
+</div>
 </div>
