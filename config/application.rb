@@ -26,4 +26,8 @@ module Mcamp
     # config.action_controller.permit_all_parameters = true
 
   end
+
+  ###### added by mike
+  config.serve_static_assets = true
+  ########
 end
